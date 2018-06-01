@@ -23,7 +23,7 @@ public class HBStartScene implements HBScene {
 	@Override
 	public void update(GameContainer gc, int g) {
 		if(startAn.getFrame() == startAn.getFrameCount()-1) next = true; 
-		if(startAn.getFrame() == 0 && next) HighBeat.WINDOW.setScene(new HBMainScene());
+		if(startAn.getFrame() == 0 && next) ((HighBeat)gc).getWindow().setScene(new HBMainScene());
 	}
 
 	@Override

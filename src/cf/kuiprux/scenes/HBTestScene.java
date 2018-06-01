@@ -11,7 +11,7 @@ public class HBTestScene implements HBScene {
 	public void update(GameContainer gc, int g) {
 		Input input = gc.getInput();
 		if(input.isKeyPressed(Input.KEY_A)) {
-			HighBeat.WINDOW.setScene(new HBTestScene2());
+			((HighBeat)gc).getWindow().setScene(new HBTestScene2());
 		}
 	}
 	

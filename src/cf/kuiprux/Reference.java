@@ -26,6 +26,9 @@ public class Reference {
 	public static final double FRAME_GAP_HEIGHT = (double) ORIGINAL_FRAME_GAP*HEIGHT/ORIGINAL_HEIGHT;
 	public static final double PANEL_GAP_HEIGHT = (double) ORIGINAL_PANEL_GAP*HEIGHT/ORIGINAL_HEIGHT;
 	
+	public static final int PANEL_BUTTON_ROW = 4;
+	public static final int PANEL_BUTTON_COLUMN = 4;
+	
 	public static final double BUTTON_START = (double) HEIGHT-(BUTTON_HEIGHT*4)-(BUTTON_GAP_HEIGHT*3)-(PANEL_GAP_HEIGHT);
 	public static final double PANEL_HEIGHT = (double) BUTTON_START-PANEL_GAP_HEIGHT;
 	

@@ -1,7 +1,9 @@
-package cf.kuiprux;
+package cf.kuiprux.beatmap;
 
 import java.io.File;
 import java.io.IOException;
+
+import cf.kuiprux.FileHandler;
 
 public class MapHandler {
 

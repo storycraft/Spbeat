@@ -8,6 +8,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
+import cf.kuiprux.game.ButtonPanel;
 import cf.kuiprux.scenes.HBScene;
 import cf.kuiprux.scenes.HBStartScene;
 import cf.kuiprux.scenes.HBTestScene;
@@ -18,8 +19,12 @@ public class HBWindow extends BasicGame {
 	//private List<Class<? extends HBScene>> sceneClasses = new ArrayList<Class<? extends HBScene>>();
 	private HBScene curScene;
 	
+	private ButtonPanel buttonPanel;
+	
 	public HBWindow(String title) {
 		super(title);
+		
+		this.buttonPanel = new ButtonPanel(16);
 	}
 	
 	/*public boolean registerScene(HBScene scene) {
@@ -46,6 +51,9 @@ public class HBWindow extends BasicGame {
 		if(curScene != null) {
 			curScene.render(gc, g);
 		}
+		
+		//위치 수정 되어야 할것
+		buttonPanel.draw(0f, (float) Reference.PANEL_GAP_HEIGHT);
 	}
 
 	@Override
@@ -58,6 +66,10 @@ public class HBWindow extends BasicGame {
 		if(curScene != null) {
 			curScene.update(gc, g);
 		}
+	}
+	
+	public ButtonPanel getButtonPanel() {
+		return buttonPanel;
 	}
 
 }

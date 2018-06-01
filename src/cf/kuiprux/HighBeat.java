@@ -3,14 +3,36 @@ package cf.kuiprux;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
-public class HighBeat {
+public class HighBeat extends AppGameContainer {
 	
 	public static final String NAME = "HighBeat";
-	public static final HBWindow WINDOW = new HBWindow(NAME);
+	
+	private HBWindow window;
+	
+	public HighBeat(HBWindow game, String[] args) throws SlickException {
+		super(game);
+		
+		this.window = game;
+		
+		init(args);
+		start();
+	}
+	
+	//시작 전 창 관련 요소 초기화
+	private void init(String[] args) throws SlickException {
+		setDisplayMode(800, 600, false);
+	}
+	
+	public HBWindow getWindow() {
+		return window;
+	}
 
-	public static void main(String[] args) throws SlickException {
-		AppGameContainer agc = new AppGameContainer(WINDOW);
-		agc.setDisplayMode(800, 600, false);
-		agc.start();
+	public static void main(String[] args) {
+		try {
+			HBWindow window = new HBWindow(NAME);
+			new HighBeat(window, args);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 	}
 }
