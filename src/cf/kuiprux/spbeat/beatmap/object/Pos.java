@@ -1,4 +1,4 @@
-package cf.kuiprux.spbeat;
+package cf.kuiprux.spbeat.beatmap.object;
 
 public class Pos {
 	public int x;

@@ -2,6 +2,9 @@ package cf.kuiprux.spbeat.beatmap;
 
 import java.util.List;
 
+import cf.kuiprux.spbeat.beatmap.object.Bpm;
+import cf.kuiprux.spbeat.beatmap.object.Note;
+
 public class PlayInfo {
 	
 	public final long offset;

@@ -1,4 +1,4 @@
-package cf.kuiprux.spbeat.beatmap;
+package cf.kuiprux.spbeat.beatmap.object;
 
 public class Bpm {
 

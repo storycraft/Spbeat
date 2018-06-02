@@ -1,7 +1,9 @@
-package cf.kuiprux.spbeat;
+package cf.kuiprux.spbeat.beatmap.object;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
+
+import cf.kuiprux.spbeat.HBWindow;
 
 public class SpBeAt extends AppGameContainer {
 	

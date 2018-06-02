@@ -16,9 +16,9 @@ import com.google.gson.JsonParser;
 import cf.kuiprux.spbeat.FileHandler;
 import cf.kuiprux.spbeat.beatmap.BasicInfo;
 import cf.kuiprux.spbeat.beatmap.BeatMap;
-import cf.kuiprux.spbeat.beatmap.Bpm;
-import cf.kuiprux.spbeat.beatmap.Note;
 import cf.kuiprux.spbeat.beatmap.PlayInfo;
+import cf.kuiprux.spbeat.beatmap.object.Bpm;
+import cf.kuiprux.spbeat.beatmap.object.Note;
 
 public class NewMapLoader {
 

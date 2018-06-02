@@ -1,6 +1,6 @@
 package cf.kuiprux.spbeat.game.judgement;
 
-import cf.kuiprux.spbeat.game.Note;
+import cf.kuiprux.spbeat.beatmap.object.Note;
 
 public class HitJudgement {
 	

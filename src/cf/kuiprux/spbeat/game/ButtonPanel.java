@@ -4,7 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
-import cf.kuiprux.spbeat.Pos;
+import cf.kuiprux.spbeat.beatmap.object.Pos;
 import cf.kuiprux.spbeat.game.drawable.Button;
 import cf.kuiprux.spbeat.scenes.HBScene;
 
