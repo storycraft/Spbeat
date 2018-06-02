@@ -1,4 +1,4 @@
-package cf.kuiprux.spbeat.scenes.temp;
+package cf.kuiprux.spbeat.scenes;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -9,7 +9,6 @@ import org.newdawn.slick.SpriteSheet;
 
 import cf.kuiprux.spbeat.Reference;
 import cf.kuiprux.spbeat.SpBeAt;
-import cf.kuiprux.spbeat.scenes.HBScene;
 
 public class HBStartScene implements HBScene {
 

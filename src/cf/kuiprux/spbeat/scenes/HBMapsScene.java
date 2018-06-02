@@ -1,4 +1,4 @@
-package cf.kuiprux.spbeat.scenes.temp;
+package cf.kuiprux.spbeat.scenes;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -9,7 +9,6 @@ import org.newdawn.slick.SlickException;
 import cf.kuiprux.spbeat.SpBeAt;
 import cf.kuiprux.spbeat.beatmap.BeatMap;
 import cf.kuiprux.spbeat.beatmap.object.Pos;
-import cf.kuiprux.spbeat.scenes.ButtonPanel;
 
 public class HBMapsScene extends ButtonPanel {
 
