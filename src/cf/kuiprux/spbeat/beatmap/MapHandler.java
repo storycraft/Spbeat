@@ -1,21 +1,18 @@
 package cf.kuiprux.spbeat.beatmap;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cf.kuiprux.spbeat.FileHandler;
-import cf.kuiprux.spbeat.beatmap.BeatMap;
 import cf.kuiprux.spbeat.beatmap.parser.NewMapLoader;
 
 public class MapHandler {
 	
-	private NewMapLoader mapLoader = new NewMapLoader(new File("BeatMaps"));
-	private List<BeatMap[][]> BeatMaps;
+	private NewMapLoader mapLoader = new NewMapLoader(new File("maps"));
+	private List<BeatMap[][]> mapList;
 	
-	public void loadBeatMaps() {
-		this.BeatMaps = new ArrayList<BeatMap[][]>();
+	public void loadMaps() {
+		this.mapList = new ArrayList<BeatMap[][]>();
 		mapLoader.loadMaps();
 		List<BeatMap> BeatMaps = mapLoader.getMaps();
 		for(int i = 0; i <= BeatMaps.size()/12; i++) {
@@ -24,19 +21,19 @@ public class MapHandler {
 				if(i*12+j == BeatMaps.size()) break;
 				BeatMapArray[j%4][j/4] = BeatMaps.get(i*12+j);
 			}
-			this.BeatMaps.add(BeatMapArray);
+			this.mapList.add(BeatMapArray);
 		}
-		if(this.BeatMaps.size() == 0) {
-			this.BeatMaps.add(new BeatMap[4][3]);
+		if(this.mapList.size() == 0) {
+			this.mapList.add(new BeatMap[4][3]);
 		}
 	}
 	
 	public int getSize() {
-		return BeatMaps.size();
+		return mapList.size();
 	}
 	
-	public BeatMap[][] getBeatMaps(int index) {
-		if(index >= BeatMaps.size()) return null;
-		return BeatMaps.get(index);
+	public BeatMap[][] getMaps(int index) {
+		if(index >= mapList.size()) return null;
+		return mapList.get(index);
 	}
 }

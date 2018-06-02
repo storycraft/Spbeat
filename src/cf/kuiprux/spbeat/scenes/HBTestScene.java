@@ -4,7 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
-import cf.kuiprux.spbeat.beatmap.object.SpBeAt;
+import cf.kuiprux.spbeat.SpBeAt;
 
 public class HBTestScene implements HBScene {
 

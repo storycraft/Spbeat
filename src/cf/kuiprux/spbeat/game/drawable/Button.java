@@ -19,14 +19,14 @@ public class Button {
 		//Renders background of button
 		renderButton(g, Reference.getButtonBase(), x, y);
 		//Renders button image
-		renderButton(g, image, x, y);
+		if(image != null)
+			renderButton(g, image, x, y);
 		//Renders if button is available
 		if (available)
 			renderButton(g, Reference.getButtonAvailable(), x, y);
 		//Renders if button is selected
-		if (selected) {
+		if (selected)
 			renderButton(g, Reference.getButtonSelected(), x, y);
-		}
 	}
 	
 	public void renderButton(Graphics g, Image image, int x, int y) {

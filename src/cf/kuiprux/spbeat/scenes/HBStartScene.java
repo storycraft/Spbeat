@@ -6,7 +6,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
-import cf.kuiprux.spbeat.beatmap.object.SpBeAt;
+import cf.kuiprux.spbeat.SpBeAt;
 
 public class HBStartScene implements HBScene {
 

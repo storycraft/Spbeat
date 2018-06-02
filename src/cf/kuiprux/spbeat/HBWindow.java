@@ -5,9 +5,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
-import cf.kuiprux.spbeat.game.ButtonPanel;
+import cf.kuiprux.spbeat.scenes.ButtonPanel;
 import cf.kuiprux.spbeat.scenes.HBScene;
-import cf.kuiprux.spbeat.scenes.HBStartScene;
+import cf.kuiprux.spbeat.scenes.temp.HBStartScene;
 
 public class HBWindow extends BasicGame {
 
