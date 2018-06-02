@@ -1,46 +1,83 @@
 package cf.kuiprux.game;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 
-import org.newdawn.slick.Renderable;
+import cf.kuiprux.Pos;
+import cf.kuiprux.game.drawable.Button;
+import cf.kuiprux.scenes.HBScene;
 
-import cf.kuiprux.HBWindow;
-import cf.kuiprux.Reference;
-import cf.kuiprux.game.drawable.ButtonDrawable;
-
-public class ButtonPanel implements Renderable {
+public class ButtonPanel implements HBScene {
 	
-	private List<ButtonDrawable> buttonList;
-	/* 2차원 구조
-	 * 
-	 * 0  1  2  3
-	 * 4  5  6  7
-	 * 8  9  10 11
-	 * 12 13 14 15
-	 */
+	private Button[][] buttonList;
+	Pos selected = null;
 	
-	public ButtonPanel(int count) {
-		this.buttonList = new ArrayList<>();
-		
-		while (count-- > 0) {
-			buttonList.add(new ButtonDrawable());
-		}
+	public ButtonPanel() {
+		buttonList = new Button[4][4];
 	}
 	
-	public ButtonDrawable getButtonAt(int index) {
-		return buttonList.get(index);
+	public Button getButtonAt(int x, int y) {
+		return buttonList[x][y];
 	}
 
 	@Override
-	public void draw(float x, float y) {
-		for (int xOffset = 0; xOffset < Reference.PANEL_BUTTON_ROW; xOffset++) {
-			for (int yOffset = 0; yOffset < Reference.PANEL_BUTTON_COLUMN; yOffset++) {
-				int index = xOffset + yOffset;
-				
-				getButtonAt(index).draw((float) ((xOffset + 1) * Reference.BUTTON_GAP_WIDTH + xOffset * Reference.BUTTON_WIDTH),
-						(float) ((yOffset + 1) * Reference.BUTTON_GAP_HEIGHT + yOffset * Reference.BUTTON_HEIGHT));
+	public void render(GameContainer gc, Graphics g) {
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++) {
+				buttonList[i][j].render(g, i, j, selected.equals(new Pos(i, j)));
 			}
 		}
 	}
+	
+	//This is used for selecting button with arrow key
+	@Override
+	public void update(GameContainer gc, int g) {
+		Input input = gc.getInput();
+		if (input.isKeyPressed(Input.KEY_UP)) {
+			moveSelect(Direction.UP);
+		}
+		if (input.isKeyPressed(Input.KEY_RIGHT)) {
+			moveSelect(Direction.RIGHT);
+		}
+		if (input.isKeyPressed(Input.KEY_DOWN)) {
+			moveSelect(Direction.DOWN);
+		}
+		if (input.isKeyPressed(Input.KEY_LEFT)) {
+			moveSelect(Direction.LEFT);
+		}
+	}
+
+	//This is also used for selecting button with arrow key
+	public void moveSelect(Direction direction) {
+		if (selected != null) {
+			int x = selected.x;
+			int y = selected.y;
+			while(true) {
+				switch (direction) {
+				case UP:
+					x--;
+					break;
+				case DOWN:
+					x++;
+					break;
+				case RIGHT:
+					y++;
+					break;
+				case LEFT:
+					y--;
+				}
+				if(0 > x || x >= 4 || 0 > y || y >= 4) break;
+				if (buttonList[x][y].isAvailable()) {
+					selected.x = x;
+					selected.y = y;
+					break;
+				}
+			}
+		}
+	}
+}
+
+enum Direction {
+	UP, RIGHT, DOWN, LEFT;
 }

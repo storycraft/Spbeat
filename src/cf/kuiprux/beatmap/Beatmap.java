@@ -1,26 +1,47 @@
 package cf.kuiprux.beatmap;
 
-import java.awt.Image;
-import java.util.ArrayList;
-import java.util.List;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
 
-import cf.kuiprux.game.Event;
-import cf.kuiprux.game.Note;
+public class BeatMap {
 
-public class Beatmap {
-
-	Image logo;
-	String name;
-	String description;
-	String author;
-	String songPath;
-	int difficulty;
-	int defaultBpm;
+	private BasicInfo basicInfo;
+	private PlayInfo playInfo;
+	private Image icon;
+	private Image background; //TODO load this
+	private Music music;
 	
-	double offset;
-	//bpm 전환, 배경 등의 정보를 갖고 있음
-	List<Event> eventList = new ArrayList<>();
-	//노트 리스트
-	List<Note> beats = new ArrayList<>();
+	private String musicPath;
+
+	public BeatMap(BasicInfo basicInfo, PlayInfo playInfo, Image icon, String musicPath) {
+		this.basicInfo = basicInfo;
+		this.playInfo = playInfo;
+		this.icon = icon;
+		this.musicPath = musicPath;
+	}
+
+	public BasicInfo getBasicInfo() {
+		return basicInfo;
+	}
+
+	public PlayInfo getPlayInfo() {
+		return playInfo;
+	}
+
+	public Image getIcon() {
+		return icon;
+	}
+
+	public Music getMusic() {
+		return music;
+	}
 	
+	public void loadMusic() {
+		try {
+			music = new Music(musicPath);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -2,19 +2,19 @@ package cf.kuiprux.game;
 
 import org.newdawn.slick.openal.OpenALStreamPlayer;
 
-import cf.kuiprux.beatmap.Beatmap;
+import cf.kuiprux.beatmap.BeatMap;
 
 public class PlayManager {
 	
-	private Beatmap currentMap;
+	private BeatMap currentMap;
 	private OpenALStreamPlayer songPlayer;
 	
-	public PlayManager(Beatmap currentMap) {
+	public PlayManager(BeatMap currentMap) {
 		this.currentMap = currentMap;
 		//this.songPlayer
 	}
 
-	public Beatmap getCurrentMap() {
+	public BeatMap getCurrentMap() {
 		return currentMap;
 	}
 	
