@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -31,6 +32,7 @@ public class BoundingBoxTest extends SimpleGame {
 
 	@Test
 	void test() {
+		
 		BoundingBoxTest game = new BoundingBoxTest();
 		
 		try (WindowHost window = new WindowHost(game)){

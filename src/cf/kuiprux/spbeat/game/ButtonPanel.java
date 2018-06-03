@@ -19,7 +19,6 @@ public class ButtonPanel extends SimpleContainer {
 		initPanel();
 	}
 	
-	
 	// !! hardcoded !!
 	private void initPanel() {
 		for (int x = 0; x < 4; x++) {

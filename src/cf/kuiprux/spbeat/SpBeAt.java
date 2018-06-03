@@ -2,6 +2,7 @@ package cf.kuiprux.spbeat;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 import cf.kuiprux.spbeat.game.ButtonPanel;
@@ -29,6 +30,7 @@ public class SpBeAt extends SimpleGame {
 		super.init(container);
 		
 		addChild(getPanel());
+		
 	}
 	
 	public ButtonPanel getPanel() {
