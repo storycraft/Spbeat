@@ -1,46 +1,47 @@
 package cf.kuiprux.spbeat;
 
-import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
-import cf.kuiprux.spbeat.beatmap.MapHandler;
+import cf.kuiprux.spbeat.game.ButtonPanel;
 
-public class SpBeAt extends AppGameContainer {
+public class SpBeAt extends SimpleGame {
 	
-	public static final String NAME = "SpBeAt";
+	public static final String TITLE = "SpBeAt";
 	
-	public static SpBeAt instance;
-	private HBWindow window;
-	private MapHandler mapHandler;
+	private ButtonPanel panel;
 	
-	public SpBeAt(HBWindow game) throws SlickException {
-		super(game);
+	public SpBeAt() {
+		this(TITLE);
+	}
+	
+	public SpBeAt(String title) {
+		super(title);
 		
-		this.window = game;
-		mapHandler = new MapHandler();
+		this.panel = new ButtonPanel();
 	}
 	
-	//시작 전 창 관련 요소 초기화
-	private void init(String[] args) throws SlickException {
-		setDisplayMode(Reference.WIDTH, Reference.HEIGHT, false);
+	@Override
+	public void init(GameContainer container) throws SlickException {
+		super.init(container);
+		
+		addChild(getPanel());
 	}
 	
-	public HBWindow getWindow() {
-		return window;
-	}
-	
-	public MapHandler getMapHandler() {
-		return mapHandler;
+	public ButtonPanel getPanel() {
+		return panel;
 	}
 
-	public static void main(String[] args) {
-		try {
-			HBWindow window = new HBWindow(NAME);
-			instance = new SpBeAt(window);
-			instance.init(args);
-			instance.start();
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+	//업데이트 함수
+	@Override
+	protected void updateInternal(int delta) {
+		
+	}
+
+	//그리기 함수
+	@Override
+	protected void drawInternal(Graphics graphics) {
+		graphics.setAntiAlias(true);
 	}
 }
