@@ -10,15 +10,10 @@ import cf.kuiprux.spbeat.gui.IHasColor;
 import cf.kuiprux.spbeat.gui.IHasTexture;
 import cf.kuiprux.spbeat.gui.TextureFillMode;
 
-public abstract class Shape extends Drawable implements IHasColor, IHasTexture {
+public abstract class Shape extends Sprite implements IHasTexture {
 	
 	private float width;
 	private float height;
-	
-	private Color color;
-	private Color borderColor;
-	
-	private float borderWidth;
 	
 	private Image texture;
 	private TextureFillMode mode;
@@ -28,10 +23,6 @@ public abstract class Shape extends Drawable implements IHasColor, IHasTexture {
 		
 		this.width = width;
 		this.height = height;
-		
-		this.color = Color.white;
-		this.borderColor = Color.white;
-		this.borderWidth = 0;
 	}
 	
 	public Shape(float x, float y) {
@@ -73,38 +64,6 @@ public abstract class Shape extends Drawable implements IHasColor, IHasTexture {
 		this.height = height;
 		
 		sendParentUpdate();
-	}
-	
-	@Override
-	public Color getColor() {
-		return color;
-	}
-
-	@Override
-	public void setColor(Color color) {
-		if (color == null)
-			return;
-		
-		this.color = color;
-	}
-	
-	public Color getBorderColor() {
-		return borderColor;
-	}
-	
-	public float getBorderWidth() {
-		return borderWidth;
-	}
-	
-	public void setBorderColor(Color color) {
-		if (color == null)
-			return;
-		
-		this.borderColor = color;
-	}
-	
-	public void setBorderWidth(float width) {
-		this.borderWidth = width;
 	}
 
 	@Override

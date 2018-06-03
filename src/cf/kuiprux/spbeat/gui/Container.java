@@ -42,17 +42,20 @@ public abstract class Container extends Drawable {
 		this.masking = masking;
 	}
 	
+	//복사본
+	//concurrent 발생 가능한 작업에 사용
 	public List<Drawable> getChildren(){
 		return new ArrayList<>(children);
 	}
 	
+	//원본
 	protected List<Drawable> getChildrenInternal(){
-		return new ArrayList<>(children);
+		return children;
 	}
 	
 	@Override
 	public void update(int delta) {
-		for (Drawable child : children)
+		for (Drawable child : getChildren())
 			child.update(delta);
 		
 		updateInternal(delta);
@@ -76,7 +79,7 @@ public abstract class Container extends Drawable {
 			graphics.setWorldClip(0, 0, getWidth(), getHeight());
 		}
 		
-		for (Drawable child : children)
+		for (Drawable child : getChildren())
 			child.draw(graphics);
 		
 		graphics.popTransform();
@@ -96,7 +99,7 @@ public abstract class Container extends Drawable {
 	protected void onLoaded() {
 		super.onLoaded();
 		
-		for (Drawable child : children)
+		for (Drawable child : getChildren())
 			child.onLoaded();
 	}
 	
@@ -104,7 +107,7 @@ public abstract class Container extends Drawable {
 	protected void onUnloaded() {
 		super.onUnloaded();
 		
-		for (Drawable child : children)
+		for (Drawable child : getChildren())
 			child.onUnloaded();
 	}
 	
@@ -135,7 +138,7 @@ public abstract class Container extends Drawable {
 	}
 	
 	protected void addInternal(Drawable drawable) {
-		children.add(drawable);
+		getChildrenInternal().add(drawable);
 		drawable.onAdded(this);
 		
 		if (drawable instanceof Container) {
@@ -147,7 +150,7 @@ public abstract class Container extends Drawable {
 	}
 	
 	protected void removeInternal(Drawable drawable) {
-		children.remove(drawable);
+		getChildrenInternal().remove(drawable);
 		drawable.onRemoved();
 		
 		if (isLoaded())
@@ -155,7 +158,7 @@ public abstract class Container extends Drawable {
 	}
 	
 	public boolean containsChild(Drawable drawable) {
-		return children.contains(drawable);
+		return getChildrenInternal().contains(drawable);
 	}
 	
 	//해당 container update 메서드

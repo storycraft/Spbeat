@@ -66,7 +66,7 @@ public class BoundingBoxTest extends SimpleGame {
 		
 		System.out.println(box2.getY());
 		
-		testContainer.setLocation(200, 100);
+		testContainer.setLocation(10, 100);
 		
 		testContainer.addChild(movingBox);
 		testContainer.addChild(box2);
@@ -82,7 +82,7 @@ public class BoundingBoxTest extends SimpleGame {
 	//업데이트 함수
 	@Override
 	public void updateInternal(int delta) {
-		//movingBox.setLocation((float) Math.random() * 500, (float) Math.random() * 500);
+		movingBox.setLocation((float) Math.random() * 500, (float) Math.random() * 500);
 	}
 
 	//그리기 함수
