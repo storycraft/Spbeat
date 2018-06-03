@@ -62,6 +62,8 @@ public class BoundingBoxTest extends SimpleGame {
 		
 		box2.setColor(Color.green);
 		
+		System.out.println(box2.getY());
+		
 		testContainer.setLocation(200, 100);
 		
 		testContainer.addChild(movingBox);
@@ -71,13 +73,14 @@ public class BoundingBoxTest extends SimpleGame {
 		
 		onLoaded();
 		
+		System.out.println(testContainer.getX() + " " + testContainer.getY());
 		System.out.println(testContainer.getWidth() + " " + testContainer.getHeight());
 	}
 
 	//업데이트 함수
 	@Override
 	public void updateInternal(int delta) {
-		movingBox.setLocation((float) Math.random() * 500, (float) Math.random() * 500);
+		//movingBox.setLocation((float) Math.random() * 500, (float) Math.random() * 500);
 	}
 
 	//그리기 함수

@@ -65,7 +65,7 @@ public class SimpleContainer extends Container {
 			maxY = Math.max(boundingBox.getY() + boundingBox.getHeight(), maxY);
 		}
 		
-		cachedRectangle = new Rectangle(minX, minY, maxX - minX, maxY - minY);
+		cachedRectangle = new Rectangle(getX() + minX, getY() + minY, maxX - minX, maxY - minY);
 	}
 	
 	@Override
