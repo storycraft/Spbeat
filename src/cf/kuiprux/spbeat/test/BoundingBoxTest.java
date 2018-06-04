@@ -14,6 +14,7 @@ import org.newdawn.slick.geom.Rectangle;
 import cf.kuiprux.spbeat.SimpleGame;
 import cf.kuiprux.spbeat.SpBeAt;
 import cf.kuiprux.spbeat.WindowHost;
+import cf.kuiprux.spbeat.gui.AlignMode;
 import cf.kuiprux.spbeat.gui.Container;
 import cf.kuiprux.spbeat.gui.Drawable;
 import cf.kuiprux.spbeat.gui.containers.SimpleContainer;
@@ -55,18 +56,20 @@ public class BoundingBoxTest extends SimpleGame {
 		movingBox.setHeight(100);
 		
 		movingBox.setColor(Color.magenta);
+		movingBox.setOrigin(AlignMode.CENTRE);
+		movingBox.setRotation(50f);
+		movingBox.setScale(2, 2);
 		
 		Shape box2 = new Triangle();
 		
-		box2.setLocation(100, 500);
+		box2.setLocation(0, 0);
 		box2.setWidth(100);
 		box2.setHeight(100);
 		
 		box2.setColor(Color.green);
-		
-		System.out.println(box2.getY());
-		
-		testContainer.setLocation(10, 100);
+		box2.setAnchor(AlignMode.CENTRE);
+
+		testContainer.setLocation(100, 100);
 		
 		testContainer.addChild(movingBox);
 		testContainer.addChild(box2);
@@ -82,7 +85,8 @@ public class BoundingBoxTest extends SimpleGame {
 	//업데이트 함수
 	@Override
 	public void updateInternal(int delta) {
-		movingBox.setLocation((float) Math.random() * 500, (float) Math.random() * 500);
+		movingBox.setRotation(movingBox.getRotation() + 0.1f);
+		//movingBox.setLocation((float) Math.random() * 500, (float) Math.random() * 500);
 	}
 
 	//그리기 함수

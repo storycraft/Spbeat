@@ -20,9 +20,9 @@ public class Triangle extends Shape {
 	protected org.newdawn.slick.geom.Shape getShape() {
 		Polygon triangle = new Polygon();
 		
-		triangle.addPoint(getX() + getWidth() / 2, getY());
-		triangle.addPoint(getX(), getY() + getHeight());
-		triangle.addPoint(getX() + getWidth(), getY() + getHeight());
+		triangle.addPoint(getDrawX() + getDrawWidth() / 2, getDrawY());
+		triangle.addPoint(getDrawX(), getDrawY() + getDrawHeight());
+		triangle.addPoint(getDrawX() + getDrawWidth(), getDrawY() + getDrawHeight());
 		triangle.setClosed(true);
 		
 		return triangle;

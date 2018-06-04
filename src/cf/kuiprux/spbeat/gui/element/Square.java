@@ -29,6 +29,6 @@ public class Square extends Shape {
 
 	@Override
 	protected org.newdawn.slick.geom.Shape getShape() {
-		return new RoundedRectangle(getX(), getY(), getWidth(), getHeight(), getCornerRadius());
+		return new RoundedRectangle(getDrawX(), getDrawY(), getDrawWidth(), getDrawHeight(), getCornerRadius());
 	}
 }

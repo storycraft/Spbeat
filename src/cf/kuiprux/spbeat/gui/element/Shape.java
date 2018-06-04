@@ -81,7 +81,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 	
 	@Override
 	public Rectangle getBoundingBox() {
-		org.newdawn.slick.geom.Shape shape = getShape().transform(computeTransform());
+		org.newdawn.slick.geom.Shape shape = getShape().transform(getTransformData());
 		
 		return new Rectangle(shape.getMinX(), shape.getMinY(), shape.getWidth(), shape.getHeight());
 	}
@@ -93,22 +93,29 @@ public abstract class Shape extends Sprite implements IHasTexture {
 
 	@Override
 	public void draw(Graphics graphics) {
-		//속성 적용
-		graphics.setColor(getColor());
+		applyProperties(graphics);
+		applyTransform(graphics);
 		
-		org.newdawn.slick.geom.Shape shape = getShape().transform(computeTransform());
-				
+		org.newdawn.slick.geom.Shape shape = getShape();
+		
 		if (texture != null) {
 			drawAdjustedTexture(shape, graphics);
 		}
-		else {
-			graphics.fill(shape);
+		
+		graphics.fill(shape);
 			
-			if (getBorderWidth() != 0) {
-				graphics.setColor(getBorderColor());
-				graphics.setLineWidth(getBorderWidth());
-				graphics.draw(shape);
-			}
+		if (getBorderWidth() != 0) {
+			graphics.draw(shape);
+		}
+	}
+	
+	@Override
+	protected void applyProperties(Graphics graphics) {
+		graphics.setColor(getColor());
+		
+		if (getBorderWidth() != 0) {
+			graphics.setColor(getBorderColor());
+			graphics.setLineWidth(getBorderWidth());
 		}
 	}
 	

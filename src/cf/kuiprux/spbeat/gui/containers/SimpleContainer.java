@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat.gui.containers;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -51,13 +52,13 @@ public class SimpleContainer extends Container {
 	}
 	
 	protected void updateChildShape() {
-		float minX = Float.MAX_VALUE;
-		float minY = Float.MAX_VALUE;
-		float maxX = 0;
-		float maxY = 0;
+		float minX = getDrawX();
+		float minY = getDrawY();
+		float maxX = minX;
+		float maxY = minY;
 		
-		for (Drawable shape : getChildrenInternal()) {
-			Rectangle boundingBox = shape.getBoundingBox();
+		for (Drawable drawable : getChildrenInternal()) {
+			Rectangle boundingBox = drawable.getBoundingBox();
 			
 			minX = Math.min(boundingBox.getX(), minX);
 			minY = Math.min(boundingBox.getY(), minY);
@@ -65,7 +66,7 @@ public class SimpleContainer extends Container {
 			maxY = Math.max(boundingBox.getY() + boundingBox.getHeight(), maxY);
 		}
 		
-		cachedRectangle = new Rectangle(getX() + minX, getY() + minY, maxX - minX, maxY - minY);
+		cachedRectangle = new Rectangle(minX, minY, maxX - minX, maxY - minY);
 	}
 	
 	@Override

@@ -19,11 +19,8 @@ public abstract class Container extends Drawable {
 	
 	private List<Drawable> children;
 	
-	private boolean masking;
-	
 	public Container() {
 		this.children = new ArrayList<>();
-		this.masking = false;
 	}
 	
 	protected void init(Game game) {
@@ -32,14 +29,6 @@ public abstract class Container extends Drawable {
 	
 	public Game getGame() {
 		return game;
-	}
-	
-	public boolean isMaskingMode() {
-		return masking;
-	}
-
-	public void setMaskingMode(boolean masking) {
-		this.masking = masking;
 	}
 	
 	//복사본
@@ -60,27 +49,29 @@ public abstract class Container extends Drawable {
 		
 		updateInternal(delta);
 	}
+	
+	private void drawChild(Graphics graphics, Drawable child) {
+		graphics.pushTransform();
+		
+		child.draw(graphics);
+		
+		graphics.popTransform();
+	}
 
 	@Override
 	public void draw(Graphics graphics) {
+		graphics.pushTransform();
+
 		drawInternal(graphics);
+		
+		graphics.popTransform();
 		
 		graphics.pushTransform();
 		
-		//transform 적용
-		
-		Shape box = new Rectangle(getX(), getY(), getWidth(), getHeight()).transform(computeTransform());
-		
-		//transform 처리 되었으므로 최소 좌표를 위치 값으로 사용
-		graphics.translate(box.getMinX(), box.getMinY());
-		graphics.scale(getWidth() / box.getWidth(), getHeight() / box.getHeight());
-		
-		if (isMaskingMode()) {
-			graphics.setWorldClip(0, 0, getWidth(), getHeight());
-		}
+		applyTransform(graphics);
 		
 		for (Drawable child : getChildren())
-			child.draw(graphics);
+			drawChild(graphics, child);
 		
 		graphics.popTransform();
 	}
