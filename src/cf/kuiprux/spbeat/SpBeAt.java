@@ -13,7 +13,6 @@ import cf.kuiprux.spbeat.game.controller.FallbackController;
 import cf.kuiprux.spbeat.game.controller.GameController;
 import cf.kuiprux.spbeat.game.controller.IControllerListener;
 import cf.kuiprux.spbeat.game.controller.SpbeatController;
-import cf.kuiprux.spbeat.gui.element.Shape;
 
 public class SpBeAt extends SimpleGame implements IControllerListener {
 	

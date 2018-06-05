@@ -5,7 +5,15 @@ import java.util.Map;
 
 import org.lwjgl.input.Keyboard;
 
-//테스트용 키보드 컨트롤러
+/*테스트용 키보드 컨트롤러
+ * 
+ * 1234
+ * qwer
+ * asdf
+ * zxcv
+ * 
+ * 으로 시뮬레이트
+ */
 public class FallbackController extends GameController {
 	
 	private static Map<Integer, Integer> convertMap;
