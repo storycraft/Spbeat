@@ -1,20 +1,25 @@
 package cf.kuiprux.spbeat;
 
+import java.util.logging.Level;
+
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 import cf.kuiprux.spbeat.game.ButtonPanel;
 import cf.kuiprux.spbeat.game.PlayManager;
-import cf.kuiprux.spbeat.game.controller.IGameController;
+import cf.kuiprux.spbeat.game.controller.FallbackController;
+import cf.kuiprux.spbeat.game.controller.GameController;
+import cf.kuiprux.spbeat.game.controller.IControllerListener;
 import cf.kuiprux.spbeat.game.controller.SpbeatController;
+import cf.kuiprux.spbeat.gui.element.Shape;
 
-public class SpBeAt extends SimpleGame {
+public class SpBeAt extends SimpleGame implements IControllerListener {
 	
 	public static final String TITLE = "SpBeAt";
 	
-	private IGameController controller;
+	private GameController controller;
 	
 	private ButtonPanel panel;
 	private PlayManager playManager;
@@ -34,16 +39,43 @@ public class SpBeAt extends SimpleGame {
 	public void init(GameContainer container) throws SlickException {
 		super.init(container);
 		
-		addChild(getPanel());
+		//입력 장치 초기화
+		try {
+			getController().listen();
+		} catch (Exception e) {
+			getLogManager().log(Level.WARNING, "장치 초기화 실패, fallback 컨트롤러를 사용합니다", e);
+			
+			this.controller = new FallbackController();
+			
+			try {
+				getController().listen();
+			} catch (Exception e1) {
+				getLogManager().log(Level.WARNING, "fallback 장치 초기화 실패 입력을 받을 수 없습니다", e);
+			}
+		}
 		
+		getController().addListener(this);
+		
+		addChild(getPanel());
 	}
 	
 	public ButtonPanel getPanel() {
 		return panel;
 	}
 	
-	public IGameController getController() {
+	public GameController getController() {
 		return controller;
+	}
+	
+	//프로그램 종료시 호출
+	@Override
+	public boolean closeRequested() {
+		if (!super.closeRequested())
+			return false;
+		
+		getController().close();
+
+		return true;
 	}
 
 	//업데이트 함수
@@ -56,5 +88,16 @@ public class SpBeAt extends SimpleGame {
 	@Override
 	protected void drawInternal(Graphics graphics) {
 		graphics.setAntiAlias(true);
+	}
+
+	@Override
+	public void onPress(int keyIndex) {
+		((Shape) getPanel().getChildren().get(keyIndex)).setColor(Color.blue);
+	}
+
+	@Override
+	public void onUp(int keyIndex) {
+		// TODO Auto-generated method stub
+		
 	}
 }

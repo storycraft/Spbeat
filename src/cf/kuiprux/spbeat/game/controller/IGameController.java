@@ -1,12 +1,14 @@
 package cf.kuiprux.spbeat.game.controller;
 
-public interface IGameController {
+public interface IGameController extends AutoCloseable {
 	
-	void simulatePress(int index);
 	boolean isPressed(int index);
 	
 	void addListener(IControllerListener listener);
 	void removeListener(IControllerListener listener);
 	
 	boolean containsListener(IControllerListener listener);
+	
+	boolean isListening();
+	void listen() throws Exception;
 }
