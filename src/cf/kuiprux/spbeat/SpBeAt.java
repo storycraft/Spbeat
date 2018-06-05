@@ -92,7 +92,8 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 
 	@Override
 	public void onPress(int keyIndex) {
-		((Shape) getPanel().getChildren().get(keyIndex)).setColor(Color.blue);
+		//test
+		getPanel().getButtonAt(keyIndex).setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255),(int) (Math.random() * 255) ,255));
 	}
 
 	@Override

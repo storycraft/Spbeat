@@ -105,6 +105,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		graphics.fill(shape);
 			
 		if (getBorderWidth() != 0) {
+			graphics.setColor(getBorderColor());
 			graphics.draw(shape);
 		}
 	}
@@ -114,7 +115,6 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		graphics.setColor(getColor());
 		
 		if (getBorderWidth() != 0) {
-			graphics.setColor(getBorderColor());
 			graphics.setLineWidth(getBorderWidth());
 		}
 	}

@@ -21,8 +21,8 @@ public class ButtonPanel extends SimpleContainer {
 	
 	// !! hardcoded !!
 	private void initPanel() {
-		for (int x = 0; x < 4; x++) {
-			for (int y = 0; y < 4; y++) {
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
 				addInternal(new PanelButton((BUTTON_WIDTH + BUTTON_GAP_X) * x, (BUTTON_HEIGHT + BUTTON_GAP_Y) * y, BUTTON_WIDTH, BUTTON_HEIGHT));
 			}
 		}
@@ -48,11 +48,10 @@ public class ButtonPanel extends SimpleContainer {
 	
 	@Override
 	protected void updateInternal(int delta) {
-		//Test Code XD
-		getButtonAt((int) (Math.random() * 16)).setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255),(int) (Math.random() * 255) ,255));
+		
 	}
 	
-	private class PanelButton extends Square {
+	public class PanelButton extends Square {
 		public PanelButton(int x, int y, int width, int height) {
 			super(x, y, width, height);
 
