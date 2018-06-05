@@ -1,12 +1,16 @@
 package cf.kuiprux.spbeat.gui.containers;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 
 import cf.kuiprux.spbeat.gui.Container;
 import cf.kuiprux.spbeat.gui.Drawable;
 
+/*
+ * 간단한 Container 클래스
+ * 
+ * 자식 drawable은 해당 컨테이너의 x, y 좌표 뒤로 이동되며, 컨테이너의 크기는 자식 drawable들의 위치, 크기에 따라 자동 조절됨
+ */
 public class SimpleContainer extends Container {
 	
 	private Rectangle cachedRectangle;

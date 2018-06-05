@@ -81,7 +81,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 	
 	@Override
 	public Rectangle getBoundingBox() {
-		org.newdawn.slick.geom.Shape shape = getShape().transform(getTransformData());
+		org.newdawn.slick.geom.Shape shape = getShape().transform(getTransformData().getSlickTransform());
 		
 		return new Rectangle(shape.getMinX(), shape.getMinY(), shape.getWidth(), shape.getHeight());
 	}

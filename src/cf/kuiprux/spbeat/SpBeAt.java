@@ -7,10 +7,14 @@ import org.newdawn.slick.SlickException;
 
 import cf.kuiprux.spbeat.game.ButtonPanel;
 import cf.kuiprux.spbeat.game.PlayManager;
+import cf.kuiprux.spbeat.game.controller.IGameController;
+import cf.kuiprux.spbeat.game.controller.SpbeatController;
 
 public class SpBeAt extends SimpleGame {
 	
 	public static final String TITLE = "SpBeAt";
+	
+	private IGameController controller;
 	
 	private ButtonPanel panel;
 	private PlayManager playManager;
@@ -23,6 +27,7 @@ public class SpBeAt extends SimpleGame {
 		super(title);
 		
 		this.panel = new ButtonPanel();
+		this.controller = new SpbeatController();
 	}
 	
 	@Override
@@ -35,6 +40,10 @@ public class SpBeAt extends SimpleGame {
 	
 	public ButtonPanel getPanel() {
 		return panel;
+	}
+	
+	public IGameController getController() {
+		return controller;
 	}
 
 	//업데이트 함수

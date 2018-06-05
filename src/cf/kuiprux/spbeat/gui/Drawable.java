@@ -24,7 +24,7 @@ public abstract class Drawable {
 	
 	private Container parent;
 	
-	private Transform transformData;
+	private TransformData transformData;
 	
 	//false 일시 transformData 객체 새로고침
 	private boolean transformValid;
@@ -63,27 +63,35 @@ public abstract class Drawable {
 	
 	//그리기용 위치 (transform 속성 미 적용)
 	public float getDrawX() {
-		return getX() - getAnchor().getXOffset() * getDrawWidth() + (getParent() != null ? getParent().getDrawX() : 0);
+		return getX() - getDrawAnchorX() + (getParent() != null ? getParent().getDrawX() : 0);
 	}
 	
 	
 	public float getDrawY() {
-		return getY() -getAnchor().getYOffset() * getDrawHeight() + (getParent() != null ? getParent().getDrawY() : 0);
+		return getY() - getDrawAnchorY() + (getParent() != null ? getParent().getDrawY() : 0);
 	}
 	
-	public float getOriginX() {
-		return getDrawX() + getWidth() * getOrigin().getXOffset();
+	public float getDrawOriginX() {
+		return getWidth() * getOrigin().getXOffset();
 	}
 	
-	public float getOriginY() {
-		return getDrawY() + getHeight() * getOrigin().getYOffset();
+	public float getDrawOriginY() {
+		return getHeight() * getOrigin().getYOffset();
+	}
+	
+	public float getDrawAnchorX() {
+		return getDrawWidth() * getAnchor().getXOffset();
+	}
+	
+	public float getDrawAnchorY() {
+		return getDrawHeight() * getOrigin().getYOffset();
 	}
 	
 	public float getOpacity() {
 		return opacity;
 	}
 	
-	public Transform getTransformData() {
+	public TransformData getTransformData() {
 		if (transformData == null || !transformValid)
 			return transformData = computeTransform();
 		
@@ -210,7 +218,6 @@ public abstract class Drawable {
 		return getWidth();
 	}
 	
-	
 	public float getDrawHeight() {
 		return getHeight();
 	}
@@ -218,7 +225,7 @@ public abstract class Drawable {
 	public abstract Rectangle getBoundingBox();
 	
 	public void sendParentUpdate() {
-		if (isLoaded())
+		if (isLoaded() && getParent() != null)
 			getParent().onChildUpdate(this);
 	}
 	
@@ -238,19 +245,14 @@ public abstract class Drawable {
 		getParent().removeChild(this);
 	}
 
-	//TODO:: 구현
-	public Transform computeTransform() {
-		Transform transform = Transform.createTranslateTransform(0, 0);
+	//Transform 행렬 계산
+	public TransformData computeTransform() {
+		float originX = getDrawX() + getDrawOriginX();
+		float originY = getDrawY() + getDrawOriginY();
 		
-		float originX = getOriginX();
-		float originY = getOriginY();
-		
-		if (getScaleX() != 1 || getScaleY() != 1)
-			transform = transform.concatenate(Transform.createScaleTransform(getScaleX(), getScaleY()));
-		if (getRotation() % 360 != 0)
-			transform = transform.concatenate(Transform.createRotateTransform((float) Math.toRadians(getRotation()), originX, originY));
-		
-		return transformData = transform;
+		TransformData transformData = TransformData.applyTransform(originX, originY, 0f, 0f, getScaleX(), getScaleY(), (float) Math.toRadians(getRotation()));
+
+		return this.transformData = transformData;
 	}
 	
 	/*
@@ -289,22 +291,11 @@ public abstract class Drawable {
 	 * 이벤트 구역 끝
 	 */
 	
-	//transform 적용
+	//graphics에 TransformData 적용
 	protected void applyTransform(Graphics graphics) {
-		Transform transform = getTransformData();
+		TransformData transformData = getTransformData();
 		
-		float originX = getOriginX();
-		float originY = getOriginY();
-		
-		if (getRotation() % 360 != 0)
-			graphics.rotate(originX, originY, getRotation());
-		
-		if (getScaleX() != 1 && getScaleY() != 1) {
-			graphics.translate(originX, originY);
-			graphics.scale(getScaleX(), getScaleY());
-			graphics.translate(-originX, -originY);
-		}
-		
+		transformData.applyTransform(graphics);
 	}
 	
 	//속성 적용
