@@ -7,12 +7,12 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
-import cf.kuiprux.spbeat.game.ButtonPanel;
 import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.controller.FallbackController;
 import cf.kuiprux.spbeat.game.controller.GameController;
 import cf.kuiprux.spbeat.game.controller.IControllerListener;
 import cf.kuiprux.spbeat.game.controller.SpbeatController;
+import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 
 public class SpBeAt extends SimpleGame implements IControllerListener {
 	
@@ -92,7 +92,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	@Override
 	public void onPress(int keyIndex) {
 		//test
-		getPanel().getButtonAt(keyIndex).setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255),(int) (Math.random() * 255) ,255));
+		//getPanel().getButtonAt(keyIndex).setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255),(int) (Math.random() * 255) ,255));
 	}
 
 	@Override

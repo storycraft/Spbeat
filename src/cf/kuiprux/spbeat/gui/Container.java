@@ -17,10 +17,13 @@ public abstract class Container extends Drawable {
 	
 	private Game game;
 	
+	private boolean masking;
+	
 	private List<Drawable> children;
 	
 	public Container() {
 		this.children = new ArrayList<>();
+		this.masking = false;
 	}
 	
 	protected void init(Game game) {
@@ -29,6 +32,14 @@ public abstract class Container extends Drawable {
 	
 	public Game getGame() {
 		return game;
+	}
+	
+	public boolean isMasking() {
+		return masking;
+	}
+	
+	public void setMasking(boolean flag) {
+		this.masking = flag;
 	}
 	
 	//บนป็บป
@@ -61,7 +72,9 @@ public abstract class Container extends Drawable {
 	@Override
 	public void draw(Graphics graphics) {
 		graphics.pushTransform();
-
+		
+		applyProperties(graphics);
+		applyTransform(graphics);
 		drawInternal(graphics);
 		
 		graphics.popTransform();
@@ -69,6 +82,9 @@ public abstract class Container extends Drawable {
 		graphics.pushTransform();
 		
 		applyTransform(graphics);
+		
+		if (isMasking())
+			graphics.setWorldClip(getDrawX(), getDrawY(), getDrawWidth(), getDrawHeight());
 		
 		for (Drawable child : getChildren())
 			drawChild(graphics, child);
