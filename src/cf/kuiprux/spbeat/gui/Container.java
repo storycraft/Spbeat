@@ -63,7 +63,7 @@ public abstract class Container extends Drawable {
 	
 	private void drawChild(Graphics graphics, Drawable child) {
 		//안보일경우 렌더링 x
-		if (child.getOpacity() <= 0 || !child.isVisible())
+		if (!child.isVisible())
 			return;
 		
 		graphics.pushTransform();

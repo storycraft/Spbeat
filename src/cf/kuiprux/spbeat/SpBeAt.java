@@ -13,6 +13,8 @@ import cf.kuiprux.spbeat.game.controller.GameController;
 import cf.kuiprux.spbeat.game.controller.IControllerListener;
 import cf.kuiprux.spbeat.game.controller.SpbeatController;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
+import cf.kuiprux.spbeat.game.gui.LoadingScreen;
+import cf.kuiprux.spbeat.game.gui.ScreenManager;
 import cf.kuiprux.spbeat.gui.AlignMode;
 import cf.kuiprux.spbeat.gui.element.Square;
 
@@ -23,7 +25,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	private GameController controller;
 	
 	private ButtonPanel panel;
-	private PlayManager playManager;
+	private ScreenManager screenManager;
 	
 	public SpBeAt() {
 		this(TITLE);
@@ -34,6 +36,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		
 		this.panel = new ButtonPanel();
 		this.controller = new SpbeatController();
+		this.screenManager = new ScreenManager(this);
 	}
 	
 	@Override
@@ -58,6 +61,9 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		getController().addListener(this);
 		
 		addChild(getPanel());
+		
+		//로딩 화면 시작
+		getScreenManager().setCurrentScreen(new LoadingScreen());
 	}
 	
 	public ButtonPanel getPanel() {
@@ -66,6 +72,10 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	
 	public GameController getController() {
 		return controller;
+	}
+	
+	public ScreenManager getScreenManager() {
+		return screenManager;
 	}
 	
 	//프로그램 종료시 호출

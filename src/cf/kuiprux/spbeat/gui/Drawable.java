@@ -105,7 +105,7 @@ public abstract class Drawable {
 	public float getOpacity() {
 		return opacity;
 	}
-	
+
 	public TransformData getTransformData() {
 		if (transformData == null || !transformValid)
 			return transformData = computeTransform();
@@ -426,20 +426,24 @@ public abstract class Drawable {
 		public DrawableEffectResult fadeTo(float opacity, EasingType type, int duration) {
 			DrawableEffectResult result = new DrawableEffectResult();
 			
-			float lastOpacity = getOpacity();
-			
 			addEffectQueue(new DrawEffect(duration) {
 				@Override
 				public void applyAt(long currentTime, Graphics graphics) {
 					float progress = type.convertProgress((float) (currentTime - getStartTime()) / duration);
 					
-					setOpacity(lastOpacity + (opacity - lastOpacity) * progress);
+					setOpacity(getStartValue() + (opacity - getStartValue()) * progress);
+				}
+				
+				@Override
+				public void onEnded() {
+					setOpacity(opacity);
 				}
 
 				@Override
 				public void onStart() {
-					
+					setStartValue(getOpacity());
 				}
+				
 			}, result);
 			
 			return result;
@@ -449,15 +453,12 @@ public abstract class Drawable {
 		public DrawableEffectResult moveToRelative(float x, float y, EasingType type, int duration) {
 			DrawableEffectResult result = new DrawableEffectResult();
 			
-			float lastX = getX();
-			float lastY = getY();
-			
 			addEffectQueue(new DrawEffect(duration) {
 				@Override
 				public void applyAt(long currentTime, Graphics graphics) {
 					float progress = type.convertProgress((float) (currentTime - getStartTime()) / duration);
 					
-					graphics.translate((lastX - getX()) * (1 - progress), (lastY - getY()) * (1 - progress));
+					graphics.translate(-x * (1 - progress), -y * (1 - progress));
 				}
 
 				@Override
@@ -473,18 +474,17 @@ public abstract class Drawable {
 		public DrawableEffectResult rotateTo(float rotation, EasingType type, int duration) {
 			DrawableEffectResult result = new DrawableEffectResult();
 			
-			float lastRotation = getRotation();
-			
 			addEffectQueue(new DrawEffect(duration) {
 				@Override
 				public void applyAt(long currentTime, Graphics graphics) {
 					float progress = type.convertProgress((float) (currentTime - getStartTime()) / duration);
 
-					graphics.rotate(getDrawX() + getDrawOriginX(), getDrawY() + getDrawOriginY(), (getRotation() - lastRotation) * progress - getRotation());
+					graphics.rotate(getDrawX() + getDrawOriginX(), getDrawY() + getDrawOriginY(), (getRotation() - getStartValue()) * progress - getRotation());
 				}
 
 				@Override
 				public void onStart() {
+					setStartValue(getRotation());
 					setRotation(rotation);
 				}
 			}, result);

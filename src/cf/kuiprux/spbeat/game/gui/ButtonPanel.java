@@ -73,6 +73,10 @@ public class ButtonPanel extends SimpleContainer {
 	public ButtonArea getButtonAreaAt(int index) {
 		return buttonList.get(index);
 	}
+	
+	public List<ButtonArea> getButtonAreaList() {
+		return new ArrayList<ButtonArea>(buttonList);
+	}
 
 	@Override
 	public void draw(Graphics graphics) {

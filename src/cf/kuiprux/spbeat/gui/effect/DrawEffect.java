@@ -4,6 +4,8 @@ package cf.kuiprux.spbeat.gui.effect;
 public abstract class DrawEffect implements IDrawEffect {
 	
 	private long startTime;
+	private float startValue;
+	
 	private int duration;
 	
 	public DrawEffect(long startTime, int duration) {
@@ -30,6 +32,14 @@ public abstract class DrawEffect implements IDrawEffect {
 		return duration;
 	}
 	
+	public float getStartValue() {
+		return startValue;
+	}
+	
+	public void setStartValue(float startValue) {
+		this.startValue = startValue;
+	}
+	
 	@Override
 	public long getEndTime() {
 		return getStartTime() + getDuration();
@@ -38,5 +48,10 @@ public abstract class DrawEffect implements IDrawEffect {
 	@Override
 	public boolean isEnded(long currentTime) {
 		return getEndTime() < currentTime;
+	}
+	
+	@Override
+	public void onEnded() {
+		
 	}
 }

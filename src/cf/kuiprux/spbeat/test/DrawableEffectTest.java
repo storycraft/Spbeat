@@ -59,7 +59,7 @@ class DrawableEffectTest extends SimpleGame {
 		
 		addChild(box);
 		
-		box.rotateTo(360, EasingType.LINEAR, 1000).fadeOut(EasingType.LINEAR, 1000).expire();
+		box.rotateTo(360, EasingType.LINEAR, 1000).moveToRelativeX(50, EasingType.LINEAR, 1000).moveToRelativeY(50, EasingType.LINEAR, 1000).fadeOut(EasingType.LINEAR, 1000).expire();
 		
 		onLoaded();
 	}
