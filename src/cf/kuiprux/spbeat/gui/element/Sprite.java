@@ -54,7 +54,7 @@ public abstract class Sprite extends Drawable implements IHasColor{
 
 	@Override
 	protected void applyProperties(Graphics graphics) {
-		graphics.setColor(getColor());
+		graphics.setColor(getColor().multiply(new Color(255, 255, 255, (int) (getOpacity() * 255f))));
 		
 		if (getBorderWidth() != 0) {
 			graphics.setLineWidth(getBorderWidth());

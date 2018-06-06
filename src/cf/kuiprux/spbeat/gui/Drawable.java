@@ -5,13 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 
+import cf.kuiprux.spbeat.gui.effect.DrawEffect;
 import cf.kuiprux.spbeat.gui.effect.IDrawEffect;
 import cf.kuiprux.spbeat.gui.effect.IEffectResult;
 
-public abstract class Drawable implements IEffectResult<Drawable.DrawableEffectResult> {
+public abstract class Drawable {
 	
 	private float x;
 	private float y;
@@ -39,9 +41,8 @@ public abstract class Drawable implements IEffectResult<Drawable.DrawableEffectR
 	
 	private boolean loaded;
 	
-	private List<IDrawEffect> currentEffectList;
-	private List<IEffectResult<?>> effectResultList;
-	
+	private Map<IDrawEffect, IEffectResult<?>> currentEffectMap;
+
 	public Drawable() {
 		this.loaded = false;
 		
@@ -60,8 +61,7 @@ public abstract class Drawable implements IEffectResult<Drawable.DrawableEffectR
 		this.transformValid = false;
 		this.visible = true;
 		
-		this.currentEffectList = new ArrayList<>();
-		this.effectResultList = new ArrayList<>();
+		this.currentEffectMap = new HashMap<>();
 	}
 	
 	/*
@@ -319,6 +319,17 @@ public abstract class Drawable implements IEffectResult<Drawable.DrawableEffectR
 		TransformData transformData = getTransformData();
 		
 		transformData.applyTransform(graphics);
+		
+		long now = System.currentTimeMillis();
+		
+		for (IDrawEffect drawEffect : new ArrayList<>(currentEffectMap.keySet())) {
+			if (drawEffect.isEnded(now)) {
+				removeEffect(drawEffect);
+			}
+			else {
+				drawEffect.applyAt(now, graphics);
+			}
+		}
 	}
 	
 	//속성 적용
@@ -332,100 +343,175 @@ public abstract class Drawable implements IEffectResult<Drawable.DrawableEffectR
 	
 	//effect 적용 공간
 	
-	protected void addEffectResult(IEffectResult<?> result) {
-		if (effectResultList.contains(result))
+	protected void addEffect(IDrawEffect effect, IEffectResult<?> result) {
+		if (currentEffectMap.containsKey(effect))
 			return;
 		
-		effectResultList.add(result);
+		currentEffectMap.put(effect, result);
 	}
 	
-	protected void removeEffectResult(IEffectResult<?> result) {
-		if (!effectResultList.contains(result))
+	protected void removeEffect(IDrawEffect effect) {
+		if (!currentEffectMap.containsKey(effect))
 			return;
 		
-		effectResultList.remove(result);
-		result.start();
+		IEffectResult<?> result = currentEffectMap.remove(effect);
+		
+		//맨 마지막 effect 가 끝나면 result 체인 실행
+		if (!currentEffectMap.containsValue(result)) {
+			result.start();
+		}
 	}
 	
-	protected void addEffect(IDrawEffect result) {
-		if (currentEffectList.contains(result))
-			return;
-		
-		currentEffectList.add(result);
+	public DrawableEffectResult fadeIn(EasingType type, int duration) {
+		return fadeTo(1, type, duration);
 	}
 	
-	protected void removeEffect(IDrawEffect result) {
-		if (!currentEffectList.contains(result))
-			return;
-		
-		currentEffectList.remove(result);
+	public DrawableEffectResult fadeOut(EasingType type, int duration) {
+		return fadeTo(0, type, duration);
 	}
 
-	@Override
-	public DrawableEffectResult fadeTo(float opacity, EasingType type, float duration) {
-		return new DrawableEffectResult().fadeTo(opacity, type, duration);
+	public DrawableEffectResult fadeTo(float opacity, EasingType type, int duration) {
+		DrawableEffectResult temp = new DrawableEffectResult();
+		DrawableEffectResult result = temp.fadeTo(opacity, type, duration);
+		
+		temp.start();
+		
+		return result;
 	}
 
-	@Override
-	public DrawableEffectResult moveToRelative(float x, float y, EasingType type, float duration) {
-		return new DrawableEffectResult().moveToRelative(x, y, type, duration);
+	public DrawableEffectResult moveToRelative(float x, float y, EasingType type, int duration) {
+		DrawableEffectResult temp = new DrawableEffectResult();
+		DrawableEffectResult result = temp.moveToRelative(x, y, type, duration);
+		
+		temp.start();
+		
+		return result;
 	}
 
-	@Override
-	public DrawableEffectResult rotateTo(float rotation, EasingType type, float duration) {
-		return new DrawableEffectResult().rotateTo(rotation, type, duration);
+	public DrawableEffectResult rotateTo(float rotation, EasingType type, int duration) {
+		DrawableEffectResult temp = new DrawableEffectResult();
+		DrawableEffectResult result = temp.rotateTo(rotation, type, duration);
+		
+		temp.start();
+		
+		return result;
 	}
-	
+
 	public class DrawableEffectResult implements IEffectResult<DrawableEffectResult> {
 		
-		private List<IDrawEffect> effectList;
-		private float lastEndTime;
+		private Map<IDrawEffect, IEffectResult<?>> effectQueueMap;
+		private long lastEndTime;
 		
 		public DrawableEffectResult() {
-			this.effectList = new ArrayList<>();
+			this.effectQueueMap = new HashMap<>();
 			this.lastEndTime = 0;
 		}
 
 		@Override
 		public void expire() {
-			Drawable.this.expire();
+			addEffectQueue(new DrawEffect(System.currentTimeMillis(), 0) {
+				@Override
+				public void applyAt(long currentTime, Graphics graphics) {
+					Drawable.this.expire();
+				}
+
+				@Override
+				public void onStart() {
+					Drawable.this.expire();
+				}
+			}, new DrawableEffectResult());
 		}
 
 		@Override
-		public DrawableEffectResult fadeTo(float opacity, EasingType type, float duration) {
-			return null;
+		public DrawableEffectResult fadeTo(float opacity, EasingType type, int duration) {
+			DrawableEffectResult result = new DrawableEffectResult();
+			
+			float lastOpacity = getOpacity();
+			
+			addEffectQueue(new DrawEffect(duration) {
+				@Override
+				public void applyAt(long currentTime, Graphics graphics) {
+					float progress = type.convertProgress((float) (currentTime - getStartTime()) / duration);
+					
+					setOpacity(lastOpacity + (opacity - lastOpacity) * progress);
+				}
+
+				@Override
+				public void onStart() {
+					
+				}
+			}, result);
+			
+			return result;
 		}
 
 		@Override
-		public DrawableEffectResult moveToRelative(float x, float y, EasingType type, float duration) {
-			return null;
+		public DrawableEffectResult moveToRelative(float x, float y, EasingType type, int duration) {
+			DrawableEffectResult result = new DrawableEffectResult();
+			
+			float lastX = getX();
+			float lastY = getY();
+			
+			addEffectQueue(new DrawEffect(duration) {
+				@Override
+				public void applyAt(long currentTime, Graphics graphics) {
+					float progress = type.convertProgress((float) (currentTime - getStartTime()) / duration);
+					
+					graphics.translate((lastX - getX()) * (1 - progress), (lastY - getY()) * (1 - progress));
+				}
+
+				@Override
+				public void onStart() {
+					setLocation(getX() + x, getY() + y);
+				}
+			}, result);
+			
+			return result;
 		}
 
 		@Override
-		public DrawableEffectResult rotateTo(float rotation, EasingType type, float duration) {
-			return null;
+		public DrawableEffectResult rotateTo(float rotation, EasingType type, int duration) {
+			DrawableEffectResult result = new DrawableEffectResult();
+			
+			float lastRotation = getRotation();
+			
+			addEffectQueue(new DrawEffect(duration) {
+				@Override
+				public void applyAt(long currentTime, Graphics graphics) {
+					float progress = type.convertProgress((float) (currentTime - getStartTime()) / duration);
+
+					graphics.rotate(getDrawX() + getDrawOriginX(), getDrawY() + getDrawOriginY(), (getRotation() - lastRotation) * progress - getRotation());
+				}
+
+				@Override
+				public void onStart() {
+					setRotation(rotation);
+				}
+			}, result);
+			
+			return result;
 		}
 		
-		private void addEffectQueue(IDrawEffect effect) {
-			if (effectList.contains(effect))
+		private void addEffectQueue(IDrawEffect effect, IEffectResult<?> result) {
+			if (effectQueueMap.containsKey(effect))
 				return;
 			
-			effectList.add(effect);
+			effectQueueMap.put(effect, result);
 			
 			lastEndTime = Math.max(effect.getEndTime(), lastEndTime);
 		}
 		
 		@Override
 		public void start() {
-			for (IDrawEffect effect : effectList) {
-				addEffect(effect);
+			long now = System.currentTimeMillis();
+			
+			for (IDrawEffect effect : effectQueueMap.keySet()) {
+				effect.setStartTime(now);
+				
+				effect.onStart();
+				addEffect(effect, effectQueueMap.get(effect));
 			}
 		}
 
-		@Override
-		public boolean isAllEnd(float currentTime) {
-			return currentTime > lastEndTime;
-		}
-		
 	}
 }

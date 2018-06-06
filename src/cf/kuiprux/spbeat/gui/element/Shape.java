@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat.gui.element;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
@@ -104,7 +105,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		}
 			
 		if (getBorderWidth() != 0) {
-			graphics.setColor(getBorderColor());
+			graphics.setColor(getBorderColor().multiply(new Color(255, 255, 255, (int) (getOpacity() * 255))));
 			graphics.draw(shape);
 		}
 	}
