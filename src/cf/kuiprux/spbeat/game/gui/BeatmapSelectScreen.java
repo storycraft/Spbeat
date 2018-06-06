@@ -10,7 +10,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 	private Square selectHighlight;
 
 	public BeatmapSelectScreen() {
-		this.selectHighlight = new Square(0, 0, 98, 98);
+		this.selectHighlight = new Square(0, 0, 100, 100);
 		selectHighlight.setBorderColor(Color.red);
 		selectHighlight.setBorderWidth(3);
 		selectHighlight.setVisible(false);
@@ -24,7 +24,8 @@ public class BeatmapSelectScreen extends ScreenPreset {
 		selectHighlight.setVisible(true);
 		
 		getButtonPanel().addChild(selectHighlight);
-		selectHighlight.moveTo(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosX(y), EasingType.LINEAR, 250);
+		selectHighlight.setLocation(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosY(y));
+		//selectHighlight.moveTo(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosY(y), EasingType.LINEAR, 100);
 	}
 
 	@Override

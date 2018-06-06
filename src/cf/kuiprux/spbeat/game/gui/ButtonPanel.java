@@ -5,11 +5,15 @@ import java.util.List;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
 import cf.kuiprux.spbeat.gui.AlignMode;
 import cf.kuiprux.spbeat.gui.Container;
 import cf.kuiprux.spbeat.gui.Drawable;
+import cf.kuiprux.spbeat.gui.IHasColor;
+import cf.kuiprux.spbeat.gui.IHasTexture;
+import cf.kuiprux.spbeat.gui.TextureFillMode;
 import cf.kuiprux.spbeat.gui.containers.SimpleContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 
@@ -25,7 +29,7 @@ public class ButtonPanel extends SimpleContainer {
 	public static final int ROW = 4;
 	public static final int COLUMN = 4;
 	
-	private Square background;
+	private BackgroundContainer background;
 	private List<ButtonArea> buttonList;
 	
 	public ButtonPanel() {
@@ -34,7 +38,7 @@ public class ButtonPanel extends SimpleContainer {
 	}
 	
 	private void initPanel() {
-		addInternal(background = new Square(0, 0, getButtonPosX(getColumnCount() - 1) + getButtonWidth(), getButtonPosY(getRowCount() - 1) + getButtonHeight()));
+		addInternal(background = new BackgroundContainer());
 		
 		setLocation(85.5f, 285.5f);
 		setMasking(true);
@@ -52,7 +56,7 @@ public class ButtonPanel extends SimpleContainer {
 		}
 	}
 	
-	public Square getBackground() {
+	public BackgroundContainer getBackground() {
 		return background;
 	}
 	
@@ -190,6 +194,140 @@ public class ButtonPanel extends SimpleContainer {
 		@Override
 		public Rectangle getBoundingBox() {
 			return new Rectangle(getDrawX(), getDrawY(), getDrawWidth(), getDrawHeight());
+		}
+	}
+	
+	public class BackgroundContainer extends Container implements IHasColor, IHasTexture {
+		
+		private Square backgroundSquare;
+		
+		public BackgroundContainer() {
+			backgroundSquare = new Square() {
+				@Override
+				public float getX() {
+					return 0;
+				}
+				
+				@Override
+				public float getY() {
+					return 0;
+				}
+				
+				@Override
+				public float getWidth() {
+					return BackgroundContainer.this.getWidth();
+				}
+				
+				@Override
+				public float getHeight() {
+					return BackgroundContainer.this.getHeight();
+				}
+				
+				@Override
+				public float getDrawX() {
+					return BackgroundContainer.this.getDrawX();
+				}
+				
+				@Override
+				public float getDrawY() {
+					return BackgroundContainer.this.getDrawY();
+				}
+				
+				@Override
+				public float getDrawWidth() {
+					return BackgroundContainer.this.getDrawWidth();
+				}
+				
+				@Override
+				public float getDrawHeight() {
+					return BackgroundContainer.this.getDrawHeight();
+				}
+			};
+			
+			addInternal(backgroundSquare);
+		}
+
+		@Override
+		protected void updateInternal(int delta) {
+			
+		}
+
+		@Override
+		protected void drawInternal(Graphics graphics) {
+			
+		}
+		
+		@Override
+		public boolean removeChild(Drawable child) {
+			if (child == backgroundSquare)
+				return false;
+			
+			return removeChild(child);
+		}
+
+		@Override
+		public float getWidth() {
+			return getButtonPosX(getColumnCount() - 1) + getButtonWidth();
+		}
+
+		@Override
+		public float getHeight() {
+			return getButtonPosY(getRowCount() - 1) + getButtonHeight();
+		}
+
+		@Override
+		public Rectangle getBoundingBox() {
+			return ButtonPanel.this.getBoundingBox();
+		}
+
+		@Override
+		public TextureFillMode getTextureFillMode() {
+			return backgroundSquare.getTextureFillMode();
+		}
+
+		@Override
+		public Image getTexture() {
+			return backgroundSquare.getTexture();
+		}
+
+		@Override
+		public void setTexture(Image texture) {
+			backgroundSquare.setTexture(texture);
+		}
+
+		@Override
+		public void setTextureFillMode(TextureFillMode mode) {
+			backgroundSquare.setTextureFillMode(mode);
+		}
+
+		@Override
+		public Color getColor() {
+			return backgroundSquare.getColor();
+		}
+
+		@Override
+		public Color getBorderColor() {
+			return backgroundSquare.getBorderColor();
+		}
+
+		@Override
+		public float getBorderWidth() {
+			return backgroundSquare.getBorderWidth();
+		}
+
+		@Override
+		public void setColor(Color color) {
+			backgroundSquare.setColor(color);
+		}
+
+		@Override
+		public void setBorderColor(Color color) {
+			backgroundSquare.setBorderColor(color);
+		}
+
+		@Override
+		public void setBorderWidth(float width) {
+			backgroundSquare.setBorderWidth(width);
 		}
 	}
 }
