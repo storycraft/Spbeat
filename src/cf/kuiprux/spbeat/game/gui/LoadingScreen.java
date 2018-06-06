@@ -34,7 +34,8 @@ public class LoadingScreen extends ScreenPreset {
 			square.setOpacity(0);
 			square.setOrigin(AlignMode.CENTRE);
 			
-			square.fadeIn(EasingType.LINEAR, i * 500).rotateTo(360, EasingType.LINEAR, 500).fadeOut(EasingType.LINEAR, 1000);
+			//»÷∏Æ∏Ø
+			square.fadeIn(EasingType.LINEAR, i * 500).fadeOut(EasingType.LINEAR, 1000).expire();
 			
 			area.addChild(square);
 		}
@@ -44,7 +45,7 @@ public class LoadingScreen extends ScreenPreset {
 			public void run() {
 				getScreenManager().setCurrentScreen(new BeatmapSelectScreen());
 			}
-		}, i * 1000 + 1000);
+		}, i * 500 + 1000);
 	}
 
 	@Override

@@ -22,6 +22,9 @@ public class ScreenManager implements IControllerListener {
 	}
 
 	public void setCurrentScreen(ScreenPreset currentScreen) {
+		if (this.currentScreen != null)
+			this.currentScreen.unload();
+		
 		this.currentScreen = currentScreen;
 		currentScreen.load(this);
 	}

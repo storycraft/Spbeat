@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
+import cf.kuiprux.spbeat.game.MapManager;
 import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.controller.FallbackController;
 import cf.kuiprux.spbeat.game.controller.GameController;
@@ -24,6 +25,8 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	
 	private GameController controller;
 	
+	private MapManager mapManager;
+	
 	private ButtonPanel panel;
 	private ScreenManager screenManager;
 	
@@ -37,6 +40,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		this.panel = new ButtonPanel();
 		this.controller = new SpbeatController();
 		this.screenManager = new ScreenManager(this);
+		this.mapManager = new MapManager(this);
 	}
 	
 	@Override
@@ -59,6 +63,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		}
 		
 		getController().addListener(this);
+		getController().addListener(getScreenManager());
 		
 		addChild(getPanel());
 		
@@ -103,10 +108,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 
 	@Override
 	public void onPress(int keyIndex) {
-		//test
-		Square square = new Square(0, 0, 101, 101);
-		square.setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255f), 255));
-		getPanel().getButtonAreaAt(keyIndex).addChild(square);
+		
 	}
 
 	@Override
