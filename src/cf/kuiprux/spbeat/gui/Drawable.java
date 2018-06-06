@@ -2,19 +2,18 @@ package cf.kuiprux.spbeat.gui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 
 import cf.kuiprux.spbeat.gui.effect.DrawEffect;
+import cf.kuiprux.spbeat.gui.effect.IAnimatable;
 import cf.kuiprux.spbeat.gui.effect.IDrawEffect;
 import cf.kuiprux.spbeat.gui.effect.IEffectResult;
 
-public abstract class Drawable {
-	
+public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
+
 	private float x;
 	private float y;
 	
@@ -362,15 +361,8 @@ public abstract class Drawable {
 		}
 	}
 	
-	public DrawableEffectResult fadeIn(EasingType type, int duration) {
-		return fadeTo(1, type, duration);
-	}
-	
-	public DrawableEffectResult fadeOut(EasingType type, int duration) {
-		return fadeTo(0, type, duration);
-	}
-
-	public DrawableEffectResult fadeTo(float opacity, EasingType type, int duration) {
+	@Override
+	public IEffectResult<?> fadeTo(float opacity, EasingType type, int duration) {
 		DrawableEffectResult temp = new DrawableEffectResult();
 		DrawableEffectResult result = temp.fadeTo(opacity, type, duration);
 		
@@ -379,7 +371,8 @@ public abstract class Drawable {
 		return result;
 	}
 
-	public DrawableEffectResult moveToRelative(float x, float y, EasingType type, int duration) {
+	@Override
+	public IEffectResult<?> moveToRelative(float x, float y, EasingType type, int duration) {
 		DrawableEffectResult temp = new DrawableEffectResult();
 		DrawableEffectResult result = temp.moveToRelative(x, y, type, duration);
 		
@@ -387,8 +380,23 @@ public abstract class Drawable {
 		
 		return result;
 	}
+	
+	@Override
+	public IEffectResult<?> moveTo(float x, float y, EasingType type, int duration) {
+		return moveToRelative(x - getX(), y - getY(), type, duration);
+	}
+	
+	@Override
+	public IEffectResult<?> moveToX(float x, EasingType type, int duration) {
+		return moveTo(x, getY(), type, duration);
+	}
+	
+	@Override
+	public IEffectResult<?> moveToY(float y, EasingType type, int duration) {
+		return moveTo(getX(), y, type, duration);
+	}
 
-	public DrawableEffectResult rotateTo(float rotation, EasingType type, int duration) {
+	public IEffectResult<?> rotateTo(float rotation, EasingType type, int duration) {
 		DrawableEffectResult temp = new DrawableEffectResult();
 		DrawableEffectResult result = temp.rotateTo(rotation, type, duration);
 		
@@ -469,6 +477,21 @@ public abstract class Drawable {
 			
 			return result;
 		}
+		
+		@Override
+		public DrawableEffectResult moveTo(float x, float y, EasingType type, int duration) {
+			return moveToRelative(x - getX(), y - getY(), type, duration);
+		}
+		
+		@Override
+		public DrawableEffectResult moveToX(float x, EasingType type, int duration) {
+			return moveTo(x, getY(), type, duration);
+		}
+		
+		@Override
+		public DrawableEffectResult moveToY(float y, EasingType type, int duration) {
+			return moveTo(getX(), y, type, duration);
+		}
 
 		@Override
 		public DrawableEffectResult rotateTo(float rotation, EasingType type, int duration) {
@@ -512,6 +535,5 @@ public abstract class Drawable {
 				addEffect(effect, effectQueueMap.get(effect));
 			}
 		}
-
 	}
 }
