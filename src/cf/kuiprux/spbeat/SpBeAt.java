@@ -13,6 +13,8 @@ import cf.kuiprux.spbeat.game.controller.GameController;
 import cf.kuiprux.spbeat.game.controller.IControllerListener;
 import cf.kuiprux.spbeat.game.controller.SpbeatController;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
+import cf.kuiprux.spbeat.gui.AlignMode;
+import cf.kuiprux.spbeat.gui.element.Square;
 
 public class SpBeAt extends SimpleGame implements IControllerListener {
 	
@@ -92,7 +94,9 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	@Override
 	public void onPress(int keyIndex) {
 		//test
-		//getPanel().getButtonAt(keyIndex).setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255),(int) (Math.random() * 255) ,255));
+		Square square = new Square(0, 0, 101, 101);
+		square.setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255f), 255));
+		getPanel().getButtonAreaAt(keyIndex).addChild(square);
 	}
 
 	@Override

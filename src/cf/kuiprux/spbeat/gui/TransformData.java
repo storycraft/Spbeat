@@ -67,7 +67,7 @@ public class TransformData {
 		if (getRotation() % 360 != 0)
 			graphics.rotate(getOriginX(), getOriginY(), (float) Math.toDegrees(getRotation()));
 		
-		if (getScaleX() != 1 && getScaleY() != 1) {
+		if (getScaleX() != 1 || getScaleY() != 1) {
 			graphics.translate(getOriginX(), getOriginY());
 			graphics.scale(getScaleX(), getScaleY());
 			graphics.translate(-getOriginX(), -getOriginY());

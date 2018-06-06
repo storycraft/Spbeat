@@ -25,7 +25,7 @@ public abstract class Container extends Drawable {
 		this.children = new ArrayList<>();
 		this.masking = false;
 	}
-	
+
 	protected void init(Game game) {
 		this.game = game;
 	}
@@ -62,6 +62,10 @@ public abstract class Container extends Drawable {
 	}
 	
 	private void drawChild(Graphics graphics, Drawable child) {
+		//안보일경우 렌더링 x
+		if (child.getOpacity() <= 0 || !child.isVisible())
+			return;
+		
 		graphics.pushTransform();
 		
 		child.draw(graphics);

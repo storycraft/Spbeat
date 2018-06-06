@@ -1,10 +1,17 @@
 package cf.kuiprux.spbeat.gui;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Transform;
 
-public abstract class Drawable {
+import cf.kuiprux.spbeat.gui.effect.IDrawEffect;
+import cf.kuiprux.spbeat.gui.effect.IEffectResult;
+
+public abstract class Drawable implements IEffectResult<Drawable.DrawableEffectResult> {
 	
 	private float x;
 	private float y;
@@ -21,6 +28,7 @@ public abstract class Drawable {
 	
 	//0 ~ 1
 	private float opacity;
+	private boolean visible;
 	
 	private Container parent;
 	
@@ -30,6 +38,9 @@ public abstract class Drawable {
 	private boolean transformValid;
 	
 	private boolean loaded;
+	
+	private List<IDrawEffect> currentEffectList;
+	private List<IEffectResult<?>> effectResultList;
 	
 	public Drawable() {
 		this.loaded = false;
@@ -47,6 +58,10 @@ public abstract class Drawable {
 		this.scaleY = 1;
 		
 		this.transformValid = false;
+		this.visible = true;
+		
+		this.currentEffectList = new ArrayList<>();
+		this.effectResultList = new ArrayList<>();
 	}
 	
 	/*
@@ -84,7 +99,7 @@ public abstract class Drawable {
 	}
 	
 	public float getDrawAnchorY() {
-		return getDrawHeight() * getOrigin().getYOffset();
+		return getDrawHeight() * getAnchor().getYOffset();
 	}
 	
 	public float getOpacity() {
@@ -205,6 +220,14 @@ public abstract class Drawable {
 		transformValid = false;
 	}
 	
+	public boolean isVisible() {
+		return visible;
+	}
+	
+	public void setVisible(boolean flag) {
+		this.visible = flag;
+	}
+	
 	public abstract float getWidth();
 	public abstract float getHeight();
 	/*
@@ -306,4 +329,103 @@ public abstract class Drawable {
 	public abstract void update(int delta);
 	
 	public abstract void draw(Graphics graphics);
+	
+	//effect 적용 공간
+	
+	protected void addEffectResult(IEffectResult<?> result) {
+		if (effectResultList.contains(result))
+			return;
+		
+		effectResultList.add(result);
+	}
+	
+	protected void removeEffectResult(IEffectResult<?> result) {
+		if (!effectResultList.contains(result))
+			return;
+		
+		effectResultList.remove(result);
+		result.start();
+	}
+	
+	protected void addEffect(IDrawEffect result) {
+		if (currentEffectList.contains(result))
+			return;
+		
+		currentEffectList.add(result);
+	}
+	
+	protected void removeEffect(IDrawEffect result) {
+		if (!currentEffectList.contains(result))
+			return;
+		
+		currentEffectList.remove(result);
+	}
+
+	@Override
+	public DrawableEffectResult fadeTo(float opacity, EasingType type, float duration) {
+		return new DrawableEffectResult().fadeTo(opacity, type, duration);
+	}
+
+	@Override
+	public DrawableEffectResult moveToRelative(float x, float y, EasingType type, float duration) {
+		return new DrawableEffectResult().moveToRelative(x, y, type, duration);
+	}
+
+	@Override
+	public DrawableEffectResult rotateTo(float rotation, EasingType type, float duration) {
+		return new DrawableEffectResult().rotateTo(rotation, type, duration);
+	}
+	
+	public class DrawableEffectResult implements IEffectResult<DrawableEffectResult> {
+		
+		private List<IDrawEffect> effectList;
+		private float lastEndTime;
+		
+		public DrawableEffectResult() {
+			this.effectList = new ArrayList<>();
+			this.lastEndTime = 0;
+		}
+
+		@Override
+		public void expire() {
+			Drawable.this.expire();
+		}
+
+		@Override
+		public DrawableEffectResult fadeTo(float opacity, EasingType type, float duration) {
+			return null;
+		}
+
+		@Override
+		public DrawableEffectResult moveToRelative(float x, float y, EasingType type, float duration) {
+			return null;
+		}
+
+		@Override
+		public DrawableEffectResult rotateTo(float rotation, EasingType type, float duration) {
+			return null;
+		}
+		
+		private void addEffectQueue(IDrawEffect effect) {
+			if (effectList.contains(effect))
+				return;
+			
+			effectList.add(effect);
+			
+			lastEndTime = Math.max(effect.getEndTime(), lastEndTime);
+		}
+		
+		@Override
+		public void start() {
+			for (IDrawEffect effect : effectList) {
+				addEffect(effect);
+			}
+		}
+
+		@Override
+		public boolean isAllEnd(float currentTime) {
+			return currentTime > lastEndTime;
+		}
+		
+	}
 }

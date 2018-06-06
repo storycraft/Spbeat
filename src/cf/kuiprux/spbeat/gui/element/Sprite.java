@@ -1,6 +1,7 @@
 package cf.kuiprux.spbeat.gui.element;
 
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 
 import cf.kuiprux.spbeat.gui.Drawable;
 import cf.kuiprux.spbeat.gui.IHasColor;
@@ -11,6 +12,13 @@ public abstract class Sprite extends Drawable implements IHasColor{
 	private Color borderColor;
 	
 	private float borderWidth;
+	
+	public Sprite() {
+		this.color = Color.transparent;
+		this.borderColor = Color.transparent;
+		
+		this.borderWidth = 0;
+	}
 
 	@Override
 	public Color getColor() {
@@ -44,4 +52,12 @@ public abstract class Sprite extends Drawable implements IHasColor{
 		this.borderWidth = width;
 	}
 
+	@Override
+	protected void applyProperties(Graphics graphics) {
+		graphics.setColor(getColor());
+		
+		if (getBorderWidth() != 0) {
+			graphics.setLineWidth(getBorderWidth());
+		}
+	}
 }

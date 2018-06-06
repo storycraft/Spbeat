@@ -51,12 +51,12 @@ public class BoundingBoxTest extends SimpleGame {
 		
 		movingBox = new Square();
 		
-		movingBox.setLocation(100, 100);
+		movingBox.setLocation(0, 0);
 		movingBox.setWidth(100);
 		movingBox.setHeight(100);
 		
 		movingBox.setColor(Color.magenta);
-		movingBox.setOrigin(AlignMode.LEFT_MIDDLE);
+		movingBox.setOrigin(AlignMode.CENTRE);
 		movingBox.setRotation(50f);
 		movingBox.setScale(2, 2);
 		
@@ -85,7 +85,7 @@ public class BoundingBoxTest extends SimpleGame {
 	//업데이트 함수
 	@Override
 	public void updateInternal(int delta) {
-		movingBox.setRotation((movingBox.getRotation() + 0.25f) % 360);
+		//movingBox.setRotation((movingBox.getRotation() + 0.25f) % 360);
 		
 		//movingBox.setLocation((float) Math.random() * 500, (float) Math.random() * 500);
 	}

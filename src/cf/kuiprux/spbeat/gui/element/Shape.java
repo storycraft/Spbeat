@@ -1,12 +1,9 @@
 package cf.kuiprux.spbeat.gui.element;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
-import cf.kuiprux.spbeat.gui.Drawable;
-import cf.kuiprux.spbeat.gui.IHasColor;
 import cf.kuiprux.spbeat.gui.IHasTexture;
 import cf.kuiprux.spbeat.gui.TextureFillMode;
 
@@ -98,24 +95,17 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		
 		org.newdawn.slick.geom.Shape shape = getShape();
 		
-		if (texture != null) {
+		//텍스쳐 존재시 color는 필터로 적용
+		if (getTexture() != null) {
 			drawAdjustedTexture(shape, graphics);
 		}
-		
-		graphics.fill(shape);
+		else {
+			graphics.fill(shape);
+		}
 			
 		if (getBorderWidth() != 0) {
 			graphics.setColor(getBorderColor());
 			graphics.draw(shape);
-		}
-	}
-	
-	@Override
-	protected void applyProperties(Graphics graphics) {
-		graphics.setColor(getColor());
-		
-		if (getBorderWidth() != 0) {
-			graphics.setLineWidth(getBorderWidth());
 		}
 	}
 	
