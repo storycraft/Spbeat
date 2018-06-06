@@ -43,8 +43,6 @@ public class ButtonPanel extends SimpleContainer {
 		setLocation(85.5f, 285.5f);
 		setMasking(true);
 		
-		background.setColor(Color.green);
-		
 		for (int y = 0; y < getRowCount(); y++) {
 			for (int x = 0; x < getColumnCount(); x++) {
 				//float ¿ÀÂ÷°ª

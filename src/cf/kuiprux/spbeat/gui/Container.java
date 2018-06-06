@@ -23,6 +23,7 @@ public abstract class Container extends Drawable {
 	
 	public Container() {
 		this.children = new ArrayList<>();
+		
 		this.masking = false;
 	}
 

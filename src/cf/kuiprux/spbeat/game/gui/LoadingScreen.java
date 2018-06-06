@@ -24,6 +24,8 @@ public class LoadingScreen extends ScreenPreset {
 
 	@Override
 	protected void onLoad() {
+		getButtonPanel().getBackground().setColor(Color.green);
+		
 		int i = 0;
 		for (ButtonArea area : getButtonPanel().getButtonAreaList()) {
 			i++;
