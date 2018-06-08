@@ -12,7 +12,7 @@ import cf.kuiprux.spbeat.gui.effect.IAnimatable;
 import cf.kuiprux.spbeat.gui.effect.IDrawEffect;
 import cf.kuiprux.spbeat.gui.effect.IEffectResult;
 
-public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
+public abstract class Drawable implements IAnimatable {
 
 	private float x;
 	private float y;
@@ -40,7 +40,7 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 	
 	private boolean loaded;
 	
-	private Map<IDrawEffect, IEffectResult<?>> currentEffectMap;
+	private Map<IDrawEffect, IEffectResult> currentEffectMap;
 
 	public Drawable() {
 		this.loaded = false;
@@ -342,7 +342,7 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 	
 	//effect 적용 공간
 	
-	protected void addEffect(IDrawEffect effect, IEffectResult<?> result) {
+	protected void addEffect(IDrawEffect effect, IEffectResult result) {
 		if (currentEffectMap.containsKey(effect))
 			return;
 		
@@ -353,16 +353,15 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 		if (!currentEffectMap.containsKey(effect))
 			return;
 		
-		IEffectResult<?> result = currentEffectMap.remove(effect);
+		IEffectResult result = currentEffectMap.remove(effect);
 		
 		//맨 마지막 effect 가 끝나면 result 체인 실행
 		if (!currentEffectMap.containsValue(result)) {
 			result.start();
 		}
 	}
-	
-	@Override
-	public IEffectResult<?> fadeTo(float opacity, EasingType type, int duration) {
+
+	public DrawableEffectResult fadeTo(float opacity, EasingType type, int duration) {
 		DrawableEffectResult temp = new DrawableEffectResult();
 		DrawableEffectResult result = temp.fadeTo(opacity, type, duration);
 		
@@ -370,9 +369,16 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 		
 		return result;
 	}
+	
+	public DrawableEffectResult fadeIn(EasingType type, int duration) {
+		return fadeTo(1, type, duration);
+	}
 
-	@Override
-	public IEffectResult<?> moveToRelative(float x, float y, EasingType type, int duration) {
+	public DrawableEffectResult fadeOut(EasingType type, int duration) {
+		return fadeTo(0, type, duration);
+	}
+
+	public DrawableEffectResult moveToRelative(float x, float y, EasingType type, int duration) {
 		DrawableEffectResult temp = new DrawableEffectResult();
 		DrawableEffectResult result = temp.moveToRelative(x, y, type, duration);
 		
@@ -381,22 +387,27 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 		return result;
 	}
 	
-	@Override
-	public IEffectResult<?> moveTo(float x, float y, EasingType type, int duration) {
+	public DrawableEffectResult moveToRelativeX(float x, EasingType type, int duration) {
+		return moveToRelative(x, 0, type, duration);
+	}
+
+	public DrawableEffectResult moveToRelativeY(float y, EasingType type, int duration) {
+		return moveToRelative(0, y, type, duration);
+	}
+
+	public DrawableEffectResult moveTo(float x, float y, EasingType type, int duration) {
 		return moveToRelative(x - getX(), y - getY(), type, duration);
 	}
-	
-	@Override
-	public IEffectResult<?> moveToX(float x, EasingType type, int duration) {
+
+	public DrawableEffectResult moveToX(float x, EasingType type, int duration) {
 		return moveTo(x, getY(), type, duration);
 	}
-	
-	@Override
-	public IEffectResult<?> moveToY(float y, EasingType type, int duration) {
+
+	public DrawableEffectResult moveToY(float y, EasingType type, int duration) {
 		return moveTo(getX(), y, type, duration);
 	}
 
-	public IEffectResult<?> rotateTo(float rotation, EasingType type, int duration) {
+	public DrawableEffectResult rotateTo(float rotation, EasingType type, int duration) {
 		DrawableEffectResult temp = new DrawableEffectResult();
 		DrawableEffectResult result = temp.rotateTo(rotation, type, duration);
 		
@@ -404,10 +415,19 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 		
 		return result;
 	}
-
-	public class DrawableEffectResult implements IEffectResult<DrawableEffectResult> {
+	
+	public DrawableEffectResult wait(int time) {
+		DrawableEffectResult temp = new DrawableEffectResult();
+		DrawableEffectResult result = temp.wait(time);
 		
-		private Map<IDrawEffect, IEffectResult<?>> effectQueueMap;
+		temp.start();
+		
+		return result;
+	}
+
+	public class DrawableEffectResult implements IEffectResult {
+		
+		private Map<IDrawEffect, IEffectResult> effectQueueMap;
 		private long lastEndTime;
 		
 		public DrawableEffectResult() {
@@ -415,7 +435,6 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 			this.lastEndTime = 0;
 		}
 
-		@Override
 		public void expire() {
 			addEffectQueue(new DrawEffect(System.currentTimeMillis(), 0) {
 				@Override
@@ -429,8 +448,26 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 				}
 			}, new DrawableEffectResult());
 		}
+		
+		public DrawableEffectResult wait(int time) {
+			DrawableEffectResult result = new DrawableEffectResult();
 
-		@Override
+			addEffectQueue(new DrawEffect(time) {
+				@Override
+				public void applyAt(long currentTime, Graphics graphics) {
+					
+				}
+
+				@Override
+				public void onStart() {
+					setStartValue(System.currentTimeMillis());
+				}
+				
+			}, result);
+			
+			return result;
+		}
+
 		public DrawableEffectResult fadeTo(float opacity, EasingType type, int duration) {
 			DrawableEffectResult result = new DrawableEffectResult();
 			
@@ -456,8 +493,15 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 			
 			return result;
 		}
+		
+		public DrawableEffectResult fadeIn(EasingType type, int duration) {
+			return fadeTo(1, type, duration);
+		}
 
-		@Override
+		public DrawableEffectResult fadeOut(EasingType type, int duration) {
+			return fadeTo(0, type, duration);
+		}
+
 		public DrawableEffectResult moveToRelative(float x, float y, EasingType type, int duration) {
 			DrawableEffectResult result = new DrawableEffectResult();
 			
@@ -478,22 +522,26 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 			return result;
 		}
 		
-		@Override
+		public DrawableEffectResult moveToRelativeX(float x, EasingType type, int duration) {
+			return moveToRelative(x, 0, type, duration);
+		}
+
+		public DrawableEffectResult moveToRelativeY(float y, EasingType type, int duration) {
+			return moveToRelative(0, y, type, duration);
+		}
+		
 		public DrawableEffectResult moveTo(float x, float y, EasingType type, int duration) {
 			return moveToRelative(x - getX(), y - getY(), type, duration);
 		}
-		
-		@Override
+
 		public DrawableEffectResult moveToX(float x, EasingType type, int duration) {
 			return moveTo(x, getY(), type, duration);
 		}
-		
-		@Override
+
 		public DrawableEffectResult moveToY(float y, EasingType type, int duration) {
 			return moveTo(getX(), y, type, duration);
 		}
-
-		@Override
+		
 		public DrawableEffectResult rotateTo(float rotation, EasingType type, int duration) {
 			DrawableEffectResult result = new DrawableEffectResult();
 			
@@ -515,7 +563,7 @@ public abstract class Drawable implements IAnimatable<IEffectResult<?>> {
 			return result;
 		}
 		
-		private void addEffectQueue(IDrawEffect effect, IEffectResult<?> result) {
+		private void addEffectQueue(IDrawEffect effect, IEffectResult result) {
 			if (effectQueueMap.containsKey(effect))
 				return;
 			
