@@ -32,9 +32,7 @@ public class LegacyMapParser {
 	}
 	
 	public Beatmap parseRawMap(String rawText) {
-		for (String line : rawText.split("\n")) {
-			
-		}
+		Map<String, Object> optionMap = new HashMap<>();
 		
 		return null;
 	}

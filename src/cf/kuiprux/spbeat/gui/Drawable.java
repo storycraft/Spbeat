@@ -460,7 +460,7 @@ public abstract class Drawable implements IAnimatable {
 
 				@Override
 				public void onStart() {
-					setStartValue(System.currentTimeMillis());
+					
 				}
 				
 			}, result);
