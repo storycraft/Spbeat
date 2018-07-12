@@ -55,4 +55,9 @@ public class LoadingScreen extends ScreenPreset {
 		
 	}
 
+	@Override
+	protected void update(int delta) {
+		
+	}
+
 }

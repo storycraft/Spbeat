@@ -13,4 +13,12 @@ public class PlayManager {
 	public Beatmap getBeatmap() {
 		return beatmap;
 	}
+	
+	public boolean isPlaying() {
+		return false;
+	}
+	
+	public long getCurrentTime() {
+		return 0;
+	}
 }

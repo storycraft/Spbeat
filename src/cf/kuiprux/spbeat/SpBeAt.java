@@ -97,7 +97,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	//업데이트 함수
 	@Override
 	protected void updateInternal(int delta) {
-		
+		getScreenManager().update(delta);
 	}
 
 	//그리기 함수

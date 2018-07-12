@@ -1,12 +1,18 @@
-package cf.kuiprux.spbeat.game.beatmap.parsing;
+package cf.kuiprux.spbeat.game.beatmap.parsing.legacy;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 
 public class LegacyMapParser {
+	
+	public static final char BLANK = '¡à';
+	public static final char BEAT_SEPARATOR = '-';
+	public static final char LOCAL_VARIABLE = '*';
+	public static final char[] NUMBERS = { '¨ç', '¨è', '¨é', '¨ê', '¨ë', '¨ì', '¨í', '¨î', '¨ï', '¨ð', '¨ñ', '¨ò', '¨ó', '¨ô', '¨õ', '?' };
 	
 	private static final Map<String, Type> parseMap; 
 	
@@ -32,8 +38,8 @@ public class LegacyMapParser {
 	}
 	
 	public Beatmap parseRawMap(String rawText) {
-		Map<String, Object> optionMap = new HashMap<>();
-		
+		LegacyMapLexer lexer = new LegacyMapLexer();
 		return null;
+		
 	}
 }

@@ -1,5 +1,5 @@
 package cf.kuiprux.spbeat.game.loader;
 
-public class AssetLoader {
+public class AssetLoader implements Loader {
 
 }

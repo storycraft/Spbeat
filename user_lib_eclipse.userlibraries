@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<eclipse-userlibraries version="2">
+    <library name="Slick2D" systemlibrary="false">
+        <archive nativelibpaths="C:/Users/user/Desktop/Story Workspace/HighBeat/lib/natives-windows" path="/5. HighBeat/lib/lib/lwjgl.jar"/>
+        <archive path="/5. HighBeat/lib/lib/lwjgl_util.jar"/>
+        <archive path="/5. HighBeat/lib/lib/jinput.jar"/>
+        <archive path="/5. HighBeat/lib/lib/jogg-0.0.7.jar"/>
+        <archive path="/5. HighBeat/lib/lib/jorbis-0.0.15.jar"/>
+        <archive javadoc="http://slick.ninjacave.com/javadoc/" path="/5. HighBeat/lib/lib/slick.jar"/>
+    </library>
+</eclipse-userlibraries>

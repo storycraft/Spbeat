@@ -50,4 +50,5 @@ public abstract class ScreenPreset implements IControllerListener {
 	
 	protected abstract void onLoad();
 	protected abstract void onUnload();
+	protected abstract void update(int delta);
 }

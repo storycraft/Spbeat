@@ -65,4 +65,9 @@ public class BeatmapSelectScreen extends ScreenPreset {
 		
 	}
 
+	@Override
+	protected void update(int delta) {
+		
+	}
+
 }
