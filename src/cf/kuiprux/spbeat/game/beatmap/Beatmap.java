@@ -9,12 +9,12 @@ public class Beatmap {
 	private String songPath;
 	private String jacketPath;
 	
-	private int bpm;
-	private int difficulty;
+	private float bpm;
+	private float difficulty;
 	
 	private List<Note> noteList;
 	
-	public Beatmap(String title, String songPath, String jacketPath, int bpm, int difficulty, List<Note> noteList) {
+	public Beatmap(String title, String songPath, String jacketPath, float bpm, float difficulty, List<Note> noteList) {
 		this.title = title;
 		this.songPath = songPath;
 		this.jacketPath = jacketPath;
@@ -36,11 +36,11 @@ public class Beatmap {
 		return jacketPath;
 	}
 
-	public int getBpm() {
+	public float getBpm() {
 		return bpm;
 	}
 
-	public int getDifficulty() {
+	public float getDifficulty() {
 		return difficulty;
 	}
 

@@ -8,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import cf.kuiprux.spbeat.game.beatmap.Beatmap;
+import cf.kuiprux.spbeat.game.beatmap.parsing.legacy.LegacyMapParser;
 import org.junit.jupiter.api.Test;
 
 import cf.kuiprux.spbeat.game.beatmap.parsing.legacy.LegacyMapLexer;
@@ -21,17 +23,12 @@ class LegacyMapParserTest {
 	void test() {
 		try {
 			String rawMap = String.join(System.lineSeparator(), Files.readAllLines(Paths.get(TEST_FUMEN), Charset.forName("windows-932")));
+
+			LegacyMapParser parser = new LegacyMapParser();
+			Beatmap result = parser.parseRawMap(rawMap);
 			
-			LegacyMapLexer lexer = new LegacyMapLexer();
-			List<List<Token>> result = lexer.separateRawMap(rawMap);
-			
-			for (List<Token> lineList : result) {
-				for (Token token : lineList) {
-					System.out.print(token + ", ");
-				}
-				System.out.print(System.lineSeparator());
-			}
-		} catch (IOException e) {
+			System.out.print(result);
+		} catch (Exception e) {
 			fail(e);
 		}
 	}

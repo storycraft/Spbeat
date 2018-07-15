@@ -10,6 +10,7 @@ public class LegacyMapLexer {
 		List<List<Token>> tokenList = new ArrayList<>();
 
 		String[] lineList = rawMap.split(System.lineSeparator());
+		boolean stringMode = false;
 		for (int l = 0; l < lineList.length; l++) {
 			String line = lineList[l];
 
@@ -20,54 +21,62 @@ public class LegacyMapLexer {
 			for (int i = 0; i < array.length; i++) {
 				char c = array[i];
 
+				if (c == '"'){
+					stringMode = !stringMode;
+					continue;
+				}
+
 				//주석 토큰
-				if (buffer.equals("//")) {
-					localTokenList.add(new Token(TokenType.ANNOTATION, buffer));
-					buffer = "";
-				}
-				else if (c == '=') {
-					if (buffer != "") {
-						localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
+				if (!stringMode) {
+					if (buffer.equals("//")) {
+						localTokenList.add(new Token(TokenType.ANNOTATION, buffer));
 						buffer = "";
+					} else if (c == '=') {
+						if (buffer != "") {
+							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
+							buffer = "";
+						}
+						localTokenList.add(new Token(TokenType.EQUALS, "="));
+					} else if (c == LegacyMapParser.LOCAL_VARIABLE) {
+						if (buffer != "") {
+							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
+							buffer = "";
+						}
+						localTokenList.add(new Token(TokenType.LOCAL_VARIABLE, c + ""));
+					} else if(c == ':'){
+						if (buffer != "") {
+							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
+							buffer = "";
+						}
+						localTokenList.add(new Token(TokenType.LOCAL_VARIABLE_EQUALS, c + ""));
+					} else if (c == LegacyMapParser.BEAT_SEPARATOR) {
+						if (buffer != "") {
+							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
+							buffer = "";
+						}
+						localTokenList.add(new Token(TokenType.BEAT_SEPARATOR, c + ""));
+					} else if (c == LegacyMapParser.BLANK) {
+						if (buffer != "") {
+							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
+							buffer = "";
+						}
+						localTokenList.add(new Token(TokenType.BLANK, c + ""));
+					} else if (c == '＞' || c == '＜' || c == '∨' || c == '∧') {
+						if (buffer != "") {
+							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
+							buffer = "";
+						}
+						localTokenList.add(new Token(TokenType.HOLD_SLIDER, c + ""));
+					} else if (isNumberChar(c)) {
+						if (buffer != "") {
+							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
+							buffer = "";
+						}
+						localTokenList.add(new Token(TokenType.TIME_CHARACTER, c + ""));
+					} else {
+						buffer += c;
 					}
-					localTokenList.add(new Token(TokenType.EQUALS, "="));
-				}
-				else if (c == LegacyMapParser.LOCAL_VARIABLE) {
-					if (buffer != "") {
-						localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
-						buffer = "";
-					}
-					localTokenList.add(new Token(TokenType.LOCAL_VARIABLE, c + ""));
-				}
-				else if (c == LegacyMapParser.BEAT_SEPARATOR) {
-					if (buffer != "") {
-						localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
-						buffer = "";
-					}
-					localTokenList.add(new Token(TokenType.BEAT_SEPARATOR, c + ""));
-				}
-				else if (c == LegacyMapParser.BLANK) {
-					if (buffer != "") {
-						localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
-						buffer = "";
-					}
-					localTokenList.add(new Token(TokenType.BLANK, c + ""));
-				}
-				else if (c == '＞' || c == '＜' || c == '∨' || c == '∧') {
-					if (buffer != "") {
-						localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
-						buffer = "";
-					}
-					localTokenList.add(new Token(TokenType.HOLD_SLIDER, c + ""));
-				}
-				else if (isNumberChar(c)) {
-					if (buffer != "") {
-						localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
-						buffer = "";
-					}
-					localTokenList.add(new Token(TokenType.TIME_CHARACTER, c + ""));
-				}
-				else{
+				} else {
 					buffer += c;
 				}
 			}
@@ -80,6 +89,17 @@ public class LegacyMapLexer {
 
 			tokenList.add(localTokenList);
 		}
+
+		//debug
+		/*
+		for (List<Token> tokenLineList : tokenList){
+			for (Token token : tokenLineList) {
+				System.out.print(token.getTokenType() + " = " + token.getValue() + ", ");
+			}
+			System.out.print("\n");
+		}
+		*/
+
 		
 		return tokenList;
 	}
@@ -118,6 +138,6 @@ public class LegacyMapLexer {
 	}
 	
 	public enum TokenType {
-		IDENTIFIER, EQUALS, BEAT_SEPARATOR, BLANK, TIME_CHARACTER, ANNOTATION, LOCAL_VARIABLE, HOLD_SLIDER;
+		IDENTIFIER, EQUALS, BEAT_SEPARATOR, BLANK, TIME_CHARACTER, ANNOTATION, LOCAL_VARIABLE, HOLD_SLIDER, LOCAL_VARIABLE_EQUALS;
 	}
 }
