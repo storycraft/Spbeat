@@ -3,10 +3,15 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/res/sample/1_Penetrate Through The Clouds_bsc.txt" charset="x-JISAutoDetect" />
     <file url="file://$PROJECT_DIR$/res/sample/1_realice_bsc.txt" charset="x-JISAutoDetect" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/SpBeAt.java" charset="EUC-KR" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Note.java" charset="EUC-KR" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapLexer.java" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" charset="EUC-KR" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/SpbeatController.java" charset="EUC-KR" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java" charset="EUC-KR" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/LoadingScreen.java" charset="EUC-KR" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/ScreenPreset.java" charset="EUC-KR" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/BeatmapLoader.java" charset="EUC-KR" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/Drawable.java" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/logging/LogManager.java" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/BoundingBoxTest.java" charset="x-windows-949" />

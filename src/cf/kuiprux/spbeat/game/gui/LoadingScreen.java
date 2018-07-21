@@ -1,8 +1,14 @@
 package cf.kuiprux.spbeat.game.gui;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.function.BiConsumer;
 
+import cf.kuiprux.spbeat.game.beatmap.Beatmap;
+import cf.kuiprux.spbeat.game.loader.BeatmapLoader;
 import org.newdawn.slick.Color;
 
 import cf.kuiprux.spbeat.game.gui.ButtonPanel.ButtonArea;
@@ -11,6 +17,12 @@ import cf.kuiprux.spbeat.gui.EasingType;
 import cf.kuiprux.spbeat.gui.element.Square;
 
 public class LoadingScreen extends ScreenPreset {
+
+	private static final Path SONG_PATH;
+
+	static {
+		SONG_PATH = Paths.get("fumens");
+	}
 
 	@Override
 	public void onPress(int keyIndex) {
@@ -25,29 +37,22 @@ public class LoadingScreen extends ScreenPreset {
 	@Override
 	protected void onLoad() {
 		getButtonPanel().getBackground().setColor(Color.green);
-		
-		int i = 0;
-		for (ButtonArea area : getButtonPanel().getButtonAreaList()) {
-			i++;
 
-			Square square = new Square(0, 0, 101, 101);
-			
-			square.setColor(Color.blue);
-			square.setOpacity(0);
-			square.setOrigin(AlignMode.CENTRE);
-			
-			//휘리릭
-			square.fadeIn(EasingType.LINEAR, i * 500).fadeOut(EasingType.LINEAR, 1000).expire();
-			
-			area.addChild(square);
+		BeatmapLoader loader = new BeatmapLoader();
+
+		try {
+			//와!
+			List<Beatmap> beatmapList = loader.loadAll(SONG_PATH).run().get();
+
+            for (Beatmap map : beatmapList){
+                System.out.println("채보 " + map.getTitle() + " 가 추가 되었습니다.");
+                getGame().getMapManager().addBeatmap(map);
+            }
+
+            getScreenManager().setCurrentScreen(new BeatmapSelectScreen());
+		} catch (Exception e) {
+			System.out.println("비트맵 폴더가 존재 하지 않거나 손상 되었습니다. " + e.getLocalizedMessage());
 		}
-		
-		new Timer().schedule(new TimerTask() {
-			@Override
-			public void run() {
-				getScreenManager().setCurrentScreen(new BeatmapSelectScreen());
-			}
-		}, i * 500 + 1000);
 	}
 
 	@Override

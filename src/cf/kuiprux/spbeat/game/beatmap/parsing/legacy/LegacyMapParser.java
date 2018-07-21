@@ -212,7 +212,6 @@ public class LegacyMapParser {
 		}
 		*/
 
-
 		//TODO
 		Beatmap map = new Beatmap(title, artist, songPath, jacketPath, tempo, diff, noteList);
 

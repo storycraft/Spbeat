@@ -1,13 +1,16 @@
 package cf.kuiprux.spbeat.game.gui;
 
 import cf.kuiprux.spbeat.game.PlayManager;
+import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 
 public class PlayScreen extends ScreenPreset {
 	
 	private PlayManager playManager;
+	private Beatmap beatmap;
 	
-	public PlayScreen() {
-		
+	public PlayScreen(PlayManager playManager, Beatmap beatmap) {
+		this.playManager = playManager;
+		this.beatmap = beatmap;
 	}
 	
 	public PlayManager getPlayManager() {

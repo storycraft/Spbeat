@@ -29,6 +29,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	
 	private ButtonPanel panel;
 	private ScreenManager screenManager;
+	private PlayManager playManager;
 	
 	public SpBeAt() {
 		this(TITLE);
@@ -41,6 +42,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		this.controller = new SpbeatController();
 		this.screenManager = new ScreenManager(this);
 		this.mapManager = new MapManager(this);
+		this.playManager = new PlayManager(this);
 	}
 	
 	@Override
@@ -82,7 +84,11 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	public ScreenManager getScreenManager() {
 		return screenManager;
 	}
-	
+
+	public MapManager getMapManager() {
+		return mapManager;
+	}
+
 	//프로그램 종료시 호출
 	@Override
 	public boolean closeRequested() {

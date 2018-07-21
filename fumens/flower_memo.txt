@@ -1,0 +1,490 @@
+t=173
+o=811
+m="01 FLOWER.mp3"
+#lev=10
+#dif=3
+#title="FLOWER"
+#artist="DJ YOSHITAKA"
+#jacket="jacket/flower.jpg"
+#memo2
+1
+     |‡@|‡A||
+ ‡F‡E  |‡B||||
+‡D‡A‡B‡C |‡C|‡D||
+‡@  ‡@ |‡E|‡F||
+2
+‡@  ‡A |‡@|‡A||
+     |‡B|‡C||
+‡D‡E‡F‡G |‡D‡E‡F‡G|
+ ‡B‡C  ||||||
+3
+‡A  ‡B |‡@||||
+‡@  ‡@ |‡A|‡B||
+    
+    
+
+    
+‡E   
+ ‡F‡G  |‡C|‡D||
+‡D  ‡C |‡E|‡F‡G|
+4
+     |‡@||||
+ ‡@‡@  ||||||
+‡@‡A‡A‡@ ||||||
+     |‡A||||
+5
+   ‡@ |‡@|‡A||
+‡C‡F   |‡B|‡C||
+‡B‡E   |||‡D||
+‡A‡D   |‡E|‡F||
+6
+     |||‡@||
+  ‡B‡E |‡A|‡B||
+  ‡A‡D |||‡C||
+  ‡@‡C |‡D|‡E||
+7
+     |||‡@||
+‡B‡E   |‡A|‡B||
+‡A‡D   |||‡C||
+‡@‡C   |‡D|‡E||
+8
+     |||‡@||
+  ‡B‡E |‡A|‡B||
+  ‡A‡D |||‡C||
+  ‡@‡C |‡D|‡E||
+9
+  ‡@‡C |‡@|‡A||
+‡C‡F   |‡B|‡C||
+‡B‡E   |||‡D||
+‡A‡D   |‡E|‡F||
+10
+     |||‡@||
+  ‡B‡E |‡A|‡B||
+  ‡A‡D |||‡C||
+  ‡@‡C |‡D|‡E||
+11
+‡@    |‡@||||
+  ‡A  ||||||
+  ‡B  |||‡A||
+  ‡C  |‡B|‡C||
+12
+‡B‡C‡D‡E |||‡@||
+‚d‡@ ‡F |||‡A||
+‚c‡A ‡G |‡B‡C‡D‡E‡F‡G‡H‚`|
+‚b‚a‚`‡H |‚a‚b‚c‚d|||||
+13
+‡B  ‡D |‡@|‡A||
+‡H‡@‡C  |‡B‡C‡D||
+ ‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |||‡H||
+14
+‡B  ‡D |‡@|‡A||
+‡H‡@‡C  |‡B‡C‡D||
+ ‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |||‡H||
+15
+‡B  ‡D |‡@|‡A||
+‡H‡@‡C  |‡B‡C‡D||
+ ‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |||‡H||
+16
+‡B‡E‡F‡D |‡@|‡A||
+   ‡C |‡B‡C‡D||
+‡G‡@‡@  |‡E‡F|‡G|
+‡A  ‡H |||‡H||
+17
+‡D  ‡C |‡@|‡A‡B|
+‡G‡B‡A‡G ||‡C‡D||
+‡H‡@‡@‡H |‡E‡F|‡G|
+ ‡E‡F  |||‡H||
+18
+‡D  ‡C |‡@|‡A‡B|
+‡G‡B‡A‡G ||‡C‡D||
+‡H‡@‡@‡H |‡E‡F|‡G|
+ ‡E‡F  |||‡H||
+19
+‡D  ‡C |‡@|‡A‡B|
+‡G‡B‡A‡G ||‡C‡D||
+‡H‡@‡@‡H |‡E‡F|‡G|
+ ‡E‡F  |||‡H||
+20
+‡D‡E‡F‡C |‡@|‡A‡B|
+ ‡B‡A  ||‡C‡D||
+‡G‡@‡@‡H |‡E‡F|‡G|
+‡I  ‡I |‡H|‡I||
+21
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+22
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+23
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+24
+ ‡E‡F‡D |‡@|‡A‡B|
+  ‡B‡C ||‡C‡D||
+‡G‡@‡@‡H |‡E‡F|‡G|
+‡A  ‡I |‡H|‡I||
+25
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+26
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+27
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+28
+‡D  ‡C |‡@|‡A‡B|
+ ‡B‡A  ||‡C‡D||
+‡F‡@‡@‡H |‡E|‡F||
+ ‡E‡G  |‡G|‡H||
+29
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+30
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+31
+   ‡D |‡@|‡A‡B|
+‡I‡@‡C‡B ||‡C‡D||
+‡H‡A‡@‡G |‡E‡F|‡G|
+ ‡F‡E  |‡H|‡I||
+32
+ ‡E‡F‡D |‡@|‡A‡B|
+  ‡B‡C ||‡C‡D||
+‡G‡@‡@‡H |‡E‡F|‡G|
+‡A  ‡I |‡H|‡I||
+33
+‡I  ‡D |‡@|‡A‡B|
+ ‡@‡C‡B ||‡C‡D||
+‡G‡A‡@‡H |‡E|‡F‡G|
+ ‡E‡E‡F ||‡H‡I||
+34
+‡I  ‡D |‡@|‡A‡B|
+ ‡@‡C‡B ||‡C‡D||
+‡G‡A‡@‡H |‡E|‡F‡G|
+ ‡E‡E‡F ||‡H‡I||
+35
+‡L‡@‡A‡L |‡@‡A‡B‡C|
+‡D‡B‡C‡E |‡D‡E‡F‡G|
+‡H‡F‡G‡I |‡H‡I‡J‡K|
+ ‡J‡K  |‡L||||
+36
+  ‡B  |‡@||‡A|
+‡@‡A‡@‡A |||‡B||
+   ‡B
+‡A‡B ‡@
+
+‡D‡C  
+    
+‡C    ||‡C|||
+  ‡C‡E |‡D|‡E||
+37
+ ‡C‡I‡E |‡@|‡A‡B|
+‡A‡@ ‡B ||‡C‡D‡E|
+‡G‡F‡@‡H ||‡F|‡G|
+ ‡J‡D  |‡H|‡I‡J|
+38
+‡@‡C‡I‡E |‡@|‡A‡B|
+‡A‡K‡H‡B ||‡C‡D‡E|
+‡G‡J‡@‡F ||‡F|‡G|
+  ‡D  |‡H‡I‡J‡K|
+39
+‡I‡C‡G‡E |‡@|‡A‡B|
+‡A  ‡B ||‡C‡D‡E|
+  ‡@  ||‡F|‡G|
+ ‡H‡D‡F |‡H|‡I||
+40
+‡I‡C‡F  |‡@|‡A‡B|
+‡A‡@‡E‡B ||‡C‡D||
+ ‡H‡@‡J |‡E‡F‡G‡H|
+ ‡G‡D‡K ||‡I‡J‡K|
+41
+ ‡C‡I‡E |‡@|‡A‡B|
+‡A‡@ ‡B ||‡C‡D‡E|
+‡G‡F‡@‡H ||‡F|‡G|
+ ‡J‡D  |‡H|‡I‡J|
+42
+‡@‡C‡I‡E |‡@|‡A‡B|
+‡A‡K‡H‡B ||‡C‡D‡E|
+‡G‡J‡@‡F ||‡F|‡G|
+  ‡D  |‡H‡I‡J‡K|
+43
+‡I‡C‡G‡E |‡@|‡A‡B|
+‡A  ‡B ||‡C‡D‡E|
+  ‡@  ||‡F|‡G|
+ ‡H‡D‡F |‡H|‡I||
+44
+‡I‡C‡F  |‡@|‡A‡B|
+‡A‡@‡E‡B ||‡C‡D||
+ ‡H‡@‡J |‡E‡F‡G‡H|
+ ‡G‡D‡K ||‡I‡J‡K|
+45
+ ‡C‡I‡E |‡@|‡A‡B|
+‡A‡@ ‡B ||‡C‡D‡E|
+‡G‡F‡@‡H ||‡F|‡G|
+ ‡J‡D  |‡H|‡I‡J|
+46
+‡@‡C‡I‡E |‡@|‡A‡B|
+‡A‡K‡H‡B ||‡C‡D‡E|
+‡G‡J‡@‡F ||‡F|‡G|
+  ‡D  |‡H‡I‡J‡K|
+47
+‡I‡C‡G‡E |‡@|‡A‡B|
+‡A  ‡B ||‡C‡D‡E|
+  ‡@  ||‡F|‡G|
+ ‡H‡D‡F |‡H|‡I||
+48
+ ‡C   |‡@|‡A‡B|
+‡A‡@ ‡B ||‡C‡D||
+  ‡@ 
+  ‡D 
+
+   ‡F
+‡K ‡E 
+‡H  ‡J |‡E‡F‡G‡H|
+‡I‡G   ||‡I‡J‡K|
+49
+‡E ‡@‡D |‡@|‡A‡B|
+ ‡@‡C‡B ||‡C‡D‡E|
+‡H‡A‡@‡G ||‡F|‡G|
+‡J‡F ‡I |‡H|‡I‡J|
+50
+‡E ‡@‡D |‡@|‡A‡B|
+‡K‡@‡C‡B ||‡C‡D‡E|
+‡I‡A‡@‡J ||‡F|‡G|
+‡G‡F ‡H |‡H‡I‡J‡K|
+51
+‡E ‡@‡D |‡@|‡A‡B|
+ ‡@‡C‡B ||‡C‡D‡E|
+ ‡A‡@ 
+    
+
+ ‡I‡I 
+    
+‡H  ‡G ||‡F|‡G|
+ ‡F   |‡H|‡I||
+52
+‡D    |‡@|‡A‡B|
+‡B ‡C  ||‡C‡D||
+ ‡@‡A 
+  ‡@ 
+
+    
+‡K   
+‡H  ‡G |‡E‡F‡G‡H|
+‡J‡F‡I‡E ||‡I‡J‡K|
+53
+‡A‡@ ‡@ |‡@||‡A|
+‡D‡B‡A‡E |||‡B||
+‡C‡E‡D‡B ||‡C|||
+‡D ‡C‡E |‡D|‡E||
+54
+‡@  ‡A |‡@|‡A||
+‡H‡B   |‡B‡C‡D||
+‡F  ‡C |‡E‡F|‡G|
+‡E‡D‡G  |||‡H||
+55
+‡A‡@ ‡@ |‡@||‡A|
+‡D‡B‡A‡E |||‡B||
+‡C‡E‡D‡B ||‡C|||
+‡D ‡C‡E |‡D|‡E||
+56
+‡@  ‡A |‡@|‡A||
+‡H‡B   |‡B‡C‡D||
+‡F  ‡C |‡E‡F|‡G|
+‡E‡D‡G  |||‡H||
+57
+‡A‡@ ‡@ |‡@||‡A|
+‡D‡B‡A‡E |||‡B||
+‡C‡E‡D‡B ||‡C|||
+‡D ‡C‡E |‡D|‡E||
+58
+‡@  ‡A |‡@|‡A||
+‡H‡B   |‡B‡C‡D||
+‡F  ‡C |‡E‡F|‡G|
+‡E‡D‡G  |||‡H||
+59
+‡A‡@ ‡@ |‡@||‡A|
+‡D‡B‡A‡E |||‡B||
+‡C‡E‡D‡B ||‡C|||
+‡D ‡C‡E |‡D|‡E||
+60
+‡@  ‡A |‡@|‡A||
+‡H‡B   |‡B‡C‡D||
+‡F  ‡C |‡E‡F|‡G|
+‡E‡D‡G  |||‡H||
+61
+‡@‡A‡B‡C |‡@|‡A|‡B||
+‡K  ‡D |‡C|‡D|‡E||
+‡J  ‡E |‡F|‡G|‡H||
+‡I‡H‡G‡F |‡I|‡J|‡K||
+62
+‡@‡A‡B‡C |‡@|‡A|‡B||
+‡K  ‡D |‡C|‡D|‡E||
+‡J  ‡E |‡F|‡G|‡H||
+‡I‡H‡G‡F |‡I|‡J|‡K||
+63
+     ||||||
+     ||||||
+     ||||||
+     ||||||
+64
+     ||||||
+     ||||||
+     ||||||
+     ||||||
+65
+     ||||||
+     ||||||
+     ||||||
+     ||||||
+66
+     ||||||
+     ||||||
+     ||||||
+     ||||||
+67
+‡B‡D‡F  |‡@|‡A||
+ ‡@‡@  |‡B|‡C||
+ ‡@‡@  |‡D|‡E||
+‡A‡C‡E‡G |‡F|‡G||
+68
+‡B‡D‡F  |‡@|‡A||
+ ‡@‡@  |‡B|‡C||
+ ‡@‡@  |‡D|‡E||
+‡A‡C‡E‡G |‡F|‡G||
+69
+‡A‡B‡G  |‡@|‡A||
+‡D‡@‡@‡D |‡B|‡C||
+‡D‡@‡@‡D |‡D|‡E||
+ ‡C‡F‡E |‡F|‡G||
+70
+‡@‡@‡F‡A |‡@||‡A|
+‡E ‡A  |||‡B||
+ ‡B ‡F |‡C‡D|||
+‡B‡E‡C‡D |‡E|‡F||
+71
+‡E‡H ‡D |‡@|‡A‡B|
+ ‡@‡C‡B ||‡C‡D‡E|
+‡J‡A‡@‡I ||‡F‡G‡H|
+‡L‡F‡G‡K |‡I‡J‡K‡L|
+72
+‡F ‡@‡E |‡@‡A‡B‡C|
+‡A‡@‡D‡C ||‡D‡E‡F|
+ ‡B‡@ 
+    
+
+ ‡I  
+‡N   
+‡L  ‡M |‡G‡H‡I‡J|
+‡J‡H‡G‡K |‡K‡L‡M‡N|
+73
+‡E‡J‡@‡D |‡@|‡A‡B|
+ ‡@‡C‡B ||‡C‡D‡E|
+‡I‡A‡@‡H |‡F‡G|‡H|
+‡F‡G   |‡I|‡J||
+74
+‡E    |‡@|‡A‡B|
+‡B‡C‡D‡C |‡C‡D‡E||
+ ‡@‡A 
+  ‡@ 
+
+ ‡K‡J 
+    
+‡I  ‡H |‡F‡G‡H‡I|
+‡M‡G‡L‡F |‡J‡K‡L‡M|
+75
+‡E‡H ‡D |‡@|‡A‡B|
+ ‡@‡C‡B ||‡C‡D‡E|
+‡J‡A‡@‡I ||‡F‡G‡H|
+‡L‡F‡G‡K |‡I‡J‡K‡L|
+76
+‡E ‡@‡D |‡@|‡A‡B|
+‡L‡@‡C‡B ||‡C‡D‡E|
+‡J‡A‡@‡K |‡F‡G|‡H|
+‡H‡G‡F‡I |‡I‡J‡K‡L|
+77
+‡E ‡@‡D |‡@|‡A‡B|
+ ‡@‡C‡B ||‡C‡D‡E|
+ ‡A‡@ 
+    
+
+ ‡F‡K 
+ ‡J  
+‡M  ‡I |‡F‡G‡H‡I|
+‡L‡H ‡G |‡J‡K‡L‡M|
+78
+‡D    |‡@|‡A‡B|
+‡B ‡C  ||‡C‡D||
+ ‡@‡A 
+  ‡@ 
+
+  ‡I 
+‡L‡E ‡G
+‡H‡I‡K‡G |‡E‡F‡G‡H|
+‡K‡F‡J‡E |‡I‡J‡K‡L|
+79
+‡A‡@ ‡@ |‡@||‡A|
+‡D‡B‡A‡E |||‡B||
+‡C‡E‡D‡B ||‡C|||
+‡D ‡C‡E |‡D|‡E||
+80
+‡@  ‡A |‡@|‡A||
+‡I‡B   |‡B‡C‡D||
+‡H ‡F‡C |‡E‡F‡G‡H|
+‡G‡D‡E  |||‡I||
+81
+‡A‡@ ‡@ |‡@||‡A|
+‡D‡B‡A‡E |||‡B||
+‡C‡E‡D‡B ||‡C|||
+‡D ‡C‡E |‡D|‡E||
+82
+‡@  ‡A |‡@|‡A||
+‡H‡B   |‡B‡C‡D||
+‡F  ‡C |‡E‡F|‡G|
+‡E‡D‡G  |||‡H||
+83
+‡A‡@ ‡@ |‡@||‡A|
+‡D‡B‡A‡E |||‡B||
+‡C‡E‡D‡B ||‡C|||
+‡D ‡C‡E |‡D|‡E||
+84
+‡@  ‡A |‡@|‡A||
+‡I‡B   |‡B‡C‡D||
+‡H ‡F‡C |‡E‡F‡G‡H|
+‡G‡D‡E  |||‡I||
+85
+‡A‡@ ‡@ |‡@||‡A|
+‡D‡B‡A‡E |||‡B||
+‡C‡E‡D‡B ||‡C|||
+‡D ‡C‡E |‡D|‡E||
+86
+‡@  ‡A |‡@|‡A||
+ ‡B   |‡B‡C‡D||
+   ‡C
+ ‡D  
+
+‡H  ‡H
+    
+‡F‡G‡G  |‡E‡F|‡G|
+‡E    |||‡H||
+
