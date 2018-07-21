@@ -2,22 +2,22 @@ package cf.kuiprux.spbeat.gui;
 
 public class AlignMode {
 	
-	//¿ÞÂÊ / ¿À¸¥ÂÊ À§
+	//ì™¼ìª½ / ì˜¤ë¥¸ìª½ ìœ„
 	public static final AlignMode LEFT_TOP = new AlignMode(0, 0);
 	public static final AlignMode RIGHT_TOP = new AlignMode(1f, 0);
 	
-	//¿ÞÂÊ / ¿À¸¥ÂÊ¼­ Áß¾Ó
+	//ì™¼ìª½ / ì˜¤ë¥¸ìª½ì„œ ì¤‘ì•™
 	public static final AlignMode LEFT_MIDDLE = new AlignMode(0, 0.5f);
 	public static final AlignMode RIGHT_MIDDLE = new AlignMode(1, 0.5f);
 	
-	//Á¤ Áß¾Ó
+	//ì • ì¤‘ì•™
 	public static final AlignMode CENTRE = new AlignMode(0.5f, 0.5f);
 	
-	//À§ / ¾Æ·¡¼­ Áß¾Ó
+	//ìœ„ / ì•„ëž˜ì„œ ì¤‘ì•™
 	public static final AlignMode TOP_MIDDLE = new AlignMode(0.5f, 0);
 	public static final AlignMode BOTTOM_MIDDLE = new AlignMode(0.5f, 1);
 	
-	//¿ÞÂÊ / ¿À¸¥ÂÊ ¾Æ·¡
+	//ì™¼ìª½ / ì˜¤ë¥¸ìª½ ì•„ëž˜
 	public static final AlignMode LEFT_BOTTOM = new AlignMode(0, 1);
 	public static final AlignMode RIGHT_BOTTOM = new AlignMode(1, 1);
 	

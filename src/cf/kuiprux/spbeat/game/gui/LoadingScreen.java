@@ -41,17 +41,17 @@ public class LoadingScreen extends ScreenPreset {
 		BeatmapLoader loader = new BeatmapLoader();
 
 		try {
-			//¿Í!
+			//ì™€!
 			List<Beatmap> beatmapList = loader.loadAll(SONG_PATH).run().get();
 
             for (Beatmap map : beatmapList){
-                System.out.println("Ã¤º¸ " + map.getTitle() + " °¡ Ãß°¡ µÇ¾ú½À´Ï´Ù.");
+                System.out.println("ì±„ë³´ " + map.getTitle() + " ê°€ ì¶”ê°€ ë˜ì—ˆìŠµë‹ˆë‹¤.");
                 getGame().getMapManager().addBeatmap(map);
             }
 
-            getScreenManager().setCurrentScreen(new BeatmapSelectScreen());
+            getScreenManager().setCurrentScreen(new BeatmapSelectScreen(getGame().getMapManager()));
 		} catch (Exception e) {
-			System.out.println("ºñÆ®¸Ê Æú´õ°¡ Á¸Àç ÇÏÁö ¾Ê°Å³ª ¼Õ»ó µÇ¾ú½À´Ï´Ù. " + e.getLocalizedMessage());
+			System.out.println("ë¹„íŠ¸ë§µ í´ë”ê°€ ì¡´ì¬ í•˜ì§€ ì•Šê±°ë‚˜ ì†ìƒ ë˜ì—ˆìŠµë‹ˆë‹¤. " + e.getLocalizedMessage());
 		}
 	}
 

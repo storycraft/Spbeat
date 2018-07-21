@@ -64,6 +64,13 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		sendParentUpdate();
 	}
 
+	public void setSize(float width, float height){
+		this.width = width;
+		this.height = height;
+
+		sendParentUpdate();
+	}
+
 	@Override
 	public TextureFillMode getTextureFillMode() {
 		return mode;
@@ -96,7 +103,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		
 		org.newdawn.slick.geom.Shape shape = getShape();
 		
-		//ÅØ½ºÃÄ Á¸Àç½Ã color´Â ÇÊÅÍ·Î Àû¿ë
+		//ï¿½Ø½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ colorï¿½ï¿½ ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if (getTexture() != null) {
 			drawAdjustedTexture(shape, graphics);
 		}
@@ -111,11 +118,11 @@ public abstract class Shape extends Sprite implements IHasTexture {
 	}
 	
 	private void drawAdjustedTexture(org.newdawn.slick.geom.Shape shape, Graphics graphics) {
-		//TODO:: TextureFillMode¿¡ µû¶ó Å©±â °è»ê
+		//TODO:: TextureFillModeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½
 		
 		graphics.texture(shape, getTexture());
 	}
 	
-	//draw ½Ã »ç¿ëµÉ ¸ð¾ç
+	//draw ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	protected abstract org.newdawn.slick.geom.Shape getShape();
 }

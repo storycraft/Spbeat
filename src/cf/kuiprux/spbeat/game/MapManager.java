@@ -53,8 +53,7 @@ public class MapManager {
 		return mapList.contains(map);
 	}
 
-	public void forEach(Consumer<Beatmap> consumer){
-		for (Beatmap map : mapList)
-			consumer.accept(map);
+	public List<Beatmap> getMapList(){
+		return mapList;
 	}
 }
