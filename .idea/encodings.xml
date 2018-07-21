@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/res/sample/1_Penetrate Through The Clouds_bsc.txt" charset="x-JISAutoDetect" />
+    <file url="file://$PROJECT_DIR$/res/sample/1_realice_bsc.txt" charset="x-JISAutoDetect" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Note.java" charset="EUC-KR" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapLexer.java" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" charset="EUC-KR" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/SpbeatController.java" charset="EUC-KR" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/Drawable.java" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/logging/LogManager.java" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/BoundingBoxTest.java" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/test/resources/fumen.txt" charset="x-JISAutoDetect" />
+    <file url="file://D:/Story Workspace/HighBeat/test/resources/fumen.txt" charset="x-JISAutoDetect" />
   </component>
 </project>

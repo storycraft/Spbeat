@@ -20,8 +20,9 @@ public class LegacyMapLexer {
 			String buffer = "";
 			for (int i = 0; i < array.length; i++) {
 				char c = array[i];
+				char lastChar = 0 <= (i - 1) ? array[i - 1] : 0;
 
-				if (c == '"'){
+				if (c == '"' && lastChar != '\\'){
 					stringMode = !stringMode;
 					continue;
 				}
@@ -100,20 +101,20 @@ public class LegacyMapLexer {
 		}
 		*/
 
-		
 		return tokenList;
 	}
 	
 	private boolean isNumberChar(char c) {
 		for (char character : LegacyMapParser.NUMBERS) {
-			if (character == c)
+			if (character == c) {
 				return true;
+			}
 		}
-		
+
 		return false;
 	}
 	
-	public class Token {
+	public static class Token {
 		
 		private TokenType tokenType;
 		private String value;

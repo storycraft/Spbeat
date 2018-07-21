@@ -6,19 +6,21 @@ import java.util.List;
 public class Beatmap {
 	
 	private String title;
+	private String artist;
 	private String songPath;
 	private String jacketPath;
 	
-	private float bpm;
+	private float tempo;
 	private float difficulty;
 	
-	private List<Note> noteList;
+	private List<INote> noteList;
 	
-	public Beatmap(String title, String songPath, String jacketPath, float bpm, float difficulty, List<Note> noteList) {
+	public Beatmap(String title, String artist, String songPath, String jacketPath, float tempo, float difficulty, List<INote> noteList) {
 		this.title = title;
+		this.artist = artist;
 		this.songPath = songPath;
 		this.jacketPath = jacketPath;
-		this.bpm = bpm;
+		this.tempo = tempo;
 		this.difficulty = difficulty;
 		
 		this.noteList = noteList;
@@ -26,6 +28,10 @@ public class Beatmap {
 
 	public String getTitle() {
 		return title;
+	}
+
+	public String getArtist() {
+		return artist;
 	}
 
 	public String getSongPath() {
@@ -36,15 +42,15 @@ public class Beatmap {
 		return jacketPath;
 	}
 
-	public float getBpm() {
-		return bpm;
+	public float getTempo() {
+		return tempo;
 	}
 
 	public float getDifficulty() {
 		return difficulty;
 	}
 
-	public List<Note> getNoteList() {
+	public List<INote> getNoteList() {
 		return new ArrayList<>(noteList);
 	}
 }

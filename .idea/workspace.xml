@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ded3685-93a8-4cca-bca4-bec03a59eb78" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/INote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Beatmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Beatmap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Note.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapLexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/LegacyMapParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/LegacyMapParserTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="57">
-              <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -30,17 +33,49 @@
       <file leaf-file-name="LegacyMapParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="79" column="142" selection-start-line="79" selection-start-column="142" selection-end-line="79" selection-end-column="142" />
+            <state relative-caret-position="264">
+              <caret line="156" column="104" selection-start-line="156" selection-start-column="104" selection-end-line="156" selection-end-column="104" />
+              <folding>
+                <element signature="e#6071#6072#0" expanded="true" />
+                <element signature="e#6135#6136#0" expanded="true" />
+                <element signature="e#6325#6326#0" expanded="true" />
+                <element signature="e#6372#6373#0" expanded="true" />
+                <element signature="e#6430#6431#0" expanded="true" />
+                <element signature="e#6488#6489#0" expanded="true" />
+                <element signature="e#6547#6548#0" expanded="true" />
+                <element signature="e#6598#6599#0" expanded="true" />
+                <element signature="e#6661#6662#0" expanded="true" />
+                <element signature="e#6712#6713#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LegacyMapParserTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/LegacyMapParserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5">
+              <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>//</find>
+      <find>NUMBERS</find>
+      <find>∧</find>
+      <find>bpm</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -50,16 +85,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/MarkerDrawable.java" />
-        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Beatmap.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/LegacyMapParserTest.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/INote.java" />
+        <option value="D:/Story Workspace/HighBeat/test/resources/fumen.txt" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapLexer.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Beatmap.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Note.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="275" />
-    <option name="y" value="-18" />
+    <option name="x" value="335" />
+    <option name="y" value="243" />
     <option name="width" value="1291" />
     <option name="height" value="1001" />
   </component>
@@ -71,8 +110,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -121,6 +158,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="spbeat" type="462c0819:PsiDirectoryNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="5. HighBeat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HighBeat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="spbeat" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -153,11 +198,24 @@
               <item name="spbeat" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="5. HighBeat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HighBeat" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="5. HighBeat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HighBeat" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,34 +367,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LegacyMapParserTest - 2018.07.12 at 19h 28m 42s.xml">
-      <configuration name="LegacyMapParserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LegacyMapParserTest - 2018.07.12 at 19h 30m 36s.xml">
-      <configuration name="LegacyMapParserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LegacyMapParserTest - 2018.07.12 at 19h 31m 44s.xml">
-      <configuration name="LegacyMapParserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LegacyMapParserTest - 2018.07.12 at 19h 34m 39s.xml">
-      <configuration name="LegacyMapParserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LegacyMapParserTest - 2018.07.12 at 19h 36m 34s.xml">
-      <configuration name="LegacyMapParserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LegacyMapParserTest_test - 2018.07.15 at 20h 10m 30s.xml">
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 23m 05s.xml">
       <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LegacyMapParserTest_test - 2018.07.15 at 20h 12m 41s.xml">
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 23m 22s.xml">
       <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LegacyMapParserTest_test - 2018.07.15 at 20h 13m 39s.xml">
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 23m 44s.xml">
       <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LegacyMapParserTest_test - 2018.07.15 at 20h 14m 40s.xml">
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 24m 10s.xml">
       <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LegacyMapParserTest_test - 2018.07.15 at 20h 18m 36s.xml">
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 25m 09s.xml">
+      <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 28m 15s.xml">
+      <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 29m 17s.xml">
+      <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 40m 22s.xml">
+      <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 40m 35s.xml">
+      <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LegacyMapParserTest_test - 2018.07.21 at 10h 41m 01s.xml">
       <configuration name="LegacyMapParserTest.test" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -352,18 +410,18 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35005453" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3293348" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1652452" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25692964" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991276" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -377,10 +435,90 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/LegacyMapParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Note.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="33" lean-forward="true" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/sample/1_Penetrate Through The Clouds_bsc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9728">
+          <caret line="512" column="4" lean-forward="true" selection-start-line="512" selection-start-column="4" selection-end-line="512" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2185">
+          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+          <folding>
+            <element signature="e#6071#6072#0" expanded="true" />
+            <element signature="e#6135#6136#0" expanded="true" />
+            <element signature="e#6325#6326#0" expanded="true" />
+            <element signature="e#6372#6373#0" expanded="true" />
+            <element signature="e#6430#6431#0" expanded="true" />
+            <element signature="e#6488#6489#0" expanded="true" />
+            <element signature="e#6547#6548#0" expanded="true" />
+            <element signature="e#6598#6599#0" expanded="true" />
+            <element signature="e#6661#6662#0" expanded="true" />
+            <element signature="e#6712#6713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1501">
+          <caret line="79" column="110" lean-forward="true" selection-start-line="79" selection-start-column="110" selection-end-line="79" selection-end-column="110" />
+          <folding>
+            <element signature="e#6071#6072#0" expanded="true" />
+            <element signature="e#6135#6136#0" expanded="true" />
+            <element signature="e#6325#6326#0" expanded="true" />
+            <element signature="e#6372#6373#0" expanded="true" />
+            <element signature="e#6430#6431#0" expanded="true" />
+            <element signature="e#6488#6489#0" expanded="true" />
+            <element signature="e#6547#6548#0" expanded="true" />
+            <element signature="e#6598#6599#0" expanded="true" />
+            <element signature="e#6661#6662#0" expanded="true" />
+            <element signature="e#6712#6713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -442,53 +580,130 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/5. HighBeat.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Beatmap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="16" column="74" selection-start-line="16" selection-start-column="74" selection-end-line="16" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/LegacyMapParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
-          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/sample/1_realice_bsc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5261" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/INote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/5. HighBeat.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/sample/1_Penetrate Through The Clouds_bsc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-39">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/SpbeatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapLexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="50" column="84" selection-start-line="50" selection-start-column="84" selection-end-line="50" selection-end-column="84" />
+        <state relative-caret-position="1563">
+          <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
           <folding>
-            <element signature="e#3134#3135#0" expanded="true" />
-            <element signature="e#3155#3156#0" expanded="true" />
-            <element signature="e#3194#3195#0" expanded="true" />
-            <element signature="e#3219#3220#0" expanded="true" />
-            <element signature="e#3263#3264#0" expanded="true" />
-            <element signature="e#3316#3317#0" expanded="true" />
+            <element signature="e#3435#3436#0" expanded="true" />
+            <element signature="e#3456#3457#0" expanded="true" />
+            <element signature="e#3495#3496#0" expanded="true" />
+            <element signature="e#3520#3521#0" expanded="true" />
+            <element signature="e#3564#3565#0" expanded="true" />
+            <element signature="e#3617#3618#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Story Workspace/HighBeat/test/resources/fumen.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="208" column="4" selection-start-line="208" selection-start-column="3" selection-end-line="208" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/resources/fumen.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="596" column="4" selection-start-line="596" selection-start-column="4" selection-end-line="596" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Beatmap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Note.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding>
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="35" column="153" selection-start-line="35" selection-start-column="153" selection-end-line="35" selection-end-column="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/LegacyMapParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="79" column="142" selection-start-line="79" selection-start-column="142" selection-end-line="79" selection-end-column="142" />
+        <state relative-caret-position="264">
+          <caret line="156" column="104" selection-start-line="156" selection-start-column="104" selection-end-line="156" selection-end-column="104" />
+          <folding>
+            <element signature="e#6071#6072#0" expanded="true" />
+            <element signature="e#6135#6136#0" expanded="true" />
+            <element signature="e#6325#6326#0" expanded="true" />
+            <element signature="e#6372#6373#0" expanded="true" />
+            <element signature="e#6430#6431#0" expanded="true" />
+            <element signature="e#6488#6489#0" expanded="true" />
+            <element signature="e#6547#6548#0" expanded="true" />
+            <element signature="e#6598#6599#0" expanded="true" />
+            <element signature="e#6661#6662#0" expanded="true" />
+            <element signature="e#6712#6713#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
