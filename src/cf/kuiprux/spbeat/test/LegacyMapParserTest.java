@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
+import cf.kuiprux.spbeat.game.beatmap.INote;
 import cf.kuiprux.spbeat.game.beatmap.parsing.legacy.LegacyMapParser;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,10 @@ class LegacyMapParserTest {
 
 			LegacyMapParser parser = new LegacyMapParser();
 			Beatmap result = parser.parseRawMap(rawMap);
+
+			for (INote note : result.getNoteList()){
+				System.out.println(note.toString());
+			}
 			
 			System.out.print(result);
 		} catch (Exception e) {

@@ -206,9 +206,11 @@ public class LegacyMapParser {
 		}
 		*/
 
+		/*
 		for (INote note : noteList){
 			System.out.println(note.toString());
 		}
+		*/
 
 
 		//TODO
