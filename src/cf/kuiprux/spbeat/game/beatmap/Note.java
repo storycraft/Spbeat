@@ -2,9 +2,9 @@ package cf.kuiprux.spbeat.game.beatmap;
 
 public class Note implements INote {
 	
-	//³λΖ®°΅ ³ªΕΈ³― ΐ§Δ΅
+	//λ…ΈνΈκ°€ λ‚νƒ€λ‚  μ„μΉ
 	private int noteIndex;
-	//³λΖ®°΅ Ε¬Έ―µΗΎί µΗ΄Β Α¤Θ®ΗΡ ½Γ°£
+	//λ…ΈνΈκ°€ ν΄λ¦­λμ•Ό λλ” μ •ν™•ν• μ‹κ°„
 	private float exactTime;
 	
 	public Note(int noteIndex, float exactTime) {

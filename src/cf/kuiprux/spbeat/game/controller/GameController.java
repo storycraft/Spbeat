@@ -12,7 +12,7 @@ public abstract class GameController implements IGameController {
 	
 	private boolean listening;
 	
-	//index ¹üÀ§ 0 ~ 15
+	//index ë²”ìœ„ 0 ~ 15
 	public GameController() {
 		this.listenerList = new ArrayList<>();
 		this.pressedKeyList = new ArrayList<>();
@@ -91,20 +91,20 @@ public abstract class GameController implements IGameController {
 	}
 	
 	protected void callPressEvent(int index) {
-		//concurrent ¹æÁö
+		//concurrent ë°©ì§€
 		for (IControllerListener listener : new ArrayList<>(listenerList)) {
 			listener.onPress(index);
 		}
 	}
 
 	protected void callUpEvent(int index) {
-		//concurrent ¹æÁö
+		//concurrent ë°©ì§€
 		for (IControllerListener listener : new ArrayList<>(listenerList)) {
 			listener.onUp(index);
 		}
 	}
 	
-	//update ½ÃÀÛ Àü È£ÃâµÊ
+	//update ì‹œì‘ ì „ í˜¸ì¶œë¨
 	protected void updateInit() {
 		
 	}

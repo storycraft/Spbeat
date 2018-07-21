@@ -3,7 +3,7 @@ package cf.kuiprux.spbeat.gui;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Transform;
 
-//origin, translate, scale, rotation 焊包
+//origin, translate, scale, rotation 氤搓磤
 public class TransformData {
 	
 	private float originX;
@@ -19,7 +19,7 @@ public class TransformData {
 	
 	private Transform slickTransform;
 	
-	//applyTransform 栏肺 积己
+	//applyTransform 鞙茧 靸濎劚
 	private TransformData() {
 		/*
 		this.translateX = 0;
@@ -89,7 +89,7 @@ public class TransformData {
 	}
 	
 	
-	// TransformData 积己
+	// TransformData 靸濎劚
 	public static TransformData applyTransform(float originX, float originY, float translateX, float translateY, float scaleX, float scaleY, float rotation) {
 		TransformData data = new TransformData();
 		

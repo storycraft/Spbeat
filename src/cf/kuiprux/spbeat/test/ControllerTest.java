@@ -24,7 +24,7 @@ class ControllerTest implements IControllerListener {
 			Display.setDisplayMode(new DisplayMode(100, 100));
 			Display.create();
 			
-			System.out.println("¾Æ¹« Å°³ª ´©¸£¼¼¿ä");
+			System.out.println("ì•„ë¬´ í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”");
 			
 			Keyboard.create();
 		} catch (LWJGLException e) {

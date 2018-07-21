@@ -7,9 +7,9 @@ import cf.kuiprux.spbeat.gui.Container;
 import cf.kuiprux.spbeat.gui.Drawable;
 
 /*
- * °£´ÜÇÑ Container Å¬·¡½º
+ * ê°„ë‹¨í•œ Container í´ë˜ìŠ¤
  * 
- * ÀÚ½Ä drawableÀº ÇØ´ç ÄÁÅ×ÀÌ³ÊÀÇ x, y ÁÂÇ¥ µÚ·Î ÀÌµ¿µÇ¸ç, ÄÁÅ×ÀÌ³ÊÀÇ Å©±â´Â ÀÚ½Ä drawableµéÀÇ À§Ä¡, Å©±â¿¡ µû¶ó ÀÚµ¿ Á¶ÀıµÊ
+ * ìì‹ drawableì€ í•´ë‹¹ ì»¨í…Œì´ë„ˆì˜ x, y ì¢Œí‘œ ë’¤ë¡œ ì´ë™ë˜ë©°, ì»¨í…Œì´ë„ˆì˜ í¬ê¸°ëŠ” ìì‹ drawableë“¤ì˜ ìœ„ì¹˜, í¬ê¸°ì— ë”°ë¼ ìë™ ì¡°ì ˆë¨
  */
 public class SimpleContainer extends Container {
 	

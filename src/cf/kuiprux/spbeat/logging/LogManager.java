@@ -3,7 +3,7 @@ package cf.kuiprux.spbeat.logging;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//Logger¸¦ °ü¸®ÇÏ°í ¼öÁıµÈ ·Î±×¸¦ ÆÄÀÏ·Î Ãâ·Â
+//Loggerë¥¼ ê´€ë¦¬í•˜ê³  ìˆ˜ì§‘ëœ ë¡œê·¸ë¥¼ íŒŒì¼ë¡œ ì¶œë ¥
 public class LogManager {
 	
 	public static final String LOG_DIRECTORY = "logs";

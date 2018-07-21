@@ -6,7 +6,7 @@ import org.newdawn.slick.SlickException;
 
 public class WindowHost extends AppGameContainer implements AutoCloseable {
 	
-	//±âº» Ã¢ Å©±â. º¯°æ °¡´É
+	//ê¸°ë³¸ ì°½ í¬ê¸°. ë³€ê²½ ê°€ëŠ¥
 	public static final int WIDTH = 600;
 	public static final int HEIGHT = 800;
 	
@@ -20,18 +20,18 @@ public class WindowHost extends AppGameContainer implements AutoCloseable {
 		init(width, height);
 	}
 	
-	//½ÃÀÛ Àü Ã¢ °ü·Ã ¿ä¼Ò ÃÊ±âÈ­
+	//ì‹œì‘ ì „ ì°½ ê´€ë ¨ ìš”ì†Œ ì´ˆê¸°í™”
 	private void init(int width, int height) throws SlickException {
 		setDisplayMode(width, height, false);
 	}
 	
-	//½ÃÀÛ½Ã È£Ãâ
+	//ì‹œì‘ì‹œ í˜¸ì¶œ
 	@Override
 	public void start() throws SlickException {
 		super.start();
 	}
 
-	//´İÈú¶§ ÀÚµ¿ È£Ãâ
+	//ë‹«íë•Œ ìë™ í˜¸ì¶œ
 	@Override
 	public void close() throws Exception {
 		

@@ -82,7 +82,7 @@ public class BoundingBoxTest extends SimpleGame {
 		System.out.println(testContainer.getWidth() + " " + testContainer.getHeight());
 	}
 
-	//¾÷µ¥ÀÌÆ® ÇÔ¼ö
+	//ì—…ë°ì´íŠ¸ í•¨ìˆ˜
 	@Override
 	public void updateInternal(int delta) {
 		//movingBox.setRotation((movingBox.getRotation() + 0.25f) % 360);
@@ -90,7 +90,7 @@ public class BoundingBoxTest extends SimpleGame {
 		//movingBox.setLocation((float) Math.random() * 500, (float) Math.random() * 500);
 	}
 
-	//±×¸®±â ÇÔ¼ö
+	//ê·¸ë¦¬ê¸° í•¨ìˆ˜
 	@Override
 	public void drawInternal(Graphics graphics) {
 		graphics.setColor(Color.white);

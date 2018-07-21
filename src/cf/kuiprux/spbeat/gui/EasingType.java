@@ -1,6 +1,6 @@
 package cf.kuiprux.spbeat.gui;
 
-//ÁøÇàµµ ±×·¡ÇÁ
+//ì§„í–‰ë„ ê·¸ë˜í”„
 public abstract class EasingType {
 	
 	public static final EasingType LINEAR = new EasingType() {
@@ -10,6 +10,6 @@ public abstract class EasingType {
 		}
 	};
 	
-	//progress = 0 ~ 1 º¯È¯µÈ progress °ª ¹İÈ¯
+	//progress = 0 ~ 1 ë³€í™˜ëœ progress ê°’ ë°˜í™˜
 	public abstract float convertProgress(float progress);
 }

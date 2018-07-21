@@ -17,7 +17,7 @@ public abstract class ScreenPreset implements IControllerListener {
 		return loaded;
 	}
 	
-	//isLoaded°¡ false ÀÏ½Ã null
+	//isLoadedê°€ false ì¼ì‹œ null
 	public ScreenManager getScreenManager() {
 		return screenManager;
 	}

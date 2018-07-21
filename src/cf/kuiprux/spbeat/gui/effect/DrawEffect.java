@@ -1,6 +1,6 @@
 package cf.kuiprux.spbeat.gui.effect;
 
-// ¾Ö´Ï¸ŞÀÌ¼Ç È¿°ú
+// ì• ë‹ˆë©”ì´ì…˜ íš¨ê³¼
 public abstract class DrawEffect implements IDrawEffect {
 	
 	private long startTime;

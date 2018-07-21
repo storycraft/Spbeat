@@ -4,9 +4,9 @@ import org.newdawn.slick.Graphics;
 
 public interface IDrawEffect {
 
-	// ½Ã½ºÅÛ ½Ã°£ »ç¿ë
+	// ì‹œìŠ¤í…œ ì‹œê°„ ì‚¬ìš©
 	long getStartTime();
-	// º¸°ü¿ë
+	// ë³´ê´€ìš©
 	float getStartValue();
 	
 	int getDuration();
@@ -15,10 +15,10 @@ public interface IDrawEffect {
 	
 	boolean isEnded(long currentTime);
 	
-	//effect ½ÃÀÛ½Ã ¹ßµ¿
+	//effect ì‹œì‘ì‹œ ë°œë™
 	void onStart();
 	
-	//effect Á¾·á½Ã ¹ßµ¿
+	//effect ì¢…ë£Œì‹œ ë°œë™
 	void onEnded();
 	void applyAt(long currentTime, Graphics graphics);
 

@@ -103,7 +103,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		
 		org.newdawn.slick.geom.Shape shape = getShape();
 		
-		//�ؽ��� ����� color�� ���ͷ� ����
+		//택스쳐 존재시 택스쳐 사용
 		if (getTexture() != null) {
 			drawAdjustedTexture(shape, graphics);
 		}
@@ -118,11 +118,11 @@ public abstract class Shape extends Sprite implements IHasTexture {
 	}
 	
 	private void drawAdjustedTexture(org.newdawn.slick.geom.Shape shape, Graphics graphics) {
-		//TODO:: TextureFillMode�� ���� ũ�� ���
+		//TODO:: TextureFillMode구현
 		
 		graphics.texture(shape, getTexture());
 	}
 	
-	//draw �� ���� ���
+	//draw 할때 사용될 패스
 	protected abstract org.newdawn.slick.geom.Shape getShape();
 }

@@ -1,13 +1,13 @@
 package cf.kuiprux.spbeat.gui.effect;
 
 /*
- * drawable effect Ã¼ÀÎ È£Ãâ Å¬·¡½º
- * °¡Àå ¸¶Áö¸·ÀÎ effect°¡ ³¡³¯¶§ Ã¼ÀÎ È£ÃâµÊ
+ * drawable effect ì²´ì¸ í˜¸ì¶œ í´ë˜ìŠ¤
+ * ê°€ì¥ ë§ˆì§€ë§‰ì¸ effectê°€ ëë‚ ë•Œ ì²´ì¸ í˜¸ì¶œë¨
  * 
- * T: ¿¬¼ÓµÉ ÀÚ½Ä Å¬·¡½º type
+ * T: ì—°ì†ë  ìì‹ í´ë˜ìŠ¤ type
  */
 public interface IEffectResult extends IAnimatable {
 	
-	//Ã¼ÀÎ ¹«½ÃÇÏ°í ½ÃÀÛ
+	//ì²´ì¸ ë¬´ì‹œí•˜ê³  ì‹œì‘
 	void start();
 }

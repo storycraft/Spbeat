@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LegacyMapLexer {
 	
-	//ÁÙ º°·Î Àß¶ó¼­ ¹İÈ¯
+	//ì¤„ ë³„ë¡œ ì˜ë¼ì„œ ë°˜í™˜
 	public List<List<Token>> separateRawMap(String rawMap) {
 		List<List<Token>> tokenList = new ArrayList<>();
 
@@ -27,7 +27,7 @@ public class LegacyMapLexer {
 					continue;
 				}
 
-				//ÁÖ¼® ÅäÅ«
+				//ì£¼ì„ í† í°
 				if (!stringMode) {
 					if (buffer.equals("//")) {
 						localTokenList.add(new Token(TokenType.ANNOTATION, buffer));
@@ -62,7 +62,7 @@ public class LegacyMapLexer {
 							buffer = "";
 						}
 						localTokenList.add(new Token(TokenType.BLANK, c + ""));
-					} else if (c == '£¾' || c == '£¼' || c == '¡ı' || c == '¡ü') {
+					} else if (c == 'ï¼' || c == 'ï¼œ' || c == 'âˆ¨' || c == 'âˆ§') {
 						if (buffer != "") {
 							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
 							buffer = "";
@@ -82,7 +82,7 @@ public class LegacyMapLexer {
 				}
 			}
 
-			//³ª¸ÓÁö °ª Ãß°¡
+			//ë‚˜ë¨¸ì§€ ê°’ ì¶”ê°€
 			if (buffer != "") {
 				localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));
 				buffer = "";

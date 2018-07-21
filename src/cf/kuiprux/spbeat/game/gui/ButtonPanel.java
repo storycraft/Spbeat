@@ -17,7 +17,7 @@ import cf.kuiprux.spbeat.gui.TextureFillMode;
 import cf.kuiprux.spbeat.gui.containers.SimpleContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 
-// 4x4 Å©±âÀÇ »ç°¢Çü ¹öÆ° ¼Â
+// 4x4 í¬ê¸°ì˜ ì‚¬ê°í˜• ë²„íŠ¼ ì…‹
 public class ButtonPanel extends SimpleContainer {
 	
 	public static final int BUTTON_WIDTH = 100;
@@ -45,7 +45,7 @@ public class ButtonPanel extends SimpleContainer {
 		
 		for (int y = 0; y < getRowCount(); y++) {
 			for (int x = 0; x < getColumnCount(); x++) {
-				//float ¿ÀÂ÷°ª
+				//float ì˜¤ì°¨ê°’
 				ButtonArea button = new ButtonArea(getButtonPosX(x), getButtonPosY(y));
 
 				addInternal(button);
@@ -58,7 +58,7 @@ public class ButtonPanel extends SimpleContainer {
 		return background;
 	}
 	
-	//±âº» ÀÚ½Ä ¼öÁ¤ ¹æÁö Ã³¸®
+	//ê¸°ë³¸ ìì‹ ìˆ˜ì • ë°©ì§€ ì²˜ë¦¬
 	@Override
 	public boolean removeChild(Drawable child) {
 		if (child == background || buttonList.contains(child))
@@ -67,7 +67,7 @@ public class ButtonPanel extends SimpleContainer {
 		return removeChild(child);
 	}
 	
-	//ÇØ´ç x y ¹øÂ° ¿¡ ÀÖ´Â Button¿ÀºêÁ§Æ® ¹İÈ¯
+	//í•´ë‹¹ x y ë²ˆì§¸ ì— ìˆëŠ” Buttonì˜¤ë¸Œì íŠ¸ ë°˜í™˜
 	public ButtonArea getButtonAreaAt(int x, int y) {
 		return getButtonAreaAt(y * getColumnCount() + x);
 	}
@@ -95,12 +95,12 @@ public class ButtonPanel extends SimpleContainer {
 		float drawX = getDrawX();
 		float drawY = getDrawY();
 		
-		//°¡·Î ±¸ºĞ¼±
+		//ê°€ë¡œ êµ¬ë¶„ì„ 
 		for (int x = 1; x < getRowCount(); x++) {
 			graphics.fillRect(drawX + getButtonPosX(x) - getButtonGapColumn(), drawY, getButtonGapColumn(), getDrawHeight());
 		}
 		
-		//¼¼·Î ±¸ºĞ¼±
+		//ì„¸ë¡œ êµ¬ë¶„ì„ 
 		for (int y = 1; y < getColumnCount(); y++) {
 			graphics.fillRect(drawX, drawY + getButtonPosY(y) - getButtonGapRow(), getDrawWidth(), getButtonGapRow());
 		}
@@ -113,12 +113,12 @@ public class ButtonPanel extends SimpleContainer {
 		
 	}
 	
-	//°¡·Î¼­ x ¹øÂ° ¹öÆ° x ÁÂÇ¥
+	//ê°€ë¡œì„œ x ë²ˆì§¸ ë²„íŠ¼ x ì¢Œí‘œ
 	public float getButtonPosX(int x) {
 		return (getButtonWidth() + getButtonGapColumn()) * x;
 	}
 
-	//°¡·Î¼­ x ¹øÂ° ¹öÆ° y ÁÂÇ¥
+	//ê°€ë¡œì„œ x ë²ˆì§¸ ë²„íŠ¼ y ì¢Œí‘œ
 	public float getButtonPosY(int y) {
 		return (getButtonHeight() + getButtonGapRow()) * y;
 	}
@@ -168,7 +168,7 @@ public class ButtonPanel extends SimpleContainer {
 			return getButtonHeight();
 		}
 		
-		//¿ÀÂ÷ °ª ¼öÁ¤
+		//ì˜¤ì°¨ ê°’ ìˆ˜ì •
 		@Override
 		public float getDrawWidth() {
 			return super.getDrawWidth()  +1;

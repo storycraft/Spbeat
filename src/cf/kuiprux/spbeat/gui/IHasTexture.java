@@ -5,7 +5,7 @@ import org.newdawn.slick.Image;
 public interface IHasTexture {
 	TextureFillMode getTextureFillMode();
 	Image getTexture();
-	//texture °¡ nullÀÏ½Ã ÅØ½ºÃÄ Á¦°Å
+	//texture ê°€ nullì¼ì‹œ í…ìŠ¤ì³ ì œê±°
 	void setTexture(Image texture);
 	void setTextureFillMode(TextureFillMode mode);
 }

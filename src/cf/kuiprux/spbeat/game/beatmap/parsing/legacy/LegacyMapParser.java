@@ -10,15 +10,15 @@ import cf.kuiprux.spbeat.game.beatmap.Note;
 
 public class LegacyMapParser {
 	
-	public static final char BLANK = '¡à';
+	public static final char BLANK = 'â–¡';
 	public static final char BEAT_SEPARATOR = '-';
 	public static final char LOCAL_VARIABLE = '*';
-	//ÀÌÅ¬¸³½º°¡ ÀÌ·¡¼­ À§ÇèÇÕ´Ï´Ù. euc-kr °Å¸§, shift-jis µµ °Å¸§
-	public static final char[] NUMBERS = { '¨ç', '¨è', '¨é', '¨ê', '¨ë', '¨ì', '¨í', '¨î', '¨ï', '¨ğ', '¨ñ', '¨ò', '¨ó', '¨ô', '¨õ', 9327 };
+	//ì´í´ë¦½ìŠ¤ê°€ ì´ë˜ì„œ ìœ„í—˜í•©ë‹ˆë‹¤. euc-kr ê±°ë¦„, shift-jis ë„ ê±°ë¦„
+	public static final char[] NUMBERS = { 'â‘ ', 'â‘¡', 'â‘¢', 'â‘£', 'â‘¤', 'â‘¥', 'â‘¦', 'â‘§', 'â‘¨', 'â‘©', 'â‘ª', 'â‘«', 'â‘¬', 'â‘­', 'â‘®', 9327 };
 
-	public static final int NOTE_ROW = 4;//ÇÑ ÁÙ´ç ³ëÆ® ¼ö
-	public static final int NOTE_COLUMN = 4;//ÇÑ ¸¶µğ´ç ÁÙ ¼ö
-	public static final int NOTE_COUNT = NOTE_ROW * NOTE_COLUMN;//ÇÑ ¹èÄ¡´ç ³ëÆ® ¼ö
+	public static final int NOTE_ROW = 4;//í•œ ì¤„ë‹¹ ë…¸íŠ¸ ìˆ˜
+	public static final int NOTE_COLUMN = 4;//í•œ ë§ˆë””ë‹¹ ì¤„ ìˆ˜
+	public static final int NOTE_COUNT = NOTE_ROW * NOTE_COLUMN;//í•œ ë°°ì¹˜ë‹¹ ë…¸íŠ¸ ìˆ˜
 
 	public LegacyMapParser() {
 		
@@ -49,11 +49,11 @@ public class LegacyMapParser {
 				if (i + 1 < tokenList.size())
 					nextToken = tokenList.get(i + 1);
 
-				//ÁÖ¼® Á¦¿Ü
+				//ì£¼ì„ ì œì™¸
 				if (token.getTokenType() == LegacyMapLexer.TokenType.ANNOTATION)
 					break;
 
-				//¿É¼Ç ÆÄ½Ì
+				//ì˜µì…˜ íŒŒì‹±
 				else if (token.getTokenType() == LegacyMapLexer.TokenType.EQUALS){
 					if (lastToken != null && nextToken != null && lastToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER
 							&& nextToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER){
@@ -67,7 +67,7 @@ public class LegacyMapParser {
 					}
 				}
 
-				//·ÎÄÃ º¯¼ö Ã³¸®
+				//ë¡œì»¬ ë³€ìˆ˜ ì²˜ë¦¬
 				else if (token.getTokenType() == LegacyMapLexer.TokenType.LOCAL_VARIABLE_EQUALS){
 					if (lastToken != null && nextToken != null && nextToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER && lastToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER){
 						LegacyMapLexer.Token checkToken = tokenList.get(i - 2);
@@ -82,13 +82,13 @@ public class LegacyMapParser {
 					}
 				}
 
-				//ºñÆ® ³ª´©±â
+				//ë¹„íŠ¸ ë‚˜ëˆ„ê¸°
 				else if (token.getTokenType() == LegacyMapLexer.TokenType.BEAT_SEPARATOR){
 					noteLine++;
 					noteIndex = 0;
 				}
 
-				//½Ã°£ & ºó¹®ÀÚ Ã³¸®
+				//ì‹œê°„ & ë¹ˆë¬¸ì ì²˜ë¦¬
 				else if (token.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER && timingVarMap.containsKey(token.getValue()) || token.getTokenType() == LegacyMapLexer.TokenType.BLANK || token.getTokenType() == LegacyMapLexer.TokenType.TIME_CHARACTER
 						|| token.getTokenType() == LegacyMapLexer.TokenType.HOLD_SLIDER){
 
@@ -107,26 +107,26 @@ public class LegacyMapParser {
 					else if (token.getTokenType() == LegacyMapLexer.TokenType.HOLD_SLIDER){
 						float tempo = getCurrentTempo(optionMap);
 						float startTime = getSync(optionMap) + tempo * noteLine;
-						//È¦µå ¸¶Ä¿ ¹æÇâ
+						//í™€ë“œ ë§ˆì»¤ ë°©í–¥
 						int dx = 0;
 						int dy = 0;
 
 						float length = 0;
 
 						switch(token.getValue()){
-							case "£¾":
+							case "ï¼":
 								dx++;
 								break;
 
-							case "£¼":
+							case "ï¼œ":
 								dx--;
 								break;
 
-							case "¡ı":
+							case "âˆ¨":
 								dy++;
 								break;
 
-							case "¡ü":
+							case "âˆ§":
 								dy--;
 								break;
 
@@ -229,7 +229,7 @@ public class LegacyMapParser {
 		return 0;
 	}
 
-	//ÆÄ½Ì µµÁß ¹Ù²ğ ¼ö ÀÖÀ½
+	//íŒŒì‹± ë„ì¤‘ ë°”ë€” ìˆ˜ ìˆìŒ
 	private float getCurrentTempo(Map<String, String> optionMap){
 		return Float.parseFloat(optionMap.getOrDefault("t", "0"));
 	}

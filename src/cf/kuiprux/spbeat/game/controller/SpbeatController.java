@@ -2,7 +2,7 @@ package cf.kuiprux.spbeat.game.controller;
 
 public class SpbeatController extends GameController {
 	
-	//index ¹üÀ§ 0 ~ 15
+	//index ë²”ìœ„ 0 ~ 15
 	public SpbeatController() {
 		super();
 	}
@@ -11,7 +11,7 @@ public class SpbeatController extends GameController {
 	public void listen() throws Exception {
 		super.listen();
 		
-		//±¸Çö µÇ¾î¾ß ÇÒ ºÎºĞ
+		//êµ¬í˜„ ë˜ì–´ì•¼ í•  ë¶€ë¶„
 		throw new Exception("not written yet");
 	}
 

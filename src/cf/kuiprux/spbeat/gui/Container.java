@@ -43,13 +43,13 @@ public abstract class Container extends Drawable {
 		this.masking = flag;
 	}
 	
-	//º¹»çº»
-	//concurrent ¹ß»ı °¡´ÉÇÑ ÀÛ¾÷¿¡ »ç¿ë
+	//ë³µì‚¬ë³¸
+	//concurrent ë°œìƒ ê°€ëŠ¥í•œ ì‘ì—…ì— ì‚¬ìš©
 	public List<Drawable> getChildren(){
 		return new ArrayList<>(children);
 	}
 	
-	//¿øº»
+	//ì›ë³¸
 	protected List<Drawable> getChildrenInternal(){
 		return children;
 	}
@@ -63,7 +63,7 @@ public abstract class Container extends Drawable {
 	}
 	
 	private void drawChild(Graphics graphics, Drawable child) {
-		//¾Èº¸ÀÏ°æ¿ì ·»´õ¸µ x
+		//ì•ˆë³´ì¼ê²½ìš° ë Œë”ë§ x
 		if (!child.isVisible())
 			return;
 		
@@ -99,7 +99,7 @@ public abstract class Container extends Drawable {
 	
 	
 	/*
-	 * ÀÌº¥Æ® ±¸¿ª ½ÃÀÛ
+	 * ì´ë²¤íŠ¸ êµ¬ì—­ ì‹œì‘
 	 */
 	
 	@Override
@@ -128,10 +128,10 @@ public abstract class Container extends Drawable {
 	}
 	
 	/*
-	 * ÀÌº¥Æ® ±¸¿ª ³¡
+	 * ì´ë²¤íŠ¸ êµ¬ì—­ ë
 	 */
 	
-	//ÀÚ½Ä Ãß°¡°¡ µÇ¾úÀ»½Ã true ¹İÈ¯
+	//ìì‹ ì¶”ê°€ê°€ ë˜ì—ˆì„ì‹œ true ë°˜í™˜
 	public boolean addChild(Drawable drawable) {
 		if (containsChild(drawable))
 			return false;
@@ -140,7 +140,7 @@ public abstract class Container extends Drawable {
 		return true;
 	}
 	
-	//ÀÚ½Ä Á¦°Å µÇ¾úÀ»½Ã true ¹İÈ¯
+	//ìì‹ ì œê±° ë˜ì—ˆì„ì‹œ true ë°˜í™˜
 	public boolean removeChild(Drawable drawable) {
 		if (!containsChild(drawable))
 			return false;
@@ -173,9 +173,9 @@ public abstract class Container extends Drawable {
 		return getChildrenInternal().contains(drawable);
 	}
 	
-	//ÇØ´ç container update ¸Ş¼­µå
+	//í•´ë‹¹ container update ë©”ì„œë“œ
 	protected abstract void updateInternal(int delta);
 	
-	//ÇØ´ç container draw ¸Ş¼­µå
+	//í•´ë‹¹ container draw ë©”ì„œë“œ
 	protected abstract void drawInternal(Graphics graphics);
 }

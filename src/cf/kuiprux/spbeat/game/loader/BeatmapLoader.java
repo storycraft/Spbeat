@@ -16,7 +16,7 @@ import java.util.List;
 
 public class BeatmapLoader implements Loader {
 
-    //shift-jis ÀÎµ¥ ¿©±â´Ù ºñÇ¥ÁØ ÇÕÄ¡¸é Àú·± È¥Á¾ÀÌ ³ª¿É´Ï´Ù.
+    //shift-jis ì¸ë° ì—¬ê¸°ë‹¤ ë¹„í‘œì¤€ í•©ì¹˜ë©´ ì €ëŸ° í˜¼ì¢…ì´ ë‚˜ì˜µë‹ˆë‹¤.
     private static final Charset ENCODING = Charset.forName("windows-932");
 
     public AsyncTask<List<Beatmap>> loadAll(Path path) throws Exception {
@@ -70,7 +70,7 @@ public class BeatmapLoader implements Loader {
         try {
             return new LegacyMapParser().parseRawMap(new String(Files.readAllBytes(file.toPath()), ENCODING));
         } catch (Exception e) {
-            System.out.println(file.getName() + " Ã¤º¸ ÆÄ½Ì ½ÇÆĞ " + e.getLocalizedMessage());
+            System.out.println(file.getName() + " ì±„ë³´ íŒŒì‹± ì‹¤íŒ¨ " + e.getLocalizedMessage());
         }
 
         return null;

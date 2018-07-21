@@ -49,18 +49,18 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	public void init(GameContainer container) throws SlickException {
 		super.init(container);
 		
-		//ÀÔ·Â ÀåÄ¡ ÃÊ±âÈ­
+		//ì…ë ¥ ì¥ì¹˜ ì´ˆê¸°í™”
 		try {
 			getController().listen();
 		} catch (Exception e) {
-			getLogManager().log(Level.WARNING, "ÀåÄ¡ ÃÊ±âÈ­ ½ÇÆĞ, fallback ÄÁÆ®·Ñ·¯¸¦ »ç¿ëÇÕ´Ï´Ù", e);
+			getLogManager().log(Level.WARNING, "ì¥ì¹˜ ì´ˆê¸°í™” ì‹¤íŒ¨, fallback ì»¨íŠ¸ë¡¤ëŸ¬ë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤", e);
 			
 			this.controller = new FallbackController();
 			
 			try {
 				getController().listen();
 			} catch (Exception e1) {
-				getLogManager().log(Level.WARNING, "fallback ÀåÄ¡ ÃÊ±âÈ­ ½ÇÆĞ ÀÔ·ÂÀ» ¹ŞÀ» ¼ö ¾ø½À´Ï´Ù", e);
+				getLogManager().log(Level.WARNING, "fallback ì¥ì¹˜ ì´ˆê¸°í™” ì‹¤íŒ¨ ì…ë ¥ì„ ë°›ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤", e);
 			}
 		}
 		
@@ -69,7 +69,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		
 		addChild(getPanel());
 		
-		//·Îµù È­¸é ½ÃÀÛ
+		//ë¡œë”© í™”ë©´ ì‹œì‘
 		getScreenManager().setCurrentScreen(new LoadingScreen());
 	}
 	
@@ -89,7 +89,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		return mapManager;
 	}
 
-	//ÇÁ·Î±×·¥ Á¾·á½Ã È£Ãâ
+	//í”„ë¡œê·¸ë¨ ì¢…ë£Œì‹œ í˜¸ì¶œ
 	@Override
 	public boolean closeRequested() {
 		if (!super.closeRequested())
@@ -100,13 +100,13 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		return true;
 	}
 
-	//¾÷µ¥ÀÌÆ® ÇÔ¼ö
+	//ì—…ë°ì´íŠ¸ í•¨ìˆ˜
 	@Override
 	protected void updateInternal(int delta) {
 		getScreenManager().update(delta);
 	}
 
-	//±×¸®±â ÇÔ¼ö
+	//ê·¸ë¦¬ê¸° í•¨ìˆ˜
 	@Override
 	protected void drawInternal(Graphics graphics) {
 		graphics.setAntiAlias(true);

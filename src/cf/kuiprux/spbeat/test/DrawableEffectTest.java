@@ -64,13 +64,13 @@ class DrawableEffectTest extends SimpleGame {
 		onLoaded();
 	}
 
-	//¾÷µ¥ÀÌÆ® ÇÔ¼ö
+	//ì—…ë°ì´íŠ¸ í•¨ìˆ˜
 	@Override
 	public void updateInternal(int delta) {
 		
 	}
 
-	//±×¸®±â ÇÔ¼ö
+	//ê·¸ë¦¬ê¸° í•¨ìˆ˜
 	@Override
 	public void drawInternal(Graphics graphics) {
 		

@@ -17,10 +17,10 @@ public abstract class Drawable implements IAnimatable {
 	private float x;
 	private float y;
 	
-	//À§Ä¡ ±âÁØÁ¡
+	//ìœ„ì¹˜ ê¸°ì¤€ì 
 	private AlignMode anchor;
 	
-	//È¸Àü / È®´ë½Ã ±âÁØÁ¡
+	//íšŒì „ / í™•ëŒ€ì‹œ ê¸°ì¤€ì 
 	private AlignMode origin;
 	
 	private float rotation;
@@ -35,7 +35,7 @@ public abstract class Drawable implements IAnimatable {
 	
 	private TransformData transformData;
 	
-	//false ÀÏ½Ã transformData °´Ã¼ »õ·Î°íÄ§
+	//false ì¼ì‹œ transformData ê°ì²´ ìƒˆë¡œê³ ì¹¨
 	private boolean transformValid;
 	
 	private boolean loaded;
@@ -64,7 +64,7 @@ public abstract class Drawable implements IAnimatable {
 	}
 	
 	/*
-	 * getter / setter ±¸¿ª ½ÃÀÛ
+	 * getter / setter êµ¬ì—­ ì‹œì‘
 	 */
 	
 	public float getX() {
@@ -75,7 +75,7 @@ public abstract class Drawable implements IAnimatable {
 		return y;
 	}
 	
-	//±×¸®±â¿ë À§Ä¡ (transform ¼Ó¼º ¹Ì Àû¿ë)
+	//ê·¸ë¦¬ê¸°ìš© ìœ„ì¹˜ (transform ì†ì„± ë¯¸ ì ìš©)
 	public float getDrawX() {
 		return getX() - getDrawAnchorX() + (getParent() != null ? getParent().getDrawX() : 0);
 	}
@@ -230,12 +230,12 @@ public abstract class Drawable implements IAnimatable {
 	public abstract float getWidth();
 	public abstract float getHeight();
 	/*
-	 * ÀÌ¹Ç·Î width / height setter´Â µû·Î ¼±¾ğÇÒ ÇÊ¿ä°¡ ¾ø°ÔÇÔ
-	 * ÇÊ¿ä ÇÒ °æ¿ì µû·Î ¼±¾ğ
+	 * ì´ë¯€ë¡œ width / height setterëŠ” ë”°ë¡œ ì„ ì–¸í•  í•„ìš”ê°€ ì—†ê²Œí•¨
+	 * í•„ìš” í•  ê²½ìš° ë”°ë¡œ ì„ ì–¸
 	 */
 	
 	
-	//±×¸®±â¿ë Å©±â (transform ¼Ó¼º ¹Ì Àû¿ë)
+	//ê·¸ë¦¬ê¸°ìš© í¬ê¸° (transform ì†ì„± ë¯¸ ì ìš©)
 	public float getDrawWidth() {
 		return getWidth();
 	}
@@ -259,7 +259,7 @@ public abstract class Drawable implements IAnimatable {
 		return loaded;
 	}
 	
-	//Parent Container¿¡¼­ Á¦°Å
+	//Parent Containerì—ì„œ ì œê±°
 	public void expire() {
 		if (getParent() == null)
 			return;
@@ -267,7 +267,7 @@ public abstract class Drawable implements IAnimatable {
 		getParent().removeChild(this);
 	}
 
-	//Transform Çà·Ä °è»ê
+	//Transform í–‰ë ¬ ê³„ì‚°
 	public TransformData computeTransform() {
 		float originX = getDrawX() + getDrawOriginX();
 		float originY = getDrawY() + getDrawOriginY();
@@ -278,42 +278,42 @@ public abstract class Drawable implements IAnimatable {
 	}
 	
 	/*
-	 * getter ±¸¿ª ³¡
+	 * getter êµ¬ì—­ ë
 	 */
 	
 	/*
-	 * ÀÌº¥Æ® ±¸¿ª ½ÃÀÛ
+	 * ì´ë²¤íŠ¸ êµ¬ì—­ ì‹œì‘
 	 */
 	
-	//container¿¡ ÀÚ½ÄÀ¸·Î ³Ö¾îÁ³À»½Ã È£Ãâ
+	//containerì— ìì‹ìœ¼ë¡œ ë„£ì–´ì¡Œì„ì‹œ í˜¸ì¶œ
 	protected void onAdded(Container container) {
-		//´Ù¸¥ parent¿¡ ¼Ò¼ÓµÇ¾î ÀÖÀ»½Ã Á¦°Å
+		//ë‹¤ë¥¸ parentì— ì†Œì†ë˜ì–´ ìˆì„ì‹œ ì œê±°
 		if (parent != null)
 			expire();
 		
 		parent = container;
 	}
 	
-	//ÇØ´ç DrawableÀÌ ·Îµå(update¿Í draw°¡ È£Ãâ µÉ ¼ö ÀÖ´Â »óÅÂ) µÉ¶§
+	//í•´ë‹¹ Drawableì´ ë¡œë“œ(updateì™€ drawê°€ í˜¸ì¶œ ë  ìˆ˜ ìˆëŠ” ìƒíƒœ) ë ë•Œ
 	protected void onLoaded() {
 		loaded = true;
 	}
 	
-	//ÇØ´ç DrawableÀÌ ¾ğ ·Îµå(update¿Í draw°¡ È£Ãâ µÉ ¼ö ¾ø´Â »óÅÂ) µÉ¶§
+	//í•´ë‹¹ Drawableì´ ì–¸ ë¡œë“œ(updateì™€ drawê°€ í˜¸ì¶œ ë  ìˆ˜ ì—†ëŠ” ìƒíƒœ) ë ë•Œ
 	protected void onUnloaded() {
 		loaded = false;
 	}
 	
-	//container¿¡¼­ Á¦°Å µÇ¾úÀ» ½Ã È£Ãâ
+	//containerì—ì„œ ì œê±° ë˜ì—ˆì„ ì‹œ í˜¸ì¶œ
 	protected void onRemoved() {
 		parent = null;
 	}
 	
 	/*
-	 * ÀÌº¥Æ® ±¸¿ª ³¡
+	 * ì´ë²¤íŠ¸ êµ¬ì—­ ë
 	 */
 	
-	//graphics¿¡ TransformData Àû¿ë
+	//graphicsì— TransformData ì ìš©
 	protected void applyTransform(Graphics graphics) {
 		TransformData transformData = getTransformData();
 		
@@ -331,7 +331,7 @@ public abstract class Drawable implements IAnimatable {
 		}
 	}
 	
-	//¼Ó¼º Àû¿ë
+	//ì†ì„± ì ìš©
 	protected void applyProperties(Graphics graphics) {
 		
 	}
@@ -340,7 +340,7 @@ public abstract class Drawable implements IAnimatable {
 	
 	public abstract void draw(Graphics graphics);
 	
-	//effect Àû¿ë °ø°£
+	//effect ì ìš© ê³µê°„
 	
 	protected void addEffect(IDrawEffect effect, IEffectResult result) {
 		if (currentEffectMap.containsKey(effect))
@@ -355,7 +355,7 @@ public abstract class Drawable implements IAnimatable {
 		
 		IEffectResult result = currentEffectMap.remove(effect);
 		
-		//¸Ç ¸¶Áö¸· effect °¡ ³¡³ª¸é result Ã¼ÀÎ ½ÇÇà
+		//ë§¨ ë§ˆì§€ë§‰ effect ê°€ ëë‚˜ë©´ result ì²´ì¸ ì‹¤í–‰
 		if (!currentEffectMap.containsValue(result)) {
 			result.start();
 		}
