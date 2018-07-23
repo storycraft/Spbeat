@@ -3,36 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/res/sample/1_Penetrate Through The Clouds_bsc.txt" charset="x-JISAutoDetect" />
     <file url="file://$PROJECT_DIR$/res/sample/1_realice_bsc.txt" charset="x-JISAutoDetect" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/SpBeAt.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/WindowHost.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Note.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapLexer.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/FallbackController.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/GameController.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/SpbeatController.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/ButtonPanel.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/LoadingScreen.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/ScreenPreset.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/BeatmapLoader.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/AlignMode.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/Container.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/Drawable.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/EasingType.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/IHasTexture.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/TextureFillMode.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/TransformData.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/containers/SimpleContainer.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/effect/DrawEffect.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/effect/IDrawEffect.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/effect/IEffectResult.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/element/Shape.java" charset="UTF-16" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/logging/LogManager.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/BoundingBoxTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/ControllerTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/DrawableEffectTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/resources/fumen.txt" charset="x-JISAutoDetect" />
-    <file url="file://D:/Story Workspace/HighBeat/test/resources/fumen.txt" charset="x-JISAutoDetect" />
+    <file url="PROJECT" charset="x-windows-949" />
   </component>
 </project>

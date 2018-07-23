@@ -1,6 +1,5 @@
 package cf.kuiprux.spbeat.game.beatmap.parsing.legacy;
 
-import java.lang.reflect.Type;
 import java.util.*;
 
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;

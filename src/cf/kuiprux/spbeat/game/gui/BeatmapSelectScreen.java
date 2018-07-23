@@ -72,7 +72,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 		int listIndex = index + page * MAPS_ON_A_PAGE;
 
-		if (list.size() < listIndex)
+		if (list.size() <= listIndex)
 			return null;
 
 		return list.get(listIndex);
