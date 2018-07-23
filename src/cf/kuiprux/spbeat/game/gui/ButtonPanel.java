@@ -171,7 +171,7 @@ public class ButtonPanel extends SimpleContainer {
 		//오차 값 수정
 		@Override
 		public float getDrawWidth() {
-			return super.getDrawWidth()  +1;
+			return super.getDrawWidth() + 1;
 		}
 
 		@Override

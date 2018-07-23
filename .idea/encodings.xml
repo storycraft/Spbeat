@@ -3,7 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/res/sample/1_Penetrate Through The Clouds_bsc.txt" charset="x-JISAutoDetect" />
     <file url="file://$PROJECT_DIR$/res/sample/1_realice_bsc.txt" charset="x-JISAutoDetect" />
+    <file url="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/resources/fumen.txt" charset="x-JISAutoDetect" />
-    <file url="PROJECT" charset="x-windows-949" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

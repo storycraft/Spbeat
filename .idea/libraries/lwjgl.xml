@@ -7,6 +7,7 @@
       <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl_util_applet.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/natives-windows.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/natives-mac.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/jinput.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -68,7 +68,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 	}
 
 	public Beatmap getBeatmap(int page, int index){
-		List<Beatmap> list = new ArrayList<>();
+		List<Beatmap> list = mapManager.getMapList();
 
 		int listIndex = index + page * MAPS_ON_A_PAGE;
 
@@ -135,7 +135,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			Beatmap map = getBeatmap(getBeatmapPage(), i);
 
 			if (map == null)
-				break;
+				continue;
 
 			BeatmapInfoDrawable infoDrawable = new BeatmapInfoDrawable(map);
 			infoDrawable.setOpacity(0);

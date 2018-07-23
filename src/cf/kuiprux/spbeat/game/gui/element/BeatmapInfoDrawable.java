@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat.game.gui.element;
 
+import cf.kuiprux.spbeat.game.MapManager;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.gui.TextureFillMode;
 import cf.kuiprux.spbeat.gui.containers.SimpleContainer;
@@ -8,25 +9,16 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class BeatmapInfoDrawable extends SimpleContainer {
-
-    private Square jacketDrawable;
-
-    //100x100의 비트맵 자켓 텍스쳐와 제목을 포함한 컨테이너
+public class BeatmapInfoDrawable extends Square {
     public BeatmapInfoDrawable(Beatmap map){
-        this.jacketDrawable = new Square();
+        setLocation(0, 0);
+        setSize(101, 101);
 
-        jacketDrawable.setSize(100, 100);
-        jacketDrawable.setTextureFillMode(TextureFillMode.CENTER);
         try {
-            jacketDrawable.setTexture(new Image(map.getJacketPath()));
+            setColor(Color.white);
+            setTexture(new Image(MapManager.SONG_PATH.resolve(map.getJacketPath()).toAbsolutePath().toString()));
         } catch (SlickException e) {
-            jacketDrawable.setColor(Color.magenta);
+            setColor(Color.magenta);
         }
-        addChild(jacketDrawable);
-    }
-
-    public Square getJacketDrawable() {
-        return jacketDrawable;
     }
 }

@@ -120,7 +120,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 	private void drawAdjustedTexture(org.newdawn.slick.geom.Shape shape, Graphics graphics) {
 		//TODO:: TextureFillMode구현
 		
-		graphics.texture(shape, getTexture());
+		graphics.texture(shape, getTexture(), true);
 	}
 	
 	//draw 할때 사용될 패스

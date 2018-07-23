@@ -7,6 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.function.BiConsumer;
 
+import cf.kuiprux.spbeat.game.MapManager;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.game.loader.BeatmapLoader;
 import org.newdawn.slick.Color;
@@ -17,12 +18,6 @@ import cf.kuiprux.spbeat.gui.EasingType;
 import cf.kuiprux.spbeat.gui.element.Square;
 
 public class LoadingScreen extends ScreenPreset {
-
-	private static final Path SONG_PATH;
-
-	static {
-		SONG_PATH = Paths.get("fumens");
-	}
 
 	@Override
 	public void onPress(int keyIndex) {
@@ -42,7 +37,7 @@ public class LoadingScreen extends ScreenPreset {
 
 		try {
 			//와!
-			List<Beatmap> beatmapList = loader.loadAll(SONG_PATH).run().get();
+			List<Beatmap> beatmapList = loader.loadAll(MapManager.SONG_PATH).run().get();
 
             for (Beatmap map : beatmapList){
                 System.out.println("채보 " + map.getTitle() + " 가 추가 되었습니다.");

@@ -1,5 +1,7 @@
 package cf.kuiprux.spbeat.game;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -9,6 +11,12 @@ import cf.kuiprux.spbeat.SpBeAt;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 
 public class MapManager {
+
+	public static final Path SONG_PATH;
+
+	static {
+		SONG_PATH = Paths.get("fumens");
+	}
 	
 	private SpBeAt game;
 	private IMapManagerListener listener;

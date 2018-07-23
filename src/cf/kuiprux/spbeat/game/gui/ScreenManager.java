@@ -31,7 +31,7 @@ public class ScreenManager implements IControllerListener {
 
 	@Override
 	public void onPress(int keyIndex) {
-		if (getCurrentScreen() != null)
+		if (getCurrentScreen() == null)
 			return;
 		
 		currentScreen.onPress(keyIndex);
@@ -39,7 +39,7 @@ public class ScreenManager implements IControllerListener {
 
 	@Override
 	public void onUp(int keyIndex) {
-		if (getCurrentScreen() != null)
+		if (getCurrentScreen() == null)
 			return;
 		
 		currentScreen.onUp(keyIndex);

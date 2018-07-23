@@ -8,7 +8,7 @@ import cf.kuiprux.spbeat.game.beatmap.INote;
 import cf.kuiprux.spbeat.game.beatmap.Note;
 
 public class LegacyMapParser {
-	
+
 	public static final char BLANK = '□';
 	public static final char BEAT_SEPARATOR = '-';
 	public static final char LOCAL_VARIABLE = '*';
@@ -20,9 +20,9 @@ public class LegacyMapParser {
 	public static final int NOTE_COUNT = NOTE_ROW * NOTE_COLUMN;//한 배치당 노트 수
 
 	public LegacyMapParser() {
-		
+
 	}
-	
+
 	public Beatmap parseRawMap(String rawText) throws Exception {
 		LegacyMapLexer lexer = new LegacyMapLexer();
 
@@ -52,7 +52,7 @@ public class LegacyMapParser {
 				if (token.getTokenType() == LegacyMapLexer.TokenType.ANNOTATION)
 					break;
 
-				//옵션 파싱
+					//옵션 파싱
 				else if (token.getTokenType() == LegacyMapLexer.TokenType.EQUALS){
 					if (lastToken != null && nextToken != null && lastToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER
 							&& nextToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER){
@@ -215,7 +215,7 @@ public class LegacyMapParser {
 		Beatmap map = new Beatmap(title, artist, songPath, jacketPath, tempo, diff, noteList);
 
 		return map;
-		
+
 	}
 
 	private int getTimingNumber(LegacyMapLexer.Token timeCharactorToken){
