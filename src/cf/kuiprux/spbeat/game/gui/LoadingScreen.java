@@ -31,8 +31,6 @@ public class LoadingScreen extends ScreenPreset {
 
 	@Override
 	protected void onLoad() {
-		getButtonPanel().getBackground().setColor(Color.green);
-
 		BeatmapLoader loader = new BeatmapLoader();
 
 		try {

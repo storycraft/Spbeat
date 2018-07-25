@@ -9,15 +9,19 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class BeatmapInfoDrawable extends Square {
     public BeatmapInfoDrawable(Beatmap map){
         setLocation(0, 0);
         setSize(101, 101);
 
-        try {
+        try (FileInputStream stream = new FileInputStream(MapManager.SONG_PATH.resolve(map.getJacketPath()).toFile())){
+            setTexture(new Image(stream, map.getJacketPath(), false));
             setColor(Color.white);
-            setTexture(new Image(MapManager.SONG_PATH.resolve(map.getJacketPath()).toAbsolutePath().toString()));
-        } catch (SlickException e) {
+        } catch (Exception e) {
             setColor(Color.magenta);
         }
     }
