@@ -187,15 +187,15 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			ButtonPanel.ButtonArea area = panel.getButtonAreaAt(i);
 			Beatmap map = getBeatmap(getBeatmapPage(), i);
 
+			for (Drawable drawable : area.getChildren()) {
+				drawable.fadeOut(EasingType.LINEAR,  250).expire();
+			}
+
 			if (map == null)
 				continue;
 
 			BeatmapInfoDrawable infoDrawable = new BeatmapInfoDrawable(map);
 			infoDrawable.setOpacity(0);
-
-			for (Drawable drawable : area.getChildren()) {
-				drawable.fadeOut(EasingType.LINEAR,  250).expire();
-			}
 
 			area.addChild(infoDrawable);
 			infoDrawable.fadeIn(EasingType.LINEAR, 500);

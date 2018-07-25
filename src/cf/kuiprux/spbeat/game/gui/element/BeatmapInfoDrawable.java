@@ -22,6 +22,7 @@ public class BeatmapInfoDrawable extends Square {
             setTexture(new Image(stream, map.getJacketPath(), false));
             setColor(Color.white);
         } catch (Exception e) {
+            System.out.println("jacket 로드 에러 " + e.getLocalizedMessage());
             setColor(Color.magenta);
         }
     }
