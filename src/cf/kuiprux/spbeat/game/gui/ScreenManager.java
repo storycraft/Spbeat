@@ -2,6 +2,7 @@ package cf.kuiprux.spbeat.game.gui;
 
 import cf.kuiprux.spbeat.SpBeAt;
 import cf.kuiprux.spbeat.game.controller.IControllerListener;
+import cf.kuiprux.spbeat.game.gui.ScreenPreset;
 
 public class ScreenManager implements IControllerListener {
 	

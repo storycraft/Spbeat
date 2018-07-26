@@ -5,11 +5,14 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
 import cf.kuiprux.spbeat.game.MapManager;
+import cf.kuiprux.spbeat.game.ResourceManager;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.game.loader.BeatmapLoader;
+import cf.kuiprux.spbeat.game.loader.ResourceLoader;
 import org.newdawn.slick.Color;
 
 import cf.kuiprux.spbeat.game.gui.ButtonPanel.ButtonArea;
@@ -31,21 +34,18 @@ public class LoadingScreen extends ScreenPreset {
 
 	@Override
 	protected void onLoad() {
-		BeatmapLoader loader = new BeatmapLoader();
+		BeatmapLoader beatmapLoader = new BeatmapLoader(getGame().getMapManager());
+		ResourceLoader resourceLoader = new ResourceLoader(getGame().getResourceManager());
 
 		try {
 			//와!
-			List<Beatmap> beatmapList = loader.loadAll(MapManager.SONG_PATH).run().get();
-
-            for (Beatmap map : beatmapList){
-                System.out.println("채보 " + map.getTitle() + " 가 추가 되었습니다.");
-                getGame().getMapManager().addBeatmap(map);
-            }
-
-            getScreenManager().setCurrentScreen(new BeatmapSelectScreen(getGame().getMapManager()));
+			CompletableFuture.allOf(beatmapLoader.loadAll(MapManager.SONG_PATH).run(), resourceLoader.loadAll(ResourceManager.RESOURCE_PATH).run()).get();
 		} catch (Exception e) {
-			System.out.println("비트맵 폴더가 존재 하지 않거나 손상 되었습니다. " + e.getLocalizedMessage());
+			System.out.println("리소스 로드가 실패 했습니다. " + e.getLocalizedMessage());
+			e.printStackTrace();
 		}
+
+		getScreenManager().setCurrentScreen(new BeatmapSelectScreen(getGame().getMapManager()));
 	}
 
 	@Override

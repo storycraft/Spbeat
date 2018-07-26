@@ -14,7 +14,7 @@ public class BeatmapSelectBox extends Square {
 
     @Override
     public void update(int delta) {
-        this.fadeCount = (fadeCount + delta) % 4000;
-        setOpacity((float) Math.sin((fadeCount / 4000) * Math.PI * 2) * 0.75f);
+        this.fadeCount = (fadeCount + delta) % 3500;
+        setOpacity((float) Math.sin((fadeCount / 1750) * Math.PI) * 0.75f);
     }
 }

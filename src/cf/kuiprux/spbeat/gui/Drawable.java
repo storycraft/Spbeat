@@ -354,6 +354,7 @@ public abstract class Drawable implements IAnimatable {
 			return;
 		
 		IEffectResult result = currentEffectMap.remove(effect);
+		effect.onEnded();
 		
 		//맨 마지막 effect 가 끝나면 result 체인 실행
 		if (!currentEffectMap.containsValue(result)) {

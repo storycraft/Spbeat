@@ -2,7 +2,8 @@ package cf.kuiprux.spbeat;
 
 import java.util.logging.Level;
 
-import org.newdawn.slick.Color;
+import cf.kuiprux.spbeat.game.ResourceManager;
+import cf.kuiprux.spbeat.game.MainThreadExecutor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -16,8 +17,6 @@ import cf.kuiprux.spbeat.game.controller.SpbeatController;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 import cf.kuiprux.spbeat.game.gui.LoadingScreen;
 import cf.kuiprux.spbeat.game.gui.ScreenManager;
-import cf.kuiprux.spbeat.gui.AlignMode;
-import cf.kuiprux.spbeat.gui.element.Square;
 
 public class SpBeAt extends SimpleGame implements IControllerListener {
 	
@@ -30,6 +29,8 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	private ButtonPanel panel;
 	private ScreenManager screenManager;
 	private PlayManager playManager;
+
+	private ResourceManager resourceManager;
 	
 	public SpBeAt() {
 		this(TITLE);
@@ -43,6 +44,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		this.screenManager = new ScreenManager(this);
 		this.mapManager = new MapManager(this);
 		this.playManager = new PlayManager(this);
+		this.resourceManager = new ResourceManager();
 	}
 	
 	@Override
@@ -89,6 +91,10 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		return mapManager;
 	}
 
+	public ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+
 	//프로그램 종료시 호출
 	@Override
 	public boolean closeRequested() {
@@ -103,6 +109,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	//업데이트 함수
 	@Override
 	protected void updateInternal(int delta) {
+		MainThreadExecutor.update();
 		getScreenManager().update(delta);
 	}
 

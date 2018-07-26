@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat.game.loader;
 
+import cf.kuiprux.spbeat.game.MapManager;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.game.beatmap.parsing.legacy.LegacyMapParser;
 import cf.kuiprux.spbeat.util.AsyncTask;
@@ -19,10 +20,14 @@ public class BeatmapLoader implements Loader {
     //shift-jis 인데 여기다 비표준 합치면 저런 혼종이 나옵니다.
     private static final Charset ENCODING = Charset.forName("windows-932");
 
-    public AsyncTask<List<Beatmap>> loadAll(Path path) throws Exception {
-        File folder = path.toFile();
+    private MapManager mapManager;
 
-        List<Beatmap> list = new ArrayList<>();
+    public BeatmapLoader(MapManager mapManager){
+        this.mapManager = mapManager;
+    }
+
+    public AsyncTask<Void> loadAll(Path path) throws Exception {
+        File folder = path.toFile();
 
         if (!folder.exists())
             folder.mkdirs();
@@ -30,9 +35,9 @@ public class BeatmapLoader implements Loader {
         if (!folder.isDirectory())
             throw new NotDirectoryException(folder.getName() + " is not directory");
 
-        return new AsyncTask<>(new AsyncTask.AsyncCallable<List<Beatmap>>() {
+        return new AsyncTask<>(new AsyncTask.AsyncCallable<Void>() {
             @Override
-            public List<Beatmap> get() {
+            public Void get() {
                 File[] fileList = folder.listFiles(new FilenameFilter() {
                     @Override
                     public boolean accept(File dir, String name) {
@@ -47,12 +52,11 @@ public class BeatmapLoader implements Loader {
 
                         if (map == null)
                             return;
-
-                        list.add(map);
+                        mapManager.addBeatmap(map);
                     }
                 });
 
-                return list;
+                return null;
             }
         });
     }
