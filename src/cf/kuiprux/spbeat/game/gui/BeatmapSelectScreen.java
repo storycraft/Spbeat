@@ -51,7 +51,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 	public BeatmapSelectScreen(MapManager mapManager) {
 		this.mapManager = mapManager;
-		this.selectHighlight = new BeatmapSelectBox(0, 0, 100, 100, mapManager.getGame().getFontManager().getDefault());
+		this.selectHighlight = new BeatmapSelectBox(0, 0, 100, 100, mapManager.getGame().getFontManager().getFontByName("나눔바른고딕"));
 		selectHighlight.getFadeBox().setColor(Color.lightGray);
 		selectHighlight.getSongTitleText().setColor(Color.black);
 		selectHighlight.setVisible(false);
@@ -120,12 +120,8 @@ public class BeatmapSelectScreen extends ScreenPreset {
 		if (map == null)
 			return;
 
-		try {
+		if (getGame().getPlayManager().getBeatmap() == null || map.getSongPath() != getGame().getPlayManager().getBeatmap().getSongPath())
 			getGame().getPlayManager().play(map);
-
-		} catch (Exception e) {
-			System.out.println("채보 미리 듣기 로드 실패 " + e.getLocalizedMessage());
-		}
 	}
 
 	public int getBeatmapPage() {

@@ -19,14 +19,11 @@ public class PlayManager {
 	private Player player;
 
 	private PlayScreen screen;
-
-	private long currentTime;
 	
 	public PlayManager(SpBeAt game) {
 		this.game = game;
 		this.isPlaying = false;
 		this.screen = null;
-		this.currentTime = -1;
 		this.player = null;
 	}
 
@@ -49,12 +46,9 @@ public class PlayManager {
 
 		this.beatmap = map;
 		try {
-			this.player = new Player(new FileInputStream(map.getSongPath()));
-		} catch (JavaLayerException e) {
+			this.player = new Player(new FileInputStream(MapManager.SONG_PATH.resolve(map.getSongPath()).toFile()));
+		} catch (Exception e) {
 			System.out.println("재생 중 " + getCurrentTime() + " 위치에서 오류가 발생했습니다. " + e.getLocalizedMessage());
-			return false;
-		} catch (FileNotFoundException e) {
-			System.out.println(map.getSongPath() + " 이 존재 하지 않습니다.");
 			return false;
 		}
 
@@ -68,8 +62,7 @@ public class PlayManager {
 				}
 				return null;
 			}
-		});
-		getGame().getScreenManager().setCurrentScreen(new PlayScreen(this, getBeatmap()));
+		}).run();
 
 		return true;
 	}
@@ -79,11 +72,16 @@ public class PlayManager {
 	}
 	
 	public long getCurrentTime() {
-		return currentTime;
+		if (player == null)
+			return -1;
+
+		return player.getPosition();
 	}
 
 	public void stop(){
-		if (isPlaying)
+		if (isPlaying()) {
 			player.close();
+			isPlaying = false;
+		}
 	}
 }

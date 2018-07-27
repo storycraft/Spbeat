@@ -44,7 +44,7 @@ public class LoadingScreen extends ScreenPreset {
 			//와!
 			CompletableFuture.allOf(beatmapLoader.loadAll(MapManager.SONG_PATH).run(),
 					resourceLoader.loadAll(ResourceManager.RESOURCE_PATH).run(),
-					fontLoader.loadAll(null).run()).whenComplete(new BiConsumer<Void, Throwable>() {
+					fontLoader.loadAll(FontLoader.FONT_RES_PATH).run()).whenComplete(new BiConsumer<Void, Throwable>() {
 				@Override
 				public void accept(Void aVoid, Throwable throwable) {
 					System.out.println(throwable);

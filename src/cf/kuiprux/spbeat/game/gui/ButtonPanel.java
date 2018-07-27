@@ -64,7 +64,7 @@ public class ButtonPanel extends SimpleContainer {
 		if (child == background || buttonList.contains(child))
 			return false;
 		
-		return removeChild(child);
+		return super.removeChild(child);
 	}
 	
 	//해당 x y 번째 에 있는 Button오브젝트 반환

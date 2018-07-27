@@ -9,8 +9,15 @@ import org.newdawn.slick.font.effects.ColorEffect;
 
 import java.awt.*;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FontLoader implements Loader {
+
+    public static final Path FONT_RES_PATH;
+
+    static {
+        FONT_RES_PATH = Paths.get("res", "font");
+    }
 
     private FontManager fontManager;
 
@@ -24,18 +31,34 @@ public class FontLoader implements Loader {
             @Override
             public Void get() {
                 Font defaultFont = new Font("Arial", Font.PLAIN, 32);
-                UnicodeFont font = new UnicodeFont(defaultFont);
-                font.getEffects().add(new ColorEffect(java.awt.Color.white));
-                font.addAsciiGlyphs();
+                UnicodeFont defaultUnicodeFont = new UnicodeFont(defaultFont);
+
+                Font nanumFont = null;
+                try {
+                    Font.createFont(Font.TRUETYPE_FONT, path.resolve("NanumBarunGothic.ttf").toFile());
+                    nanumFont = new Font("나눔바른고딕", Font.PLAIN, 32);
+                } catch (Exception e) {
+                    System.out.println("폰트 로드가 실패 했습니다. " + e.getLocalizedMessage());
+                }
+                UnicodeFont nanumUnicodeFont = new UnicodeFont(nanumFont);
+
+                nanumUnicodeFont.getEffects().add(new ColorEffect(java.awt.Color.white));
+                defaultUnicodeFont.getEffects().add(new ColorEffect(java.awt.Color.white));
+
+                defaultUnicodeFont.addAsciiGlyphs();
+                nanumUnicodeFont.addAsciiGlyphs();
+
                 MainThreadExecutor.addTask(() -> {
                     try {
-                        font.loadGlyphs();
+                        defaultUnicodeFont.loadGlyphs();
+                        nanumUnicodeFont.loadGlyphs();
                     } catch (SlickException e) {
                         System.out.println("폰트 로드가 실패 했습니다. " + e.getLocalizedMessage());
                     }
                 });
 
-                fontManager.addFont(font);
+                fontManager.addFont(defaultUnicodeFont);
+                fontManager.addFont(nanumUnicodeFont);
 
                 return null;
             }
