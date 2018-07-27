@@ -123,13 +123,21 @@ public abstract class Drawable implements IAnimatable {
 	public float getRotation() {
 		return rotation;
 	}
-	
+
 	public float getScaleX() {
 		return scaleX;
 	}
-	
+
 	public float getScaleY() {
 		return scaleY;
+	}
+
+	public float getDrawScaleX() {
+		return getScaleX();
+	}
+
+	public float getDrawScaleY() {
+		return getScaleY();
 	}
 	
 	public void setX(float x) {
@@ -272,7 +280,7 @@ public abstract class Drawable implements IAnimatable {
 		float originX = getDrawX() + getDrawOriginX();
 		float originY = getDrawY() + getDrawOriginY();
 		
-		TransformData transformData = TransformData.applyTransform(originX, originY, 0f, 0f, getScaleX(), getScaleY(), (float) Math.toRadians(getRotation()));
+		TransformData transformData = TransformData.applyTransform(originX, originY, 0f, 0f, getDrawScaleX(), getDrawScaleY(), (float) Math.toRadians(getRotation()));
 
 		return this.transformData = transformData;
 	}

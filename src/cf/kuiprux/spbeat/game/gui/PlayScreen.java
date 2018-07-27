@@ -17,6 +17,10 @@ public class PlayScreen extends ScreenPreset {
 		return playManager;
 	}
 
+	public Beatmap getBeatmap() {
+		return beatmap;
+	}
+
 	@Override
 	public void onPress(int keyIndex) {
 		
@@ -29,7 +33,7 @@ public class PlayScreen extends ScreenPreset {
 
 	@Override
 	protected void onLoad() {
-		
+		play();
 	}
 
 	@Override
@@ -39,7 +43,14 @@ public class PlayScreen extends ScreenPreset {
 
 	@Override
 	protected void update(int delta) {
-		
+		System.out.println(getPlayManager().getCurrentTime());
+	}
+
+	public void play(){
+		if (getPlayManager().isPlaying())
+			return;
+
+		getPlayManager().play(getBeatmap());
 	}
 
 }

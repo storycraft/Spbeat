@@ -3,6 +3,7 @@ package cf.kuiprux.spbeat.game;
 import cf.kuiprux.spbeat.SpBeAt;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.game.gui.PlayScreen;
+import cf.kuiprux.spbeat.util.AsyncTask;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
@@ -43,8 +44,7 @@ public class PlayManager {
 
 	//재생 붙가능일시 false 반환
 	public boolean play(Beatmap map){
-		if (isPlaying)
-			return false;
+		stop();
 		this.isPlaying = true;
 
 		this.beatmap = map;
@@ -58,12 +58,17 @@ public class PlayManager {
 			return false;
 		}
 
-		try {
-			player.play();
-		} catch (JavaLayerException e) {
-			System.out.println("재생 중 " + getCurrentTime() + " 위치에서 오류가 발생했습니다. " + e.getLocalizedMessage());
-		}
-
+		new AsyncTask<>(new AsyncTask.AsyncCallable<Void>() {
+			@Override
+			public Void get() {
+				try {
+					player.play();
+				} catch (JavaLayerException e) {
+					System.out.println("재생 중 " + getCurrentTime() + " 위치에서 오류가 발생했습니다. " + e.getLocalizedMessage());
+				}
+				return null;
+			}
+		});
 		getGame().getScreenManager().setCurrentScreen(new PlayScreen(this, getBeatmap()));
 
 		return true;
@@ -75,5 +80,10 @@ public class PlayManager {
 	
 	public long getCurrentTime() {
 		return currentTime;
+	}
+
+	public void stop(){
+		if (isPlaying)
+			player.close();
 	}
 }

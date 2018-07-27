@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat;
 
+import cf.kuiprux.spbeat.gui.font.FontManager;
 import org.newdawn.slick.Game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -13,6 +14,7 @@ public abstract class SimpleGame extends Container implements Game {
 	
 	private GameContainer windowHost;
 	private LogManager logManager;
+	private FontManager fontManager;
 	private boolean isStarted;
 	
 	private String title;
@@ -22,6 +24,7 @@ public abstract class SimpleGame extends Container implements Game {
 		this.title = title;
 		
 		this.logManager = new LogManager(title);
+		this.fontManager = new FontManager();
 	}
 	
 	public GameContainer getWindowHost() {
@@ -31,7 +34,11 @@ public abstract class SimpleGame extends Container implements Game {
 	public LogManager getLogManager() {
 		return logManager;
 	}
-	
+
+	public FontManager getFontManager() {
+		return fontManager;
+	}
+
 	public boolean isStarted() {
 		return isStarted;
 	}

@@ -45,6 +45,8 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		this.mapManager = new MapManager(this);
 		this.playManager = new PlayManager(this);
 		this.resourceManager = new ResourceManager();
+
+		getFontManager().setDefault("Arial");
 	}
 	
 	@Override
@@ -89,6 +91,10 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 
 	public MapManager getMapManager() {
 		return mapManager;
+	}
+
+	public PlayManager getPlayManager() {
+		return playManager;
 	}
 
 	public ResourceManager getResourceManager() {

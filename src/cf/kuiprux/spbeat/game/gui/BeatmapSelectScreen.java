@@ -35,6 +35,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 	private MapManager mapManager;
 	private int selectedIndex;
+	private Beatmap selectedMap;
 
 	private int beatmapPage;
 	private boolean pageChanged;
@@ -48,13 +49,11 @@ public class BeatmapSelectScreen extends ScreenPreset {
 	private Square nextButton;
 	private Square playButton;
 
-	private Player previewPlayer;
-
 	public BeatmapSelectScreen(MapManager mapManager) {
 		this.mapManager = mapManager;
-		this.previewPlayer = null;
-		this.selectHighlight = new BeatmapSelectBox(0, 0, 100, 100);
-		selectHighlight.setColor(Color.white);
+		this.selectHighlight = new BeatmapSelectBox(0, 0, 100, 100, mapManager.getGame().getFontManager().getDefault());
+		selectHighlight.getFadeBox().setColor(Color.lightGray);
+		selectHighlight.getSongTitleText().setColor(Color.black);
 		selectHighlight.setVisible(false);
 
 		this.settingButton = new Square(0, 0, 100, 100);
@@ -80,19 +79,11 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			this.selected = true;
 		this.selectedIndex = keyIndex;
 
-		if (!selectHighlight.isVisible()) {
-			selectHighlight.setVisible(true);
-			getButtonPanel().addChild(selectHighlight);
-		}
-
-		selectHighlight.moveTo(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosY(y), EasingType.LINEAR, 10);
-
 		//맨 마지막 줄엔 툴바 표시
-		if (keyIndex > MAPS_ON_A_PAGE){
+		if (keyIndex >= MAPS_ON_A_PAGE){
 			switch (keyIndex){
 				case SETTINGS:
-					if (getBeatmapPage() < getMaxPage())
-						setBeatmapPage(getBeatmapPage() + 1);
+
 					break;
 
 				case NEXT_PAGE:
@@ -103,33 +94,34 @@ public class BeatmapSelectScreen extends ScreenPreset {
 					if (getBeatmapPage() > 0)
 						setBeatmapPage(getBeatmapPage() - 1);
 					break;
+
 				case PLAY:
+					if (getSelectedMap() != null){
+						clear();
+						getScreenManager().setCurrentScreen(new PlayScreen(getGame().getPlayManager(), getSelectedMap()));
+					}
 					break;
 			}
 
 			return;
 		}
 
+		if (!selectHighlight.isLoaded()) {
+			selectHighlight.setVisible(true);
+			getButtonPanel().addChild(selectHighlight);
+		}
+
+		selectHighlight.moveTo(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosY(y), EasingType.LINEAR, 10);
+
 		Beatmap map = getBeatmap(getBeatmapPage(), keyIndex);
+		this.selectedMap = map;
+		selectHighlight.getSongTitleText().setText(map.getTitle());
+
 		if (map == null)
 			return;
 
-		if (getPreviewPlayer() != null)
-			getPreviewPlayer().close();
-
 		try {
-			previewPlayer = new Player(new FileInputStream(MapManager.SONG_PATH.resolve(map.getSongPath()).toAbsolutePath().toFile()));
-			new AsyncTask<>(new AsyncTask.AsyncCallable<Void>() {
-				@Override
-				public Void get() {
-					try {
-						getPreviewPlayer().play();
-					} catch (JavaLayerException e) {
-						System.out.println("채보 미리 듣기 재생 실패 " + e.getLocalizedMessage());
-					}
-					return null;
-				}
-			}).run();
+			getGame().getPlayManager().play(map);
 
 		} catch (Exception e) {
 			System.out.println("채보 미리 듣기 로드 실패 " + e.getLocalizedMessage());
@@ -140,8 +132,8 @@ public class BeatmapSelectScreen extends ScreenPreset {
 		return beatmapPage;
 	}
 
-	public Player getPreviewPlayer() {
-		return previewPlayer;
+	public Beatmap getSelectedMap() {
+		return selectedMap;
 	}
 
 	public void setBeatmapPage(int beatmapPage) {
@@ -242,9 +234,23 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			BeatmapInfoDrawable infoDrawable = new BeatmapInfoDrawable(map);
 			infoDrawable.setOpacity(0);
 			infoDrawable.fadeIn(EasingType.LINEAR, 500);
+			selectHighlight.setVisible(false);
 
 			area.addChild(infoDrawable);
 		}
+	}
+
+	private void clear(){
+		for (int i = 0; i < ButtonPanel.COLUMN * ButtonPanel.ROW; i++){
+			ButtonPanel.ButtonArea area = getButtonPanel().getButtonAreaAt(i);
+			for (Drawable drawable : area.getChildren()) {
+				drawable.fadeOut(EasingType.LINEAR,  250).expire();
+			}
+		}
+
+		selectHighlight.expire();
+
+		getGame().getPlayManager().stop();
 	}
 
 }
