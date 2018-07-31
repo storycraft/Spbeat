@@ -6,6 +6,8 @@ import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.game.gui.element.BeatmapInfoDrawable;
 import cf.kuiprux.spbeat.game.gui.element.BeatmapSelectBox;
 import cf.kuiprux.spbeat.gui.Drawable;
+import cf.kuiprux.spbeat.gui.IDrawable;
+import cf.kuiprux.spbeat.gui.effect.IAnimatable;
 import cf.kuiprux.spbeat.util.AsyncTask;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
@@ -77,8 +79,36 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 		if (!this.selected)
 			this.selected = true;
+		else if (getSelectedIndex() == keyIndex){
+			onDoublePress(keyIndex);
+			return;
+		}
+
 		this.selectedIndex = keyIndex;
 
+		if (!selectHighlight.isLoaded()) {
+			selectHighlight.setVisible(true);
+			getButtonPanel().addChild(selectHighlight);
+		}
+
+		selectHighlight.moveTo(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosY(y), EasingType.LINEAR, 10);
+
+		if (keyIndex >= MAPS_ON_A_PAGE){
+			if (selectHighlight.getSongTitleText().getText() != "")
+				selectHighlight.getSongTitleText().setText("");
+			return;
+		}
+
+		Beatmap map = getBeatmap(getBeatmapPage(), keyIndex);
+
+		this.selectedMap = map;
+		selectHighlight.getSongTitleText().setText(map.getTitle());
+
+		if (getGame().getPlayManager().getBeatmap() == null || getSelectedMap().getSongPath() != getGame().getPlayManager().getBeatmap().getSongPath())
+			getGame().getPlayManager().play(getSelectedMap());
+	}
+
+	public void onDoublePress(int keyIndex){
 		//맨 마지막 줄엔 툴바 표시
 		if (keyIndex >= MAPS_ON_A_PAGE){
 			switch (keyIndex){
@@ -105,23 +135,6 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 			return;
 		}
-
-		if (!selectHighlight.isLoaded()) {
-			selectHighlight.setVisible(true);
-			getButtonPanel().addChild(selectHighlight);
-		}
-
-		selectHighlight.moveTo(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosY(y), EasingType.LINEAR, 10);
-
-		Beatmap map = getBeatmap(getBeatmapPage(), keyIndex);
-		this.selectedMap = map;
-		selectHighlight.getSongTitleText().setText(map.getTitle());
-
-		if (map == null)
-			return;
-
-		if (getGame().getPlayManager().getBeatmap() == null || map.getSongPath() != getGame().getPlayManager().getBeatmap().getSongPath())
-			getGame().getPlayManager().play(map);
 	}
 
 	public int getBeatmapPage() {
@@ -220,8 +233,13 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			ButtonPanel.ButtonArea area = panel.getButtonAreaAt(i);
 			Beatmap map = getBeatmap(getBeatmapPage(), i);
 
-			for (Drawable drawable : area.getChildren()) {
-				drawable.fadeOut(EasingType.LINEAR,  250).expire();
+			for (IDrawable drawable : area.getChildren()) {
+				if (drawable instanceof IAnimatable) {
+					((IAnimatable) drawable).fadeOut(EasingType.LINEAR, 250).expire();
+				}
+				else {
+					drawable.expire();
+				}
 			}
 
 			if (map == null)
@@ -239,8 +257,13 @@ public class BeatmapSelectScreen extends ScreenPreset {
 	private void clear(){
 		for (int i = 0; i < ButtonPanel.COLUMN * ButtonPanel.ROW; i++){
 			ButtonPanel.ButtonArea area = getButtonPanel().getButtonAreaAt(i);
-			for (Drawable drawable : area.getChildren()) {
-				drawable.fadeOut(EasingType.LINEAR,  250).expire();
+			for (IDrawable drawable : area.getChildren()) {
+				if (drawable instanceof IAnimatable) {
+					((IAnimatable) drawable).fadeOut(EasingType.LINEAR, 250).expire();
+				}
+				else {
+					drawable.expire();
+				}
 			}
 		}
 

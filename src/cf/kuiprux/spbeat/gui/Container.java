@@ -19,7 +19,7 @@ public abstract class Container extends Drawable {
 	
 	private boolean masking;
 	
-	private List<Drawable> children;
+	private List<IDrawable> children;
 	
 	public Container() {
 		this.children = new ArrayList<>();
@@ -45,24 +45,24 @@ public abstract class Container extends Drawable {
 	
 	//복사본
 	//concurrent 발생 가능한 작업에 사용
-	public List<Drawable> getChildren(){
+	public List<IDrawable> getChildren(){
 		return new ArrayList<>(children);
 	}
 	
 	//원본
-	protected List<Drawable> getChildrenInternal(){
+	protected List<IDrawable> getChildrenInternal(){
 		return children;
 	}
 	
 	@Override
 	public void update(int delta) {
-		for (Drawable child : getChildren())
+		for (IDrawable child : getChildren())
 			child.update(delta);
 		
 		updateInternal(delta);
 	}
 	
-	private void drawChild(Graphics graphics, Drawable child) {
+	private void drawChild(Graphics graphics, IDrawable child) {
 		//안보일경우 렌더링 x
 		if (!child.isVisible())
 			return;
@@ -91,7 +91,7 @@ public abstract class Container extends Drawable {
 		if (isMasking())
 			graphics.setWorldClip(getDrawX(), getDrawY(), getDrawWidth(), getDrawHeight());
 		
-		for (Drawable child : getChildren())
+		for (IDrawable child : getChildren())
 			drawChild(graphics, child);
 		
 		graphics.popTransform();
@@ -103,23 +103,23 @@ public abstract class Container extends Drawable {
 	 */
 	
 	@Override
-	protected void onAdded(Container container) {
+	public void onAdded(Container container) {
 		super.onAdded(container);
 	}
 	
 	@Override
-	protected void onLoaded() {
+	public void onLoaded() {
 		super.onLoaded();
 		
-		for (Drawable child : getChildren())
+		for (IDrawable child : getChildren())
 			child.onLoaded();
 	}
 	
 	@Override
-	protected void onUnloaded() {
+	public void onUnloaded() {
 		super.onUnloaded();
 		
-		for (Drawable child : getChildren())
+		for (IDrawable child : getChildren())
 			child.onUnloaded();
 	}
 	
@@ -132,7 +132,7 @@ public abstract class Container extends Drawable {
 	 */
 	
 	//자식 추가가 되었을시 true 반환
-	public boolean addChild(Drawable drawable) {
+	public boolean addChild(IDrawable drawable) {
 		if (containsChild(drawable))
 			return false;
 		
@@ -141,7 +141,7 @@ public abstract class Container extends Drawable {
 	}
 	
 	//자식 제거 되었을시 true 반환
-	public boolean removeChild(Drawable drawable) {
+	public boolean removeChild(IDrawable drawable) {
 		if (!containsChild(drawable))
 			return false;
 		
@@ -149,7 +149,7 @@ public abstract class Container extends Drawable {
 		return true;
 	}
 	
-	protected void addInternal(Drawable drawable) {
+	protected void addInternal(IDrawable drawable) {
 		getChildrenInternal().add(drawable);
 		drawable.onAdded(this);
 		
@@ -161,7 +161,7 @@ public abstract class Container extends Drawable {
 			drawable.onLoaded();
 	}
 	
-	protected void removeInternal(Drawable drawable) {
+	protected void removeInternal(IDrawable drawable) {
 		getChildrenInternal().remove(drawable);
 		drawable.onRemoved();
 		
@@ -169,7 +169,7 @@ public abstract class Container extends Drawable {
 			drawable.onUnloaded();
 	}
 	
-	public boolean containsChild(Drawable drawable) {
+	public boolean containsChild(IDrawable drawable) {
 		return getChildrenInternal().contains(drawable);
 	}
 	

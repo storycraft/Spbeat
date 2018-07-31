@@ -23,16 +23,16 @@ public class HoldNote implements INote {
         return endIndex;
     }
 
-    public float getStartTime() {
+    public float getExactTime() {
         return startTime;
     }
 
-    public float getExactTime() {
+    public float getEndTime() {
         return endTime;
     }
 
     @Override
     public String toString(){
-        return "HoldNote startIndex: " + getStartIndex() + " endIndex: " + getNoteIndex() + " startTime: " + getStartTime() + " endTime: " + getExactTime();
+        return "HoldNote startIndex: " + getStartIndex() + " endIndex: " + getNoteIndex() + " startTime: " + getExactTime() + " endTime: " + getEndTime();
     }
 }

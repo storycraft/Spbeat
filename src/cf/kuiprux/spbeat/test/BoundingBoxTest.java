@@ -2,6 +2,7 @@ package cf.kuiprux.spbeat.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import cf.kuiprux.spbeat.gui.IDrawable;
 import org.junit.jupiter.api.Test;
 
 import org.newdawn.slick.Color;
@@ -94,7 +95,7 @@ public class BoundingBoxTest extends SimpleGame {
 	@Override
 	public void drawInternal(Graphics graphics) {
 		graphics.setColor(Color.white);
-		for (Drawable child : getChildren()) {
+		for (IDrawable child : getChildren()) {
 			Rectangle box = child.getBoundingBox();
 			graphics.drawRect(box.getX(), box.getY(), box.getWidth(), box.getHeight());
 		}

@@ -3,17 +3,12 @@ package cf.kuiprux.spbeat.game.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import cf.kuiprux.spbeat.gui.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
-import cf.kuiprux.spbeat.gui.AlignMode;
-import cf.kuiprux.spbeat.gui.Container;
-import cf.kuiprux.spbeat.gui.Drawable;
-import cf.kuiprux.spbeat.gui.IHasColor;
-import cf.kuiprux.spbeat.gui.IHasTexture;
-import cf.kuiprux.spbeat.gui.TextureFillMode;
 import cf.kuiprux.spbeat.gui.containers.SimpleContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 
@@ -60,7 +55,7 @@ public class ButtonPanel extends SimpleContainer {
 	
 	//기본 자식 수정 방지 처리
 	@Override
-	public boolean removeChild(Drawable child) {
+	public boolean removeChild(IDrawable child) {
 		if (child == background || buttonList.contains(child))
 			return false;
 		
@@ -256,7 +251,7 @@ public class ButtonPanel extends SimpleContainer {
 		}
 		
 		@Override
-		public boolean removeChild(Drawable child) {
+		public boolean removeChild(IDrawable child) {
 			if (child == backgroundSquare)
 				return false;
 			

@@ -13,9 +13,9 @@ public class Beatmap {
 	private float tempo;
 	private float difficulty;
 	
-	private List<INote> noteList;
+	private List<BeatList> beatListArray;
 	
-	public Beatmap(String title, String artist, String songPath, String jacketPath, float tempo, float difficulty, List<INote> noteList) {
+	public Beatmap(String title, String artist, String songPath, String jacketPath, float tempo, float difficulty, List<BeatList> beatListArray) {
 		this.title = title;
 		this.artist = artist;
 		this.songPath = songPath;
@@ -23,7 +23,7 @@ public class Beatmap {
 		this.tempo = tempo;
 		this.difficulty = difficulty;
 		
-		this.noteList = noteList;
+		this.beatListArray = beatListArray;
 	}
 
 	public String getTitle() {
@@ -50,7 +50,18 @@ public class Beatmap {
 		return difficulty;
 	}
 
-	public List<INote> getNoteList() {
-		return new ArrayList<>(noteList);
+	public boolean hasHoldMarker(){
+		for (BeatList beatList : beatListArray){
+			for (INote note : beatList.getNoteList()) {
+				if (note instanceof HoldNote)
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	public List<BeatList> getBeatListArray() {
+		return new ArrayList<>(beatListArray);
 	}
 }

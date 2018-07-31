@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import cf.kuiprux.spbeat.game.beatmap.BeatList;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.game.beatmap.INote;
 import cf.kuiprux.spbeat.game.beatmap.parsing.legacy.LegacyMapParser;
@@ -28,8 +29,12 @@ class LegacyMapParserTest {
 			LegacyMapParser parser = new LegacyMapParser();
 			Beatmap result = parser.parseRawMap(rawMap);
 
-			for (INote note : result.getNoteList()){
-				System.out.println(note.toString());
+			int i = 0;
+			for (BeatList beatList : result.getBeatListArray()){
+				System.out.println("line: " + i++);
+				for (INote note : beatList.getNoteList()){
+					System.out.println(note.toString());
+				}
 			}
 			
 			System.out.print(result);

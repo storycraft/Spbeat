@@ -75,7 +75,7 @@ public class Text extends Sprite {
     }
 
     @Override
-    protected void onAdded(Container container) {
+    public void onAdded(Container container) {
         super.onAdded(container);
 
         if (getFont() == null){

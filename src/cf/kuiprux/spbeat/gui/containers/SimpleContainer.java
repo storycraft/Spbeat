@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat.gui.containers;
 
+import cf.kuiprux.spbeat.gui.IDrawable;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -30,14 +31,14 @@ public class SimpleContainer extends Container {
 	}
 	
 	@Override
-	protected void addInternal(Drawable drawable) {
+	public void addInternal(IDrawable drawable) {
 		super.addInternal(drawable);
 		
 		updateChildShape();
 	}
 	
 	@Override
-	protected void removeInternal(Drawable drawable) {
+	public void removeInternal(IDrawable drawable) {
 		super.removeInternal(drawable);
 		
 		updateChildShape();
@@ -61,7 +62,7 @@ public class SimpleContainer extends Container {
 		float maxX = minX;
 		float maxY = minY;
 		
-		for (Drawable drawable : getChildrenInternal()) {
+		for (IDrawable drawable : getChildrenInternal()) {
 			Rectangle boundingBox = drawable.getBoundingBox();
 			
 			minX = Math.min(boundingBox.getX(), minX);

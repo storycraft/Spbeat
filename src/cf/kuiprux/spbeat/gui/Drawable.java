@@ -12,7 +12,7 @@ import cf.kuiprux.spbeat.gui.effect.IAnimatable;
 import cf.kuiprux.spbeat.gui.effect.IDrawEffect;
 import cf.kuiprux.spbeat.gui.effect.IEffectResult;
 
-public abstract class Drawable implements IAnimatable {
+public abstract class Drawable implements IAnimatable, IDrawable {
 
 	private float x;
 	private float y;
@@ -294,7 +294,7 @@ public abstract class Drawable implements IAnimatable {
 	 */
 	
 	//container에 자식으로 넣어졌을시 호출
-	protected void onAdded(Container container) {
+	public void onAdded(Container container) {
 		//다른 parent에 소속되어 있을시 제거
 		if (parent != null)
 			expire();
@@ -303,17 +303,17 @@ public abstract class Drawable implements IAnimatable {
 	}
 	
 	//해당 Drawable이 로드(update와 draw가 호출 될 수 있는 상태) 될때
-	protected void onLoaded() {
+	public void onLoaded() {
 		loaded = true;
 	}
 	
 	//해당 Drawable이 언 로드(update와 draw가 호출 될 수 없는 상태) 될때
-	protected void onUnloaded() {
+	public void onUnloaded() {
 		loaded = false;
 	}
 	
 	//container에서 제거 되었을 시 호출
-	protected void onRemoved() {
+	public void onRemoved() {
 		parent = null;
 	}
 	

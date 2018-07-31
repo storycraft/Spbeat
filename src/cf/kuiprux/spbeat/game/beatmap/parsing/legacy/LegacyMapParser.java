@@ -2,10 +2,7 @@ package cf.kuiprux.spbeat.game.beatmap.parsing.legacy;
 
 import java.util.*;
 
-import cf.kuiprux.spbeat.game.beatmap.Beatmap;
-import cf.kuiprux.spbeat.game.beatmap.HoldNote;
-import cf.kuiprux.spbeat.game.beatmap.INote;
-import cf.kuiprux.spbeat.game.beatmap.Note;
+import cf.kuiprux.spbeat.game.beatmap.*;
 
 public class LegacyMapParser {
 
@@ -29,6 +26,7 @@ public class LegacyMapParser {
 		List<List<LegacyMapLexer.Token>> tokenLineList = lexer.separateRawMap(rawText);
 
 		Map<String, String> optionMap = new HashMap<>();
+		List<BeatList> beatListArray = new ArrayList<>();
 		List<INote> noteList = new ArrayList<>();
 
 		LegacyMapLexer.Token lastToken = null;
@@ -85,6 +83,13 @@ public class LegacyMapParser {
 				else if (token.getTokenType() == LegacyMapLexer.TokenType.BEAT_SEPARATOR){
 					noteLine++;
 					noteIndex = 0;
+
+					float tempo = getCurrentTempo(optionMap);
+					float time = getSync(optionMap) + tempo * noteLine;
+
+					beatListArray.add(new BeatList(time, noteList));
+
+					noteList = new ArrayList<>();
 				}
 
 				//시간 & 빈문자 처리
@@ -211,8 +216,7 @@ public class LegacyMapParser {
 		}
 		*/
 
-		//TODO
-		Beatmap map = new Beatmap(title, artist, songPath, jacketPath, tempo, diff, noteList);
+		Beatmap map = new Beatmap(title, artist, songPath, jacketPath, tempo, diff, beatListArray);
 
 		return map;
 

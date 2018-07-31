@@ -31,7 +31,6 @@ public class FallbackController extends GameController {
 	protected void updateLoop() {
 		while (Keyboard.next()) {
 			boolean pressed = Keyboard.getEventKeyState();
-
 			convertAndCallEvent(Keyboard.getEventKey(), pressed);
 		}
 	}
