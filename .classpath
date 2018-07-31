@@ -8,7 +8,11 @@
 	<classpathentry kind="lib" path="lib/lib/jl1.0.jar"/>
 	<classpathentry kind="lib" path="lib/lib/jogg-0.0.7.jar"/>
 	<classpathentry kind="lib" path="lib/lib/jorbis-0.0.15.jar"/>
-	<classpathentry kind="lib" path="lib/lib/lwjgl.jar"/>
+	<classpathentry kind="lib" path="lib/lib/lwjgl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="SpBeAt/lib/native"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/lib/slick.jar"/>
 	<classpathentry kind="lib" path="lib/lib/gson-2.6.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
