@@ -8,32 +8,39 @@ import com.pi4j.io.gpio.RaspiPin;
 
 public class SpbeatController extends GameController {
 
+	private static boolean isUsable = false;
 	private static GpioPinDigitalInput[] digitalInputs;
-	
-	//index 범위 0 ~ 15
+
+	// index 범위 0 ~ 15
 	static {
-		digitalInputs = new GpioPinDigitalInput[16];
-		GpioController gpio = GpioFactory.getInstance();
-		
-		for(int i = 0; i < digitalInputs.length; i++) {
-			try {
-				Pin pin = (Pin) RaspiPin.class.getField("GPIO_" + ((i+4 < 10) ? "0" : "") + (i+4)).get(null);
-				digitalInputs[i] = gpio.provisionDigitalInputPin(pin);
-			} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-				e.printStackTrace();
+		try {
+			digitalInputs = new GpioPinDigitalInput[16];
+			GpioController gpio = GpioFactory.getInstance();
+			for (int i = 0; i < digitalInputs.length; i++) {
+				try {
+					Pin pin = (Pin) RaspiPin.class.getField("GPIO_" + ((i + 4 < 10) ? "0" : "") + (i + 4)).get(null);
+					digitalInputs[i] = gpio.provisionDigitalInputPin(pin);
+				} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+					System.err.println("An error occurred initializing pin " + (i + 4) + ":" + e.getMessage());
+				}
 			}
+			isUsable = true;
+		} catch (Exception e) {
+			System.err.println("An error occurred initializing pin input: " + e.getMessage());
 		}
 	}
 
 	@Override
 	protected void updateLoop() {
-		for(int i = 0; i < digitalInputs.length; i++) {
-			// Pull-up circuit
-			boolean isPressed = digitalInputs[i].isLow();
-			if(isPressed)
-				callPressEvent(i);
-			else
-				callReleaseEvent(i);
+		if (isUsable) {
+			for (int i = 0; i < digitalInputs.length; i++) {
+				// Pull-up circuit
+				boolean isPressed = digitalInputs[i].isLow();
+				if (isPressed)
+					callPressEvent(i);
+				else
+					callReleaseEvent(i);
+			}
 		}
 	}
 }
