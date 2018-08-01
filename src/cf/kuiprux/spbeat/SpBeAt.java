@@ -131,7 +131,7 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	}
 
 	@Override
-	public void onUp(int keyIndex) {
+	public void onRelease(int keyIndex) {
 		// TODO Auto-generated method stub
 		
 	}

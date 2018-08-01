@@ -186,7 +186,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 	}
 
 	@Override
-	public void onUp(int keyIndex) {
+	public void onRelease(int keyIndex) {
 
 	}
 

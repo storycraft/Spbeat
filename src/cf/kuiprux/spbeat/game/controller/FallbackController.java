@@ -44,6 +44,6 @@ public class FallbackController extends GameController {
 		if (pressed)
 			callPressEvent(key);
 		else
-			callUpEvent(key);
+			callReleaseEvent(key);
 	}
 }

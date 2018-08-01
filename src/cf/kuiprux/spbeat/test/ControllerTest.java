@@ -69,8 +69,8 @@ class ControllerTest implements IControllerListener {
 	}
 
 	@Override
-	public void onUp(int keyIndex) {
-		System.out.println("up: " + keyIndex);
+	public void onRelease(int keyIndex) {
+		System.out.println("release: " + keyIndex);
 		passed = true;
 	}
 

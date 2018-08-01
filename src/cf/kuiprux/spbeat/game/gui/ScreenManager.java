@@ -39,11 +39,11 @@ public class ScreenManager implements IControllerListener {
 	}
 
 	@Override
-	public void onUp(int keyIndex) {
+	public void onRelease(int keyIndex) {
 		if (getCurrentScreen() == null)
 			return;
 		
-		currentScreen.onUp(keyIndex);
+		currentScreen.onRelease(keyIndex);
 	}
 
 	public void update(int delta) {

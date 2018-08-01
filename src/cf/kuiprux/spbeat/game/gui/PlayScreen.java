@@ -43,7 +43,7 @@ public class PlayScreen extends ScreenPreset {
 	}
 
 	@Override
-	public void onUp(int keyIndex) {
+	public void onRelease(int keyIndex) {
 		
 	}
 

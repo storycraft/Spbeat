@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/lib/slick.jar"/>
 	<classpathentry kind="lib" path="lib/lib/gson-2.6.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="lib/lib/pi4j-core.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

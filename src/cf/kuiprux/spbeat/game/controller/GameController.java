@@ -97,10 +97,10 @@ public abstract class GameController implements IGameController {
 		}
 	}
 
-	protected void callUpEvent(int index) {
+	protected void callReleaseEvent(int index) {
 		//concurrent 방지
 		for (IControllerListener listener : new ArrayList<>(listenerList)) {
-			listener.onUp(index);
+			listener.onRelease(index);
 		}
 	}
 	
