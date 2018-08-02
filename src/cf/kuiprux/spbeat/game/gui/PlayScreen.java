@@ -2,6 +2,7 @@ package cf.kuiprux.spbeat.game.gui;
 
 import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.beatmap.*;
+import cf.kuiprux.spbeat.game.gui.element.PlayShutter;
 import cf.kuiprux.spbeat.game.gui.marker.HoldMarkerDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.IMarkerDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.MarkerDrawable;
@@ -20,13 +21,21 @@ public class PlayScreen extends ScreenPreset {
 	private PlayManager playManager;
 	private Beatmap beatmap;
 
-    public static final int NOTE_VISIBLE_TIME = 750;
+	private PlayShutter shutter;
+
+	private int currentCombo;
+
+	public static final int NOTE_VISIBLE_TIME = 750;
+	public static final int AFTER_VISIBLE_TIME = 250;
 	
 	public PlayScreen(PlayManager playManager, Beatmap beatmap) {
 		this.playManager = playManager;
 		this.beatmap = beatmap;
 
 		this.drawableMap = new HashMap<>();
+
+		this.shutter = new PlayShutter(this);
+		this.currentCombo = 0;
 	}
 	
 	public PlayManager getPlayManager() {
@@ -35,6 +44,14 @@ public class PlayScreen extends ScreenPreset {
 
 	public Beatmap getBeatmap() {
 		return beatmap;
+	}
+
+	public int getCurrentCombo() {
+		return currentCombo;
+	}
+
+	public void setCurrentCombo(int currentCombo) {
+		this.currentCombo = currentCombo;
 	}
 
 	@Override
@@ -50,12 +67,18 @@ public class PlayScreen extends ScreenPreset {
 	@Override
 	protected void onLoad() {
 		getButtonPanel().getBackground().setColor(Color.gray);
+
+		shutter.setLocation(0, 0);
+		shutter.setSize(getButtonPanel().getBackground().getWidth(), getButtonPanel().getBackground().getHeight());
+
+		getButtonPanel().getBackground().addChild(shutter);
+
 		play();
 	}
 
 	@Override
 	protected void onUnload() {
-		
+		getButtonPanel().getBackground().removeChild(shutter);
 	}
 
 	@Override
@@ -107,8 +130,7 @@ public class PlayScreen extends ScreenPreset {
 	    		break;
 
 	    	for (INote note : beatList.getNoteList()){
-				float timing = time - note.getExactTime();
-				if (timing >= NOTE_VISIBLE_TIME) {
+				if (note.isOnScreen(time)) {
 					list.add(note);
 				}
 			}

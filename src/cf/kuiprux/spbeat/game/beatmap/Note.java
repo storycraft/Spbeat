@@ -1,5 +1,7 @@
 package cf.kuiprux.spbeat.game.beatmap;
 
+import cf.kuiprux.spbeat.game.gui.PlayScreen;
+
 public class Note implements INote {
 	
 	//노트가 나타날 위치
@@ -18,6 +20,12 @@ public class Note implements INote {
 	
 	public float getExactTime() {
 		return exactTime;
+	}
+
+	@Override
+	public boolean isOnScreen(long time) {
+		float timing = getExactTime() - time;
+		return timing <= PlayScreen.NOTE_VISIBLE_TIME && timing >= -PlayScreen.AFTER_VISIBLE_TIME;
 	}
 
 	@Override

@@ -29,6 +29,11 @@ public class MarkerDrawable extends Square implements IMarkerDrawable {
     }
 
     @Override
+    public boolean isOnScreen(long time) {
+        return getNote().isOnScreen(time);
+    }
+
+    @Override
     public void update(int delta){
         super.update(delta);
     }

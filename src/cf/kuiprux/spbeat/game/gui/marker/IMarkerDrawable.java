@@ -7,4 +7,6 @@ import cf.kuiprux.spbeat.gui.IDrawable;
 public interface IMarkerDrawable extends IDrawable {
     INote getNote();
     HitStatement getHitStatement();
+    //노트가 나타나야하면 true 반환
+    boolean isOnScreen(long time);
 }

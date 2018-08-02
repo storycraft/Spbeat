@@ -1,0 +1,1 @@
+some textures are from jubeat_analyser160325

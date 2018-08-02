@@ -1,5 +1,7 @@
 package cf.kuiprux.spbeat.game.beatmap;
 
+import cf.kuiprux.spbeat.game.gui.PlayScreen;
+
 public class HoldNote implements INote {
 
     private int startIndex;
@@ -23,16 +25,22 @@ public class HoldNote implements INote {
         return endIndex;
     }
 
-    public float getExactTime() {
+    public float getStartTime() {
         return startTime;
     }
 
-    public float getEndTime() {
+    public float getExactTime() {
         return endTime;
     }
 
     @Override
+    public boolean isOnScreen(long time) {
+        float timing = getExactTime() - time;
+        return getStartTime() >= time && timing >= -PlayScreen.AFTER_VISIBLE_TIME;
+    }
+
+    @Override
     public String toString(){
-        return "HoldNote startIndex: " + getStartIndex() + " endIndex: " + getNoteIndex() + " startTime: " + getExactTime() + " endTime: " + getEndTime();
+        return "HoldNote startIndex: " + getStartIndex() + " endIndex: " + getNoteIndex() + " startTime: " + getStartTime() + " endTime: " + getExactTime();
     }
 }
