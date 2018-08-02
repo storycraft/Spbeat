@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat.game.gui.marker;
 
+import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.beatmap.HoldNote;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 import cf.kuiprux.spbeat.game.gui.marker.hit.HitStatement;
@@ -12,9 +13,12 @@ public class HoldMarkerDrawable extends FixedContainer implements IMarkerDrawabl
     private HoldNote note;
     private HitStatement hitStatement;
 
-    public HoldMarkerDrawable(HoldNote note){
+    private PlayManager playManager;
+
+    public HoldMarkerDrawable(HoldNote note, PlayManager playManager){
         this.note = note;
         this.hitStatement = new HitStatement(note);
+        this.playManager = playManager;
 
         int sx = note.getStartIndex() % ButtonPanel.COLUMN;
         int sy = note.getStartIndex() / ButtonPanel.ROW;
@@ -24,6 +28,11 @@ public class HoldMarkerDrawable extends FixedContainer implements IMarkerDrawabl
 
         setLocation(sx - ex, sy - ey);
         setSize((sx - ex + 1) * ButtonPanel.BUTTON_WIDTH, (sx - ex + 1) * ButtonPanel.BUTTON_HEIGHT);
+    }
+
+    @Override
+    public void onLoaded(){
+        super.onLoaded();
     }
 
     @Override

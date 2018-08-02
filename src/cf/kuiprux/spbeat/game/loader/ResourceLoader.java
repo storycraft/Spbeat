@@ -26,6 +26,11 @@ public class ResourceLoader implements Loader {
                 manager.add("texture.btn.previous", texturePath.resolve("button").resolve("previous.png"));
                 manager.add("texture.btn.next", texturePath.resolve("button").resolve("next.png"));
                 manager.add("texture.btn.play", texturePath.resolve("button").resolve("play.png"));
+                manager.add("texture.marker.default", texturePath.resolve("marker_square.png"));
+                manager.add("texture.marker.start", texturePath.resolve("kokokara.png"));
+                manager.add("texture.marker.effect.default", texturePath.resolve("marker3.jpg"));
+                manager.add("texture.jacket.default", texturePath.resolve("defaultjacket.png"));
+
 
                 return null;
             }

@@ -108,6 +108,7 @@ public class Text extends Sprite {
             applyProperties(graphics);
             applyTransform(graphics);
 
+            graphics.setDrawMode(getDrawMode());
 
             getFont().drawString(getDrawX(), getDrawY(), getText(), getColor());
         }

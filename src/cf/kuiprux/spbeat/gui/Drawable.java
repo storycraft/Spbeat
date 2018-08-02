@@ -26,6 +26,8 @@ public abstract class Drawable implements IAnimatable, IDrawable {
 	private float rotation;
 	private float scaleX;
 	private float scaleY;
+
+	private int drawMode = Graphics.MODE_NORMAL;
 	
 	//0 ~ 1
 	private float opacity;
@@ -118,6 +120,14 @@ public abstract class Drawable implements IAnimatable, IDrawable {
 	
 	public AlignMode getOrigin() {
 		return origin;
+	}
+
+	public int getDrawMode() {
+		return drawMode;
+	}
+
+	public void setDrawMode(int drawMode) {
+		this.drawMode = drawMode;
 	}
 	
 	public float getRotation() {
@@ -395,7 +405,24 @@ public abstract class Drawable implements IAnimatable, IDrawable {
 		
 		return result;
 	}
-	
+
+	public DrawableEffectResult scaleTo(float scaleX, float scaleY, EasingType type, int duration) {
+		DrawableEffectResult temp = new DrawableEffectResult();
+		DrawableEffectResult result = temp.scaleTo(scaleX, scaleY, type, duration);
+
+		temp.start();
+
+		return result;
+	}
+
+	public DrawableEffectResult scaleToX(float scaleX, EasingType type, int duration) {
+		return scaleTo(scaleX, getScaleY(), type, duration);
+	}
+
+	public DrawableEffectResult scaleToY(float scaleY, EasingType type, int duration) {
+		return scaleTo(scaleY, getScaleY(), type, duration);
+	}
+
 	public DrawableEffectResult moveToRelativeX(float x, EasingType type, int duration) {
 		return moveToRelative(x, 0, type, duration);
 	}
@@ -501,6 +528,43 @@ public abstract class Drawable implements IAnimatable, IDrawable {
 			}, result);
 			
 			return result;
+		}
+
+		public DrawableEffectResult scaleTo(float scaleX, float scaleY, EasingType type, int duration) {
+			DrawableEffectResult result = new DrawableEffectResult();
+
+			float originalScaleX = getScaleX();
+			float originalScaleY = getScaleY();
+
+			addEffectQueue(new DrawEffect(duration) {
+				@Override
+				public void applyAt(long currentTime, Graphics graphics) {
+					float progress = type.convertProgress((float) (currentTime - getStartTime()) / duration);
+
+					setScale(originalScaleX + (scaleX - originalScaleX) * progress, originalScaleY + (scaleY - originalScaleY) * progress);
+				}
+
+				@Override
+				public void onEnded() {
+					setScale(scaleX, scaleY);
+				}
+
+				@Override
+				public void onStart() {
+
+				}
+
+			}, result);
+
+			return result;
+		}
+
+		public DrawableEffectResult scaleToX(float scaleX, EasingType type, int duration) {
+			return scaleTo(scaleX, getScaleY(), type, duration);
+		}
+
+		public DrawableEffectResult scaleToY(float scaleY, EasingType type, int duration) {
+			return scaleTo(scaleY, getScaleY(), type, duration);
 		}
 		
 		public DrawableEffectResult fadeIn(EasingType type, int duration) {

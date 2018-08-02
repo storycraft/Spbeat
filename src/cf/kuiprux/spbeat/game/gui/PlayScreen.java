@@ -108,9 +108,9 @@ public class PlayScreen extends ScreenPreset {
 		List<INote> lastNoteList = getVisibleNoteList(getPlayManager().getCurrentTime() - NOTE_VISIBLE_TIME);
 		for (INote note : lastNoteList){
 			HitStatement hitStatement = getNoteDrawable(note).getHitStatement();
+
 			if (!hitStatement.isCalculated())
 				hitStatement.calculateState(time);
-
 		}
 	}
 
@@ -125,9 +125,11 @@ public class PlayScreen extends ScreenPreset {
 	    List<INote> list = new ArrayList<>();
 
 	    for (BeatList beatList : getBeatmap().getBeatListArray()){
-			float beatTiming = time - beatList.getBeatTime();
-	    	if (Math.abs(beatTiming) <= NOTE_VISIBLE_TIME)
-	    		break;
+			float beatTiming = beatList.getBeatTime() - time;
+			if (beatTiming < -AFTER_VISIBLE_TIME)
+				continue;
+			else if (beatTiming > NOTE_VISIBLE_TIME)
+				break;
 
 	    	for (INote note : beatList.getNoteList()){
 				if (note.isOnScreen(time)) {
@@ -147,10 +149,10 @@ public class PlayScreen extends ScreenPreset {
 	    IMarkerDrawable markerDrawable;
 
 	    if (note instanceof Note){
-            markerDrawable = new MarkerDrawable((Note) note);
+            markerDrawable = new MarkerDrawable((Note) note, getPlayManager());
         }
         else if (note instanceof HoldNote){
-	        markerDrawable = new HoldMarkerDrawable((HoldNote) note);
+	        markerDrawable = new HoldMarkerDrawable((HoldNote) note, getPlayManager());
         }
         else{
 	        return null;

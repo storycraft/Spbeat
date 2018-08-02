@@ -31,7 +31,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 	public Shape() {
 		this(0, 0, 0, 0);
 	}
-	
+
 	@Override
 	public Image getTexture() {
 		return texture;
@@ -102,6 +102,8 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		applyTransform(graphics);
 		
 		org.newdawn.slick.geom.Shape shape = getShape();
+
+		graphics.setDrawMode(getDrawMode());
 		
 		//택스쳐 존재시 택스쳐 사용
 		if (getTexture() != null) {

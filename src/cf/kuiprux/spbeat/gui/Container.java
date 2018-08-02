@@ -80,6 +80,8 @@ public abstract class Container extends Drawable {
 		
 		applyProperties(graphics);
 		applyTransform(graphics);
+
+		graphics.setDrawMode(getDrawMode());
 		drawInternal(graphics);
 		
 		graphics.popTransform();

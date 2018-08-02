@@ -1,5 +1,23 @@
 package cf.kuiprux.spbeat.game.controller;
 
+
+public class SpbeatController extends GameController {
+
+	@Override
+	public void listen() throws Exception {
+		super.listen();
+
+		throw new Exception("구현 되지 않음");
+	}
+
+
+	@Override
+	protected void updateLoop() {
+
+	}
+}
+
+/*
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -47,3 +65,4 @@ public class SpbeatController extends GameController {
 		}
 	}
 }
+*/

@@ -64,6 +64,10 @@ public interface IDrawable {
 
     void setVisible(boolean flag);
 
+    int getDrawMode();
+
+    void setDrawMode(int mode);
+
     float getWidth();
     float getHeight();
 

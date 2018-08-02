@@ -101,6 +101,9 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 		Beatmap map = getBeatmap(getBeatmapPage(), keyIndex);
 
+		if (map == null)
+			return;
+
 		this.selectedMap = map;
 		selectHighlight.getSongTitleText().setText(map.getTitle());
 
