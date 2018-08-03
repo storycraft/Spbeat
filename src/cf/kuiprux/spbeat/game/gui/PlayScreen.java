@@ -91,7 +91,7 @@ public class PlayScreen extends ScreenPreset {
 
 			if (drawable.getHitStatement().isCalculated()) {
 				if (drawable.isLoaded()){
-					getButtonPanel().getButtonAreaAt(note.getNoteIndex()).removeChild(drawable);
+					drawable.expire();
 				}
 
 				continue;
@@ -114,7 +114,7 @@ public class PlayScreen extends ScreenPreset {
 				hitStatement.calculateState(time);
 			}
 
-			if (drawable.isLoaded()){
+			if (!note.isOnScreen(time)){
 				drawable.expire();
 			}
 		}
