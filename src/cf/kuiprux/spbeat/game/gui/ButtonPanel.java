@@ -83,6 +83,8 @@ public class ButtonPanel extends SimpleContainer {
 		
 		applyTransform(graphics);
 		applyProperties(graphics);
+
+		graphics.setDrawMode(getDrawMode().getIntMode());
 		
 		// !! TRICK !! :(
 		graphics.setColor(Color.black);
