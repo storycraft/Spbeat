@@ -1,0 +1,15 @@
+{
+  "name": "An Amazing Map",
+  "description": "This is An Amazing Map!",
+  "song_author": "Smt_Redstoner",
+  "map_author": "Kuiprux",
+  "offset": 65
+  "bpms": [
+    {
+      "bpm": 165,
+      "until": 1687
+    },
+    {
+      "bpm": 135
+    }]
+}

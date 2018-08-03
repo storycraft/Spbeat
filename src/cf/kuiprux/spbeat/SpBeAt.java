@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat;
 
+<<<<<<< HEAD
 import java.util.logging.Level;
 
 import cf.kuiprux.spbeat.game.ResourceManager;
@@ -134,5 +135,21 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	public void onRelease(int keyIndex) {
 		// TODO Auto-generated method stub
 		
+=======
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.SlickException;
+
+public class SpBeAt {
+	
+	public static final String NAME = "SpBeAt";
+	public static final HBWindow WINDOW = new HBWindow(NAME);
+	public static final MapHandler MAP_HANDLER = new MapHandler();
+
+	public static void main(String[] args) throws SlickException {
+		AppGameContainer agc = new AppGameContainer(WINDOW);
+		agc.setDisplayMode(Reference.WIDTH, Reference.HEIGHT, false);
+		agc.setIcons(new String[] { "res/texture/icon16.png", "res/texture/icon32.png" });
+		agc.start();
+>>>>>>> 4cd8f90f07c1c1223eb83603327d8937770b1c11
 	}
 }

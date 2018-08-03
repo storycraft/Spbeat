@@ -20,6 +20,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
 
 bin/
 fumens/
+=======
+/bin/
+>>>>>>> 4cd8f90f07c1c1223eb83603327d8937770b1c11

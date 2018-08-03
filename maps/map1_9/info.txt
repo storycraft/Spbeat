@@ -1,0 +1,4 @@
+name: An Amazing Map
+description: This is An Amazing Map!
+SongAuthor: Smt_Redstoner
+MapAuthor: Kuiprux
