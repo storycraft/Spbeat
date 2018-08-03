@@ -3,6 +3,7 @@ package cf.kuiprux.spbeat.game.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 
 /*테스트용 키보드 컨트롤러
@@ -29,10 +30,10 @@ public class FallbackController extends GameController {
 
 	@Override
 	protected void updateLoop() {
-		while (Keyboard.next()) {
-			boolean pressed = Keyboard.getEventKeyState();
-			convertAndCallEvent(Keyboard.getEventKey(), pressed);
-		}
+			while (Keyboard.next()) {
+				boolean pressed = Keyboard.getEventKeyState();
+				convertAndCallEvent(Keyboard.getEventKey(), pressed);
+			}
 	}
 
 	private void convertAndCallEvent(int charKey, boolean pressed) {

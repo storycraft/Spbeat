@@ -3,6 +3,7 @@ package cf.kuiprux.spbeat.game.gui.marker;
 import cf.kuiprux.spbeat.SpBeAt;
 import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.ResourceManager;
+import cf.kuiprux.spbeat.game.beatmap.INote;
 import cf.kuiprux.spbeat.game.beatmap.Note;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 import cf.kuiprux.spbeat.game.gui.PlayScreen;
@@ -13,8 +14,8 @@ import org.newdawn.slick.*;
 
 public class MarkerDrawable extends FixedContainer implements IMarkerDrawable {
 
-    private HitStatement hitStatement;
-    private Note note;
+    protected HitStatement hitStatement;
+    private INote note;
 
     private Square markerSquare;
     private Square effectSquare;
@@ -22,12 +23,12 @@ public class MarkerDrawable extends FixedContainer implements IMarkerDrawable {
     private SpriteSheet markerSheet;
     private SpriteSheet effectSheet;
 
-    private PlayManager playManager;
+    protected PlayManager playManager;
 
     public int NOTE_SPRITE_ROW = 5;
     public int NOTE_SPRITE_COLUM = 5;
 
-    public MarkerDrawable(Note note, PlayManager playManager){
+    public MarkerDrawable(INote note, PlayManager playManager){
         super(0, 0, 100, 100);
         this.note = note;
         this.hitStatement = new HitStatement(note);
@@ -48,7 +49,7 @@ public class MarkerDrawable extends FixedContainer implements IMarkerDrawable {
         addChild(effectSquare);
     }
 
-    public Note getNote() {
+    public INote getNote() {
         return note;
     }
 
