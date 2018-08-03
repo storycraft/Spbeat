@@ -18,7 +18,7 @@ public class AsyncTask<T> {
     }
 
     public CompletableFuture<T> run() {
-        return CompletableFuture.supplyAsync(supplier);
+        return CompletableFuture.supplyAsync(supplier, executor);
     }
 
     public T getSync() {

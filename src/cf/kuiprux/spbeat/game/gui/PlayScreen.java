@@ -16,8 +16,8 @@ import java.util.Map;
 
 public class PlayScreen extends ScreenPreset {
 
-    private Map<INote, IMarkerDrawable> drawableMap;
-	
+	private Map<INote, IMarkerDrawable> drawableMap;
+
 	private PlayManager playManager;
 	private Beatmap beatmap;
 
@@ -27,7 +27,7 @@ public class PlayScreen extends ScreenPreset {
 
 	public static final int NOTE_VISIBLE_TIME = 750;
 	public static final int AFTER_VISIBLE_TIME = 250;
-	
+
 	public PlayScreen(PlayManager playManager, Beatmap beatmap) {
 		this.playManager = playManager;
 		this.beatmap = beatmap;
@@ -37,7 +37,7 @@ public class PlayScreen extends ScreenPreset {
 		this.shutter = new PlayShutter(this);
 		this.currentCombo = 0;
 	}
-	
+
 	public PlayManager getPlayManager() {
 		return playManager;
 	}
@@ -56,12 +56,12 @@ public class PlayScreen extends ScreenPreset {
 
 	@Override
 	public void onPress(int keyIndex) {
-		
+
 	}
 
 	@Override
 	public void onRelease(int keyIndex) {
-		
+
 	}
 
 	@Override
@@ -102,15 +102,21 @@ public class PlayScreen extends ScreenPreset {
 			}
 		}
 
-		if (noteList.size() <= 0)
+		if (getPlayManager().getCurrentTime() - NOTE_VISIBLE_TIME - AFTER_VISIBLE_TIME < 0)
 			return;
 
-		List<INote> lastNoteList = getVisibleNoteList(getPlayManager().getCurrentTime() - NOTE_VISIBLE_TIME);
+		List<INote> lastNoteList = getVisibleNoteList(getPlayManager().getCurrentTime() - NOTE_VISIBLE_TIME - AFTER_VISIBLE_TIME);
 		for (INote note : lastNoteList){
-			HitStatement hitStatement = getNoteDrawable(note).getHitStatement();
+			IMarkerDrawable drawable = getNoteDrawable(note);
+			HitStatement hitStatement = drawable.getHitStatement();
 
-			if (!hitStatement.isCalculated())
+			if (!hitStatement.isCalculated()) {
 				hitStatement.calculateState(time);
+			}
+
+			if (drawable.isLoaded()){
+				drawable.expire();
+			}
 		}
 	}
 
@@ -122,43 +128,44 @@ public class PlayScreen extends ScreenPreset {
 	}
 
 	protected List<INote> getVisibleNoteList(long time){
-	    List<INote> list = new ArrayList<>();
+		List<INote> list = new ArrayList<>();
 
-	    Beatmap map = getBeatmap();
-	    for (BeatList beatList : map.getBeatListArray()){
-			if (time > beatList.getBeatTime()+map.getBeatTime()*16+AFTER_VISIBLE_TIME)
+		for (BeatList beatList : getBeatmap().getBeatListArray()){
+			float beatTiming = beatList.getBeatTime() - time;
+			if (beatTiming < -AFTER_VISIBLE_TIME)
 				continue;
-			else if (time < beatList.getBeatTime()-NOTE_VISIBLE_TIME)
+			else if (beatTiming > NOTE_VISIBLE_TIME)
 				break;
-	    	for (INote note : beatList.getNoteList()){
+
+			for (INote note : beatList.getNoteList()){
 				if (note.isOnScreen(time)) {
 					list.add(note);
 				}
 			}
 
-        }
+		}
 
-	    return list;
-    }
+		return list;
+	}
 
-    protected IMarkerDrawable getNoteDrawable(INote note){
-	    if (drawableMap.containsKey(note))
-	        return drawableMap.get(note);
+	protected IMarkerDrawable getNoteDrawable(INote note){
+		if (drawableMap.containsKey(note))
+			return drawableMap.get(note);
 
-	    IMarkerDrawable markerDrawable;
+		IMarkerDrawable markerDrawable;
 
-	    if (note instanceof Note){
-            markerDrawable = new MarkerDrawable((Note) note, getPlayManager());
-        }
-        else if (note instanceof HoldNote){
-	        markerDrawable = new HoldMarkerDrawable((HoldNote) note, getPlayManager());
-        }
-        else{
-	        return null;
-        }
+		if (note instanceof Note){
+			markerDrawable = new MarkerDrawable((Note) note, getPlayManager());
+		}
+		else if (note instanceof HoldNote){
+			markerDrawable = new HoldMarkerDrawable((HoldNote) note, getPlayManager());
+		}
+		else{
+			return null;
+		}
 
-        drawableMap.put(note, markerDrawable);
-	    return markerDrawable;
-    }
+		drawableMap.put(note, markerDrawable);
+		return markerDrawable;
+	}
 
 }

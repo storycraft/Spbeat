@@ -46,6 +46,8 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 	private BeatmapSelectBox selectHighlight;
 
+	private Image defaultJacket;
+
 	private Square settingButton;
 	private Square previousButton;
 	private Square nextButton;
@@ -205,16 +207,15 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			this.previousButton.setTexture(new Image(manager.getStream("texture.btn.previous"), "texture.btn.previous", false));
 			this.nextButton.setTexture(new Image(manager.getStream("texture.btn.next"), "texture.btn.next", false));
 			this.playButton.setTexture(new Image(manager.getStream("texture.btn.play"), "texture.btn.play", false));
-		} catch (SlickException e) {
+			this.defaultJacket = new Image(manager.getStream("texture.jacket.default"), "texture.jacket.default", false);
+		} catch (Exception e) {
 			System.out.println("리소스 로드 오류 " + e.getLocalizedMessage());
 		}
-
 
 		getButtonPanel().getButtonAreaAt(SETTINGS).addChild(settingButton);
 		getButtonPanel().getButtonAreaAt(LAST_PAGE).addChild(previousButton);
 		getButtonPanel().getButtonAreaAt(NEXT_PAGE).addChild(nextButton);
 		getButtonPanel().getButtonAreaAt(PLAY).addChild(playButton);
-
 	}
 
 	@Override
@@ -248,7 +249,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			if (map == null)
 				continue;
 
-			BeatmapInfoDrawable infoDrawable = new BeatmapInfoDrawable(map);
+			BeatmapInfoDrawable infoDrawable = new BeatmapInfoDrawable(map, defaultJacket);
 			infoDrawable.setOpacity(0);
 			infoDrawable.fadeIn(EasingType.LINEAR, 500);
 			selectHighlight.setVisible(false);

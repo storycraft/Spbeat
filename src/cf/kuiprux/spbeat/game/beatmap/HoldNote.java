@@ -35,8 +35,7 @@ public class HoldNote implements INote {
 
     @Override
     public boolean isOnScreen(long time) {
-        float timing = getExactTime() - time;
-        return getStartTime() >= time && timing >= -PlayScreen.AFTER_VISIBLE_TIME;
+        return getStartTime() >= time && getExactTime() + PlayScreen.AFTER_VISIBLE_TIME > time;
     }
 
     @Override

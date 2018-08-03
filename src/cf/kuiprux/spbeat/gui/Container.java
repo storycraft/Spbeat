@@ -81,7 +81,7 @@ public abstract class Container extends Drawable {
 		applyProperties(graphics);
 		applyTransform(graphics);
 
-		graphics.setDrawMode(getDrawMode());
+		graphics.setDrawMode(getDrawMode().getIntMode());
 		drawInternal(graphics);
 		
 		graphics.popTransform();
@@ -89,13 +89,17 @@ public abstract class Container extends Drawable {
 		graphics.pushTransform();
 		
 		applyTransform(graphics);
+
+		boolean isMasking = isMasking();
 		
-		if (isMasking())
+		if (isMasking)
 			graphics.setWorldClip(getDrawX(), getDrawY(), getDrawWidth(), getDrawHeight());
 		
 		for (IDrawable child : getChildren())
 			drawChild(graphics, child);
-		
+
+		if (isMasking)
+			graphics.clearWorldClip();
 		graphics.popTransform();
 	}
 	

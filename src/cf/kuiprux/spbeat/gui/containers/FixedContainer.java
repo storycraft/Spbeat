@@ -1,7 +1,6 @@
 package cf.kuiprux.spbeat.gui.containers;
 
 import cf.kuiprux.spbeat.gui.Container;
-import cf.kuiprux.spbeat.gui.element.Shape;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 

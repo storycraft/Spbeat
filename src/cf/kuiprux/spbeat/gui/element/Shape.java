@@ -103,7 +103,7 @@ public abstract class Shape extends Sprite implements IHasTexture {
 		
 		org.newdawn.slick.geom.Shape shape = getShape();
 
-		graphics.setDrawMode(getDrawMode());
+		graphics.setDrawMode(getDrawMode().getIntMode());
 		
 		//택스쳐 존재시 택스쳐 사용
 		if (getTexture() != null) {

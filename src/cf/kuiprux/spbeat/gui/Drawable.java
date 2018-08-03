@@ -27,7 +27,7 @@ public abstract class Drawable implements IAnimatable, IDrawable {
 	private float scaleX;
 	private float scaleY;
 
-	private int drawMode = Graphics.MODE_NORMAL;
+	private DrawMode drawMode;
 	
 	//0 ~ 1
 	private float opacity;
@@ -63,6 +63,7 @@ public abstract class Drawable implements IAnimatable, IDrawable {
 		this.visible = true;
 		
 		this.currentEffectMap = new HashMap<>();
+		this.drawMode = DrawMode.NORMAL;
 	}
 	
 	/*
@@ -122,11 +123,11 @@ public abstract class Drawable implements IAnimatable, IDrawable {
 		return origin;
 	}
 
-	public int getDrawMode() {
+	public DrawMode getDrawMode() {
 		return drawMode;
 	}
 
-	public void setDrawMode(int drawMode) {
+	public void setDrawMode(DrawMode drawMode) {
 		this.drawMode = drawMode;
 	}
 	

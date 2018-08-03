@@ -1,10 +1,7 @@
 package cf.kuiprux.spbeat.gui;
 
-import cf.kuiprux.spbeat.gui.effect.IDrawEffect;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
-
-import java.util.ArrayList;
 
 public interface IDrawable {
     float getX();
@@ -64,9 +61,9 @@ public interface IDrawable {
 
     void setVisible(boolean flag);
 
-    int getDrawMode();
+    DrawMode getDrawMode();
 
-    void setDrawMode(int mode);
+    void setDrawMode(DrawMode mode);
 
     float getWidth();
     float getHeight();

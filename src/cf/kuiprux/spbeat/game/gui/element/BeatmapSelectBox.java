@@ -27,6 +27,8 @@ public class BeatmapSelectBox extends SimpleContainer {
 
         addChild(fadeBox);
         addChild(songTitleText);
+
+        setMasking(true);
     }
 
     @Override

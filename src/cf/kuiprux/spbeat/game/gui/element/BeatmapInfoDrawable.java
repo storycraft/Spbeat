@@ -4,41 +4,64 @@ import cf.kuiprux.spbeat.game.MapManager;
 import cf.kuiprux.spbeat.game.MainThreadExecutor;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.gui.element.Square;
+import cf.kuiprux.spbeat.util.AsyncTask;
 import cf.kuiprux.spbeat.util.IOUtil;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.function.BiConsumer;
 
 public class BeatmapInfoDrawable extends Square {
-    public BeatmapInfoDrawable(Beatmap map){
+
+    private Image defaultJacket;
+
+    public BeatmapInfoDrawable(Beatmap map, Image defaultJacket){
+        this.defaultJacket = defaultJacket;
+
         setLocation(0, 0);
         setSize(101, 101);
 
-        IOUtil.readAsync(MapManager.SONG_PATH.resolve(map.getJacketPath())).run().whenComplete(new BiConsumer<byte[], Throwable>() {
-            @Override
-            public void accept(byte[] bytes, Throwable throwable) {
-                if (throwable != null){
-                    System.out.println("jacket 파일 로드 에러 " + throwable.getLocalizedMessage());
-                    setColor(Color.magenta);
+        setColor(Color.white);
 
-                    return;
+        Path path = MapManager.SONG_PATH.resolve(map.getJacketPath());
+
+        new AsyncTask<>(new AsyncTask.AsyncCallable<Void>() {
+            @Override
+            public Void get() {
+                if (!path.toFile().isFile()){
+                    setDefault();
+                    return null;
                 }
 
-                ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
+                try {
+                    byte[] bytes = await(IOUtil.readAsync(MapManager.SONG_PATH.resolve(map.getJacketPath())));
 
-                MainThreadExecutor.addTask(() -> {
-                    try {
-                        setTexture(new Image(stream, map.getJacketPath(), false));
-                    } catch (SlickException e) {
-                        System.out.println("jacket 로드 에러 " + e.getLocalizedMessage());
-                    }
+                    ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
+                    MainThreadExecutor.addTask(() -> {
+                        try {
+                            setTexture(new Image(stream, map.getJacketPath(), false));
+                        } catch (SlickException e) {
+                            System.out.println(map.getJacketPath() + " 자켓 로드 오류 " + e.getLocalizedMessage());
+                            setDefault();
+                        }
                     });
+                } catch (Exception e) {
+                    System.out.println(map.getJacketPath() + " 자켓 로드 오류 " + e.getLocalizedMessage());
+                    setDefault();
+                }
 
-                setColor(Color.white);
+                return null;
             }
-        });
+        }).run();
+    }
+
+    private void setDefault(){
+        if (defaultJacket != null)
+            setTexture(defaultJacket);
+        else
+            setColor(Color.magenta);
     }
 }

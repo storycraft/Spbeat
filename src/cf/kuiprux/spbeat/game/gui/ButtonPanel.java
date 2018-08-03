@@ -78,7 +78,7 @@ public class ButtonPanel extends SimpleContainer {
 	@Override
 	public void draw(Graphics graphics) {
 		super.draw(graphics);
-		
+
 		graphics.pushTransform();
 		
 		applyTransform(graphics);
@@ -89,7 +89,7 @@ public class ButtonPanel extends SimpleContainer {
 		
 		float drawX = getDrawX();
 		float drawY = getDrawY();
-		
+
 		//가로 구분선
 		for (int x = 1; x < getRowCount(); x++) {
 			graphics.fillRect(drawX + getButtonPosX(x) - getButtonGapColumn(), drawY, getButtonGapColumn(), getDrawHeight());

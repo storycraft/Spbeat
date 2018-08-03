@@ -29,8 +29,7 @@ public class ResourceLoader implements Loader {
                 manager.add("texture.marker.default", texturePath.resolve("marker_square.png"));
                 manager.add("texture.marker.start", texturePath.resolve("kokokara.png"));
                 manager.add("texture.marker.effect.default", texturePath.resolve("marker3.jpg"));
-                manager.add("texture.jacket.default", texturePath.resolve("defaultjacket.png"));
-
+                manager.add("texture.jacket.default", texturePath.resolve("defaultjacket.jpg"));
 
                 return null;
             }

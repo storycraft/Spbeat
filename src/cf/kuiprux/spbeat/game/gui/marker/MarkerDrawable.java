@@ -1,12 +1,12 @@
 package cf.kuiprux.spbeat.game.gui.marker;
 
-import cf.kuiprux.spbeat.SpBeAt;
 import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.ResourceManager;
 import cf.kuiprux.spbeat.game.beatmap.Note;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 import cf.kuiprux.spbeat.game.gui.PlayScreen;
 import cf.kuiprux.spbeat.game.gui.marker.hit.HitStatement;
+import cf.kuiprux.spbeat.gui.DrawMode;
 import cf.kuiprux.spbeat.gui.containers.FixedContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 import org.newdawn.slick.*;
@@ -42,7 +42,7 @@ public class MarkerDrawable extends FixedContainer implements IMarkerDrawable {
         markerSquare.setColor(Color.white);
         effectSquare.setColor(Color.white);
 
-        effectSquare.setDrawMode(Graphics.MODE_ADD);
+        effectSquare.setDrawMode(DrawMode.ADD);
 
         addChild(markerSquare);
         addChild(effectSquare);

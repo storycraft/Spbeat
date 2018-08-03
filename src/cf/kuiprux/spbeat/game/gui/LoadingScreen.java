@@ -47,7 +47,8 @@ public class LoadingScreen extends ScreenPreset {
 					fontLoader.loadAll(FontLoader.FONT_RES_PATH).run()).whenComplete(new BiConsumer<Void, Throwable>() {
 				@Override
 				public void accept(Void aVoid, Throwable throwable) {
-					System.out.println(throwable);
+					if (throwable != null)
+						System.out.println(throwable);
 					MainThreadExecutor.addTask(() -> getScreenManager().setCurrentScreen(new BeatmapSelectScreen(getGame().getMapManager())));
 				}
 			});

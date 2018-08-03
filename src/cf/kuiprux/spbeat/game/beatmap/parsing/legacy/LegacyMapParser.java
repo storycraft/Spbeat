@@ -98,7 +98,7 @@ public class LegacyMapParser {
 
 					if (token.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER || token.getTokenType() == LegacyMapLexer.TokenType.TIME_CHARACTER){
 						float beatTime = getBeatTime(optionMap);
-						float time = getSync(optionMap) + beatTime*16 * noteLine;
+						float time = getSync(optionMap) + beatTime * 16 * noteLine;
 						if (token.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER){
 							time += beatTime * (timingVarMap.get(token.getValue()));
 						}
@@ -109,7 +109,7 @@ public class LegacyMapParser {
 					}
 					else if (token.getTokenType() == LegacyMapLexer.TokenType.HOLD_SLIDER){
 						float beatTime = getBeatTime(optionMap);
-						float startTime = getSync(optionMap) + beatTime * noteLine;
+						float startTime = getSync(optionMap) + beatTime * 16 * noteLine;
 						//홀드 마커 방향
 						int dx = 0;
 						int dy = 0;
@@ -170,10 +170,10 @@ public class LegacyMapParser {
 						}
 
 						if (endToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER){
-							length = beatTime * timingVarMap.get(endToken.getValue()) / NOTE_COUNT;
+							length = beatTime * timingVarMap.get(endToken.getValue());
 						}
 						else if (endToken.getTokenType() == LegacyMapLexer.TokenType.TIME_CHARACTER) {
-							length = beatTime * getTimingNumber(endToken) / NOTE_COUNT;
+							length = beatTime * getTimingNumber(endToken);
 						}
 
 						noteList.add(new HoldNote(noteIndex, noteIndex + xOffset + yOffset * NOTE_ROW, startTime, startTime + length));
