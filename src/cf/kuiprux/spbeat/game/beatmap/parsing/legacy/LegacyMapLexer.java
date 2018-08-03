@@ -56,6 +56,7 @@ public class LegacyMapLexer {
 							buffer = "";
 						}
 						localTokenList.add(new Token(TokenType.BEAT_SEPARATOR, c + ""));
+						break; // If there's a beat separator, skip that line. Unless, the beatlist will be added according to this characters' count.
 					} else if (c == LegacyMapParser.BLANK) {
 						if (buffer != "") {
 							localTokenList.add(new Token(TokenType.IDENTIFIER, buffer));

@@ -50,7 +50,7 @@ public class LegacyMapParser {
 				if (token.getTokenType() == LegacyMapLexer.TokenType.ANNOTATION)
 					break;
 
-					//옵션 파싱
+				//옵션 파싱
 				else if (token.getTokenType() == LegacyMapLexer.TokenType.EQUALS){
 					if (lastToken != null && nextToken != null && lastToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER
 							&& nextToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER){
@@ -81,15 +81,15 @@ public class LegacyMapParser {
 
 				//비트 나누기
 				else if (token.getTokenType() == LegacyMapLexer.TokenType.BEAT_SEPARATOR){
-					noteLine++;
 					noteIndex = 0;
 
-					float tempo = getCurrentTempo(optionMap);
-					float time = getSync(optionMap) + tempo * noteLine;
+					float beatTime = getBeatTime(optionMap);
+					float time = getSync(optionMap) + beatTime*16 * noteLine;
 
 					beatListArray.add(new BeatList(time, noteList));
-
+					
 					noteList = new ArrayList<>();
+					noteLine++;
 				}
 
 				//시간 & 빈문자 처리
@@ -97,20 +97,19 @@ public class LegacyMapParser {
 						|| token.getTokenType() == LegacyMapLexer.TokenType.HOLD_SLIDER){
 
 					if (token.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER || token.getTokenType() == LegacyMapLexer.TokenType.TIME_CHARACTER){
-						float tempo = getCurrentTempo(optionMap);
-						float time = getSync(optionMap) + tempo * noteLine;
+						float beatTime = getBeatTime(optionMap);
+						float time = getSync(optionMap) + beatTime*16 * noteLine;
 						if (token.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER){
-							time += tempo * (timingVarMap.get(token.getValue()) / NOTE_COUNT);
+							time += beatTime * (timingVarMap.get(token.getValue()));
 						}
 						else if (token.getTokenType() == LegacyMapLexer.TokenType.TIME_CHARACTER) {
-							time += tempo * ((float) getTimingNumber(token) / NOTE_COUNT);
+							time += beatTime * ((float) getTimingNumber(token));
 						}
-
 						noteList.add(new Note(noteIndex, time));
 					}
 					else if (token.getTokenType() == LegacyMapLexer.TokenType.HOLD_SLIDER){
-						float tempo = getCurrentTempo(optionMap);
-						float startTime = getSync(optionMap) + tempo * noteLine;
+						float beatTime = getBeatTime(optionMap);
+						float startTime = getSync(optionMap) + beatTime * noteLine;
 						//홀드 마커 방향
 						int dx = 0;
 						int dy = 0;
@@ -171,10 +170,10 @@ public class LegacyMapParser {
 						}
 
 						if (endToken.getTokenType() == LegacyMapLexer.TokenType.IDENTIFIER){
-							length = tempo * (timingVarMap.get(endToken.getValue()) / NOTE_COUNT);
+							length = beatTime * timingVarMap.get(endToken.getValue()) / NOTE_COUNT;
 						}
 						else if (endToken.getTokenType() == LegacyMapLexer.TokenType.TIME_CHARACTER) {
-							length = tempo * ((float) getTimingNumber(endToken) / NOTE_COUNT);
+							length = beatTime * getTimingNumber(endToken) / NOTE_COUNT;
 						}
 
 						noteList.add(new HoldNote(noteIndex, noteIndex + xOffset + yOffset * NOTE_ROW, startTime, startTime + length));
@@ -198,7 +197,7 @@ public class LegacyMapParser {
 		String songPath = getSongPath(optionMap);
 		String jacketPath = getJacketPath(optionMap);
 		float diff = getDifficulty(optionMap);
-		float tempo = getCurrentTempo(optionMap);
+		float beatTime = getBeatTime(optionMap);
 
 		if (songPath == null)
 			throw new Exception("Song path is not exist");
@@ -216,7 +215,7 @@ public class LegacyMapParser {
 		}
 		*/
 
-		Beatmap map = new Beatmap(title, artist, songPath, jacketPath, tempo, diff, beatListArray);
+		Beatmap map = new Beatmap(title, artist, songPath, jacketPath, beatTime, diff, beatListArray);
 
 		return map;
 
@@ -238,7 +237,11 @@ public class LegacyMapParser {
 	}
 
 	private float getSync(Map<String, String> optionMap){
-		return Float.parseFloat(optionMap.getOrDefault("r", "0"));
+		return Float.parseFloat(optionMap.getOrDefault("o", "0"));
+	}
+	
+	private float getBeatTime(Map<String, String> optionMap) {
+		return 60000/(getCurrentTempo(optionMap)*4);
 	}
 
 	private float getDifficulty(Map<String, String> optionMap){

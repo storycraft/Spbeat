@@ -24,8 +24,7 @@ public class Note implements INote {
 
 	@Override
 	public boolean isOnScreen(long time) {
-		float timing = getExactTime() - time;
-		return timing <= PlayScreen.NOTE_VISIBLE_TIME && timing >= -PlayScreen.AFTER_VISIBLE_TIME;
+		return getExactTime()-PlayScreen.NOTE_VISIBLE_TIME <= time && time <= getExactTime()+PlayScreen.AFTER_VISIBLE_TIME;
 	}
 
 	@Override

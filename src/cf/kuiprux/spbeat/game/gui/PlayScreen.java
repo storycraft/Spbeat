@@ -124,13 +124,12 @@ public class PlayScreen extends ScreenPreset {
 	protected List<INote> getVisibleNoteList(long time){
 	    List<INote> list = new ArrayList<>();
 
-	    for (BeatList beatList : getBeatmap().getBeatListArray()){
-			float beatTiming = beatList.getBeatTime() - time;
-			if (beatTiming < -AFTER_VISIBLE_TIME)
+	    Beatmap map = getBeatmap();
+	    for (BeatList beatList : map.getBeatListArray()){
+			if (time > beatList.getBeatTime()+map.getBeatTime()*16+AFTER_VISIBLE_TIME)
 				continue;
-			else if (beatTiming > NOTE_VISIBLE_TIME)
+			else if (time < beatList.getBeatTime()-NOTE_VISIBLE_TIME)
 				break;
-
 	    	for (INote note : beatList.getNoteList()){
 				if (note.isOnScreen(time)) {
 					list.add(note);
