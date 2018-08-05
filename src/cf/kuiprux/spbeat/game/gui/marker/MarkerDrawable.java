@@ -75,6 +75,11 @@ public class MarkerDrawable extends FixedContainer implements IMarkerDrawable {
         return getNote().isOnScreen(time);
     }
 
+    @Override
+    public void click(long time) {
+
+    }
+
     public int getTextureIndex(long time){
         int totaltime = PlayScreen.AFTER_VISIBLE_TIME + PlayScreen.NOTE_VISIBLE_TIME;
         float startTime = getNote().getExactTime() - PlayScreen.NOTE_VISIBLE_TIME;

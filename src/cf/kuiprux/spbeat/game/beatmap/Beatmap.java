@@ -61,6 +61,13 @@ public class Beatmap {
 		return false;
 	}
 
+	public int getFirstNoteIndex(){
+		if (getBeatListArray().isEmpty())
+			return -1;
+
+		return getBeatListArray().get(0).getNoteList().get(0).getNoteIndex();
+	}
+
 	public List<BeatList> getBeatListArray() {
 		return new ArrayList<>(beatListArray);
 	}

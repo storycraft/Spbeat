@@ -163,4 +163,9 @@ public class HoldMarkerDrawable extends Container implements IMarkerDrawable {
     public boolean isOnScreen(long time) {
         return getNote().isOnScreen(time);
     }
+
+    @Override
+    public void click(long time) {
+
+    }
 }

@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat.game.gui;
 
+import cf.kuiprux.spbeat.game.MainThreadExecutor;
 import cf.kuiprux.spbeat.game.MapManager;
 import cf.kuiprux.spbeat.game.ResourceManager;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
@@ -133,7 +134,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 				case PLAY:
 					if (getSelectedMap() != null){
 						clear();
-						getScreenManager().setCurrentScreen(new PlayScreen(getGame().getPlayManager(), getSelectedMap()));
+						MainThreadExecutor.addTask(() -> getScreenManager().setCurrentScreen(new PlayScreen(getGame().getPlayManager(), getSelectedMap())));
 					}
 					break;
 			}

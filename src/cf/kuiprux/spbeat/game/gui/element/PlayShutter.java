@@ -8,6 +8,8 @@ import cf.kuiprux.spbeat.gui.containers.FixedContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 import cf.kuiprux.spbeat.gui.element.Text;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 public class PlayShutter extends FixedContainer {
 
@@ -32,6 +34,9 @@ public class PlayShutter extends FixedContainer {
         comboText.setOrigin(AlignMode.CENTRE);
         comboText.setColor(Color.gray);
 
+        shutterTop.setColor(Color.white);
+        shutterBottom.setColor(Color.white);
+
         addChild(shutterTop);
         addChild(shutterBottom);
 
@@ -43,6 +48,14 @@ public class PlayShutter extends FixedContainer {
         super.onLoaded();
 
         SpBeAt game = getPlayScreen().getGame();
+
+        try {
+            Image shutter = new Image(game.getResourceManager().getStream("texture.shutter.default"), "texture.shutter.default" , false);
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+
+
 
         shutterTop.setLocation(0, 0);
         shutterTop.setSize(getWidth(), getHeight() / 2);
@@ -64,13 +77,16 @@ public class PlayShutter extends FixedContainer {
     }
 
     protected void updateShutter() {
-
+        int combo = getPlayScreen().getCurrentCombo();
     }
 
     protected void updateComboText(){
         int combo = getPlayScreen().getCurrentCombo();
 
-        if (combo != lastCombo)
+        if (combo <= 0){
+            comboText.setText("");
+        }
+        else if (combo != lastCombo)
             comboText.setText(combo + "");
 
         if (combo > lastCombo){

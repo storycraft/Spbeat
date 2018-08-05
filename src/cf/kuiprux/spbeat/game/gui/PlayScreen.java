@@ -7,8 +7,13 @@ import cf.kuiprux.spbeat.game.gui.marker.HoldMarkerDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.IMarkerDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.MarkerDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.hit.HitStatement;
+import cf.kuiprux.spbeat.gui.element.Square;
+import org.lwjgl.Sys;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +28,8 @@ public class PlayScreen extends ScreenPreset {
 
 	private PlayShutter shutter;
 
+	private Square firstNote;
+
 	private int currentCombo;
 
 	public static final int NOTE_VISIBLE_TIME = 750;
@@ -35,6 +42,7 @@ public class PlayScreen extends ScreenPreset {
 		this.drawableMap = new HashMap<>();
 
 		this.shutter = new PlayShutter(this);
+		this.firstNote = new Square(0, 0, ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
 		this.currentCombo = 0;
 	}
 
@@ -71,6 +79,18 @@ public class PlayScreen extends ScreenPreset {
 		shutter.setLocation(0, 0);
 		shutter.setSize(getButtonPanel().getBackground().getWidth(), getButtonPanel().getBackground().getHeight());
 
+		try {
+			firstNote.setTexture(new Image(getGame().getResourceManager().getStream("texture.marker.start"), "texture.marker.start", false));
+		} catch (SlickException e) {
+			System.out.println("텍스쳐 texture.marker.start 로드가 실패 했습니다.");
+		}
+
+		firstNote.setColor(Color.white);
+
+		int index = getBeatmap().getFirstNoteIndex();
+		if (index != -1)
+			getButtonPanel().getButtonAreaAt(index).addChild(firstNote);
+
 		getButtonPanel().getBackground().addChild(shutter);
 
 		play();
@@ -85,6 +105,10 @@ public class PlayScreen extends ScreenPreset {
 	protected void update(int delta) {
 		long time = getPlayManager().getCurrentTime();
 		List<INote> noteList = getVisibleNoteList(time);
+
+		if (firstNote.isLoaded() && !noteList.isEmpty()){
+			firstNote.expire();
+		}
 
 		for (INote note : noteList){
 			IMarkerDrawable drawable = getNoteDrawable(note);
