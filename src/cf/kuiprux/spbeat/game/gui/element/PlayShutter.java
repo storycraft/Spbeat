@@ -13,8 +13,8 @@ import org.newdawn.slick.SlickException;
 
 public class PlayShutter extends FixedContainer {
 
-    public static final int SHUTTER_OPEN = 50;
     public static final float SHUTTER_VIB = 1f;
+    public static final float COMBO_SCALE = 1.125f;
 
     private PlayScreen playScreen;
 
@@ -23,6 +23,7 @@ public class PlayShutter extends FixedContainer {
     private Text comboText;
 
     private int lastCombo;
+    private int maxCombo;
 
     public PlayShutter(PlayScreen playScreen) {
         this.playScreen = playScreen;
@@ -62,6 +63,8 @@ public class PlayShutter extends FixedContainer {
             System.out.println("택스쳐 texture.shutter 로드가 실패 했습니다");
         }
 
+        this.maxCombo = getPlayScreen().getBeatmap().getNoteCount();
+
         //픽셀 오차값 1 더함
         shutterTop.setLocation(0, -SHUTTER_VIB + 1);
         shutterTop.setSize(getWidth(), getHeight() / 2 + SHUTTER_VIB - 1);
@@ -84,8 +87,8 @@ public class PlayShutter extends FixedContainer {
 
     protected void updateShutter() {
         int combo = getPlayScreen().getCurrentCombo();
-        float shutterPercent = getShutterPercent(combo);
-        float beatInterval = (60 / getPlayScreen().getBeatmap().getBeatTime()) * 500;
+        float shutterPercent = getShutterPercent(combo, maxCombo);
+        float beatInterval = (60 / getPlayScreen().getBeatmap().getBeatTime()) * 666;
         float shutterBeat = (float) Math.sin((((getPlayScreen().getPlayManager().getCurrentTime()) % beatInterval) / beatInterval) * Math.PI * 2) * SHUTTER_VIB;
 
         shutterTop.moveToY(-shutterTop.getHeight() * shutterPercent + shutterBeat, EasingType.LINEAR, 10);
@@ -102,14 +105,14 @@ public class PlayShutter extends FixedContainer {
             comboText.setText(combo + "");
 
         if (combo > lastCombo){
-            comboText.scaleTo(1.15f, 1.15f, EasingType.EASE_IN_QUAD, 75).scaleTo(1f, 1f, EasingType.EASE_OUT_QUAD, 50);
+            comboText.scaleTo(COMBO_SCALE, COMBO_SCALE, EasingType.EASE_IN_QUAD, 100).scaleTo(1f, 1f, EasingType.EASE_OUT_QUAD, 75);
         }
 
         lastCombo = combo;
     }
 
-    public float getShutterPercent(int combo){
-        return Math.min(((float) combo) / SHUTTER_OPEN, 1);
+    public float getShutterPercent(int combo, int maxCombo){
+        return Math.min(((float) combo) / (maxCombo / 2), 1);
     }
 
     public PlayScreen getPlayScreen() {

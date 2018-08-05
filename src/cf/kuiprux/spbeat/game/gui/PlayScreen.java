@@ -169,8 +169,6 @@ public class PlayScreen extends ScreenPreset {
 	}
 
 	protected void onFinished() {
-		getPlayManager().stop();
-
 		getScreenManager().setCurrentScreen(new BeatmapSelectScreen(getGame().getMapManager()));
 	}
 
@@ -185,7 +183,7 @@ public class PlayScreen extends ScreenPreset {
 		while ((lastBeatList = beatListList.get(beatListList.size() - i++)).getNoteList().size() <= 0);
 
 		List<INote> noteList = lastBeatList.getNoteList();
-		if (time > noteList.get(noteList.size() - 1).getExactTime() + AFTER_VISIBLE_TIME)
+		if (time > noteList.get(noteList.size() - 1).getExactTime() + AFTER_VISIBLE_TIME + 2000)
 			return true;
 
 		return false;

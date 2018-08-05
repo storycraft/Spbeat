@@ -78,6 +78,14 @@ public class Beatmap {
 		return new ArrayList<>(beatListArray);
 	}
 
+	public int getNoteCount() {
+		int count = 0;
+		for (int i = 0; i < beatListArray.size(); i++)
+			count += beatListArray.get(i).getNoteList().size();
+
+		return count;
+	}
+
 	public float getSync() {
 		return sync;
 	}
