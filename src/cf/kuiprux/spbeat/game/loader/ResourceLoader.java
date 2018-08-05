@@ -30,7 +30,8 @@ public class ResourceLoader implements Loader {
                 manager.add("texture.marker.start", texturePath.resolve("kokokara.png"));
                 manager.add("texture.marker.effect.default", texturePath.resolve("marker3.jpg"));
                 manager.add("texture.jacket.default", texturePath.resolve("defaultjacket.jpg"));
-                manager.add("texture.shutter.default", texturePath.resolve("bg_shutter.jpg"));
+                manager.add("texture.shutter.top", texturePath.resolve("bg_shutter_top.jpg"));
+                manager.add("texture.shutter.bottom", texturePath.resolve("bg_shutter_bottom.jpg"));
 
                 return null;
             }

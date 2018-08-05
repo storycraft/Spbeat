@@ -198,6 +198,7 @@ public class LegacyMapParser {
 		String jacketPath = getJacketPath(optionMap);
 		float diff = getDifficulty(optionMap);
 		float beatTime = getBeatTime(optionMap);
+		float sync = getSync(optionMap);
 
 		if (songPath == null)
 			throw new Exception("Song path is not exist");
@@ -215,7 +216,7 @@ public class LegacyMapParser {
 		}
 		*/
 
-		Beatmap map = new Beatmap(title, artist, songPath, jacketPath, beatTime, diff, beatListArray);
+		Beatmap map = new Beatmap(title, artist, songPath, jacketPath, beatTime, sync, diff, beatListArray);
 
 		return map;
 

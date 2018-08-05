@@ -5,15 +5,16 @@ import cf.kuiprux.spbeat.game.ResourceManager;
 import cf.kuiprux.spbeat.game.beatmap.Note;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 import cf.kuiprux.spbeat.game.gui.PlayScreen;
-import cf.kuiprux.spbeat.game.gui.marker.hit.HitStatement;
+import cf.kuiprux.spbeat.game.gui.marker.hit.IHitStatement;
+import cf.kuiprux.spbeat.game.gui.marker.hit.NoteHitStatement;
 import cf.kuiprux.spbeat.gui.DrawMode;
 import cf.kuiprux.spbeat.gui.containers.FixedContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 import org.newdawn.slick.*;
 
-public class MarkerDrawable extends FixedContainer implements IMarkerDrawable {
+public class NoteDrawable extends FixedContainer implements INoteDrawable {
 
-    private HitStatement hitStatement;
+    private IHitStatement hitStatement;
     private Note note;
 
     private Square markerSquare;
@@ -27,10 +28,10 @@ public class MarkerDrawable extends FixedContainer implements IMarkerDrawable {
     public int NOTE_SPRITE_ROW = 5;
     public int NOTE_SPRITE_COLUM = 5;
 
-    public MarkerDrawable(Note note, PlayManager playManager){
+    public NoteDrawable(Note note, PlayManager playManager){
         super(0, 0, 100, 100);
         this.note = note;
-        this.hitStatement = new HitStatement(note);
+        this.hitStatement = new NoteHitStatement(note);
         this.playManager = playManager;
 
         this.markerSquare = new Square(0, 0);
@@ -66,7 +67,7 @@ public class MarkerDrawable extends FixedContainer implements IMarkerDrawable {
     }
 
     @Override
-    public HitStatement getHitStatement() {
+    public IHitStatement getHitStatement() {
         return hitStatement;
     }
 

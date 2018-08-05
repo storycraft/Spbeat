@@ -3,6 +3,7 @@ package cf.kuiprux.spbeat.gui.containers;
 import cf.kuiprux.spbeat.gui.Container;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 
 public class FixedContainer extends Container {
 
@@ -15,8 +16,8 @@ public class FixedContainer extends Container {
     }
 
     public FixedContainer(float x, float y, float width, float height){
-        this();
         setLocation(x, y);
+        setSize(width, height);
     }
 
     @Override
@@ -58,6 +59,7 @@ public class FixedContainer extends Container {
 
     @Override
     public Rectangle getBoundingBox() {
-        return new Rectangle(getDrawX(), getDrawY(), getDrawWidth(), getDrawHeight());
+        Shape shape = new Rectangle(getDrawX(), getDrawY(), getDrawWidth(), getDrawHeight()).transform(getTransformData().getSlickTransform());
+        return new Rectangle(shape.getMinX(), shape.getMinY(), shape.getWidth(), shape.getHeight());
     }
 }

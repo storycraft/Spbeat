@@ -9,19 +9,22 @@ public class Beatmap {
 	private String artist;
 	private String songPath;
 	private String jacketPath;
+
+	private float sync;
 	
 	private float beatTime;
 	private float difficulty;
 	
 	private List<BeatList> beatListArray;
 	
-	public Beatmap(String title, String artist, String songPath, String jacketPath, float beatTime, float difficulty, List<BeatList> beatListArray) {
+	public Beatmap(String title, String artist, String songPath, String jacketPath, float beatTime, float sync, float difficulty, List<BeatList> beatListArray) {
 		this.title = title;
 		this.artist = artist;
 		this.songPath = songPath;
 		this.jacketPath = jacketPath;
 		this.beatTime = beatTime;
 		this.difficulty = difficulty;
+		this.sync = sync;
 		
 		this.beatListArray = beatListArray;
 	}
@@ -61,14 +64,21 @@ public class Beatmap {
 		return false;
 	}
 
-	public int getFirstNoteIndex(){
-		if (getBeatListArray().isEmpty())
-			return -1;
+	public INote getFirstNote(){
+		for (BeatList beatList : beatListArray){
+			for (INote note : beatList.getNoteList()) {
+				return note;
+			}
+		}
 
-		return getBeatListArray().get(0).getNoteList().get(0).getNoteIndex();
+		return null;
 	}
 
 	public List<BeatList> getBeatListArray() {
 		return new ArrayList<>(beatListArray);
+	}
+
+	public float getSync() {
+		return sync;
 	}
 }

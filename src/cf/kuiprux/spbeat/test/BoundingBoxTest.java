@@ -3,6 +3,7 @@ package cf.kuiprux.spbeat.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import cf.kuiprux.spbeat.gui.IDrawable;
+import cf.kuiprux.spbeat.gui.containers.FixedContainer;
 import org.junit.jupiter.api.Test;
 
 import org.newdawn.slick.Color;
@@ -47,15 +48,24 @@ public class BoundingBoxTest extends SimpleGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		super.init(container);
-		
+
 		Container testContainer = new SimpleContainer();
+		Container fixed = new FixedContainer(0, 0, 200, 200);
 		
 		movingBox = new Square();
 		
 		movingBox.setLocation(0, 0);
 		movingBox.setWidth(100);
 		movingBox.setHeight(100);
-		
+
+		Square staticBox = new Square();
+
+		staticBox.setLocation(0, 0);
+		staticBox.setWidth(100);
+		staticBox.setHeight(100);
+
+		staticBox.setColor(Color.gray);
+
 		movingBox.setColor(Color.magenta);
 		movingBox.setOrigin(AlignMode.CENTRE);
 		movingBox.setRotation(50f);
@@ -71,16 +81,23 @@ public class BoundingBoxTest extends SimpleGame {
 		box2.setAnchor(AlignMode.CENTRE);
 
 		testContainer.setLocation(100, 100);
+		fixed.setLocation(300, 300);
 		
 		testContainer.addChild(movingBox);
 		testContainer.addChild(box2);
-		
+
+		fixed.addChild(staticBox);
+
+		addChild(fixed);
 		addChild(testContainer);
 		
 		onLoaded();
-		
+
 		System.out.println(testContainer.getX() + " " + testContainer.getY());
 		System.out.println(testContainer.getWidth() + " " + testContainer.getHeight());
+
+		System.out.println(fixed.getX() + " " + fixed.getY());
+		System.out.println(fixed.getWidth() + " " + fixed.getHeight());
 	}
 
 	//업데이트 함수

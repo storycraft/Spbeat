@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cf.kuiprux.spbeat.gui.*;
+import cf.kuiprux.spbeat.gui.containers.FixedContainer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -13,7 +14,7 @@ import cf.kuiprux.spbeat.gui.containers.SimpleContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 
 // 4x4 크기의 사각형 버튼 셋
-public class ButtonPanel extends SimpleContainer {
+public class ButtonPanel extends FixedContainer {
 	
 	public static final int BUTTON_WIDTH = 100;
 	public static final int BUTTON_HEIGHT = 100;
@@ -36,6 +37,8 @@ public class ButtonPanel extends SimpleContainer {
 		addInternal(background = new BackgroundContainer());
 		
 		setLocation(85.5f, 285.5f);
+		setSize((BUTTON_WIDTH + BUTTON_GAP_X) * COLUMN - BUTTON_GAP_X, (BUTTON_HEIGHT + BUTTON_GAP_Y) * ROW - BUTTON_GAP_Y);
+
 		setMasking(true);
 		
 		for (int y = 0; y < getRowCount(); y++) {
@@ -68,6 +71,9 @@ public class ButtonPanel extends SimpleContainer {
 	}
 
 	public ButtonArea getButtonAreaAt(int index) {
+		if (index >= ROW * COLUMN || index < 0)
+			return null;
+
 		return buttonList.get(index);
 	}
 	
@@ -257,7 +263,7 @@ public class ButtonPanel extends SimpleContainer {
 			if (child == backgroundSquare)
 				return false;
 			
-			return removeChild(child);
+			return super.removeChild(child);
 		}
 
 		@Override

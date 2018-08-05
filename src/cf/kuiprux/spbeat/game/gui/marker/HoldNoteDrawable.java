@@ -4,25 +4,23 @@ import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.beatmap.HoldNote;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 import cf.kuiprux.spbeat.game.gui.PlayScreen;
-import cf.kuiprux.spbeat.game.gui.marker.hit.HitStatement;
+import cf.kuiprux.spbeat.game.gui.marker.hit.HoldNoteHitStatement;
+import cf.kuiprux.spbeat.game.gui.marker.hit.IHitStatement;
 import cf.kuiprux.spbeat.gui.AlignMode;
 import cf.kuiprux.spbeat.gui.Container;
-import cf.kuiprux.spbeat.gui.containers.FixedContainer;
-import cf.kuiprux.spbeat.gui.containers.SimpleContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 import cf.kuiprux.spbeat.gui.element.Triangle;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 
-public class HoldMarkerDrawable extends Container implements IMarkerDrawable {
+public class HoldNoteDrawable extends Container implements INoteDrawable {
 
     public static final float LINE_WIDTH = 10;
 
     private HoldNote note;
-    private HitStatement hitStatement;
+    private IHitStatement hitStatement;
 
     private Triangle sliderArrow;
     private Square sliderLine;
@@ -30,9 +28,9 @@ public class HoldMarkerDrawable extends Container implements IMarkerDrawable {
 
     private PlayManager playManager;
 
-    public HoldMarkerDrawable(HoldNote note, PlayManager playManager){
+    public HoldNoteDrawable(HoldNote note, PlayManager playManager){
         this.note = note;
-        this.hitStatement = new HitStatement(note);
+        this.hitStatement = new HoldNoteHitStatement(note);
         this.playManager = playManager;
 
         int sx = note.getStartIndex() % ButtonPanel.COLUMN;
@@ -87,8 +85,6 @@ public class HoldMarkerDrawable extends Container implements IMarkerDrawable {
     @Override
     public void onLoaded(){
         super.onLoaded();
-
-        System.out.println(getWidth() + " " + getHeight());
     }
 
     @Override
@@ -155,7 +151,7 @@ public class HoldMarkerDrawable extends Container implements IMarkerDrawable {
     }
 
     @Override
-    public HitStatement getHitStatement() {
+    public IHitStatement getHitStatement() {
         return hitStatement;
     }
 
