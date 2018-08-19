@@ -65,9 +65,11 @@ public class Beatmap {
 	}
 
 	public INote getFirstNote(){
+		INote firstNote = null;
 		for (BeatList beatList : beatListArray){
 			for (INote note : beatList.getNoteList()) {
-				return note;
+				if (firstNote == null || firstNote.getExactTime() > note.getExactTime())
+					firstNote = note;
 			}
 		}
 
