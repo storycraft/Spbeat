@@ -3,7 +3,7 @@ package cf.kuiprux.spbeat.game.gui.marker;
 import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.beatmap.HoldNote;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
-import cf.kuiprux.spbeat.game.gui.PlayScreen;
+import cf.kuiprux.spbeat.game.play.PlayScreen;
 import cf.kuiprux.spbeat.game.gui.marker.hit.HoldNoteHitStatement;
 import cf.kuiprux.spbeat.game.gui.marker.hit.IHitStatement;
 import cf.kuiprux.spbeat.gui.AlignMode;
@@ -161,7 +161,12 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
     }
 
     @Override
-    public void click(long time) {
+    public void onkeyDown(long time) {
+        ((HoldNoteHitStatement) getHitStatement()).setClickStarted(time);
+    }
 
+    @Override
+    public void onkeyUp(long time) {
+        ((HoldNoteHitStatement) getHitStatement()).calculateState(time);
     }
 }

@@ -11,14 +11,14 @@ public class NoteHitStatement implements IHitStatement {
     private boolean isCaclulated;
     private boolean isMissed;
 
-    private int score;
+    private HitState hitState;
 
     public NoteHitStatement(Note note){
         this.note = note;
 
         this.isCaclulated = false;
         this.isMissed = false;
-        this.score = 0;
+        this.hitState = HitState.MISS;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class NoteHitStatement implements IHitStatement {
 
         float timing = note.getExactTime() - time;
 
-        score = 100;
+        hitState = HitState.MISS;
         return;
 
         /*
@@ -52,12 +52,8 @@ public class NoteHitStatement implements IHitStatement {
     }
 
     @Override
-    public boolean isMissed() {
-        return isMissed;
+    public HitState getHitState() {
+        return hitState;
     }
 
-    @Override
-    public int getScore() {
-        return score;
-    }
 }

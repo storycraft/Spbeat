@@ -4,7 +4,7 @@ import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.ResourceManager;
 import cf.kuiprux.spbeat.game.beatmap.Note;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
-import cf.kuiprux.spbeat.game.gui.PlayScreen;
+import cf.kuiprux.spbeat.game.play.PlayScreen;
 import cf.kuiprux.spbeat.game.gui.marker.hit.IHitStatement;
 import cf.kuiprux.spbeat.game.gui.marker.hit.NoteHitStatement;
 import cf.kuiprux.spbeat.gui.DrawMode;
@@ -77,7 +77,12 @@ public class NoteDrawable extends FixedContainer implements INoteDrawable {
     }
 
     @Override
-    public void click(long time) {
+    public void onkeyDown(long time) {
+        getHitStatement().calculateState(time);
+    }
+
+    @Override
+    public void onkeyUp(long time) {
 
     }
 

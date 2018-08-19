@@ -6,25 +6,17 @@ import cf.kuiprux.spbeat.game.ResourceManager;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
 import cf.kuiprux.spbeat.game.gui.element.BeatmapInfoDrawable;
 import cf.kuiprux.spbeat.game.gui.element.BeatmapSelectBox;
-import cf.kuiprux.spbeat.gui.Drawable;
+import cf.kuiprux.spbeat.game.play.PlayScreen;
 import cf.kuiprux.spbeat.gui.IDrawable;
 import cf.kuiprux.spbeat.gui.effect.IAnimatable;
-import cf.kuiprux.spbeat.util.AsyncTask;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
 import org.newdawn.slick.Color;
 
 import cf.kuiprux.spbeat.gui.EasingType;
 import cf.kuiprux.spbeat.gui.element.Square;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class BeatmapSelectScreen extends ScreenPreset {
 

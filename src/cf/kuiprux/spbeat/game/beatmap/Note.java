@@ -1,6 +1,6 @@
 package cf.kuiprux.spbeat.game.beatmap;
 
-import cf.kuiprux.spbeat.game.gui.PlayScreen;
+import cf.kuiprux.spbeat.game.play.PlayScreen;
 
 public class Note implements INote {
 

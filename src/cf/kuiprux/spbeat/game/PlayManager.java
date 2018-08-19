@@ -2,13 +2,12 @@ package cf.kuiprux.spbeat.game;
 
 import cf.kuiprux.spbeat.SpBeAt;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
-import cf.kuiprux.spbeat.game.gui.PlayScreen;
+import cf.kuiprux.spbeat.game.play.PlayScreen;
 import cf.kuiprux.spbeat.util.AsyncTask;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class PlayManager {
 

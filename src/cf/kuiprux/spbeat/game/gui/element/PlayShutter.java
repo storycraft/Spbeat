@@ -1,7 +1,7 @@
 package cf.kuiprux.spbeat.game.gui.element;
 
 import cf.kuiprux.spbeat.SpBeAt;
-import cf.kuiprux.spbeat.game.gui.PlayScreen;
+import cf.kuiprux.spbeat.game.play.PlayScreen;
 import cf.kuiprux.spbeat.gui.AlignMode;
 import cf.kuiprux.spbeat.gui.EasingType;
 import cf.kuiprux.spbeat.gui.containers.FixedContainer;
@@ -86,8 +86,7 @@ public class PlayShutter extends FixedContainer {
     }
 
     protected void updateShutter() {
-        int combo = getPlayScreen().getCurrentCombo();
-        float shutterPercent = getShutterPercent(combo, maxCombo);
+        float shutterPercent = (float) getPlayScreen().getPlayStatus().getShutterPercent();
         float beatInterval = (60 / getPlayScreen().getBeatmap().getBeatTime()) * 666;
         float shutterBeat = (float) Math.sin((((getPlayScreen().getPlayManager().getCurrentTime()) % beatInterval) / beatInterval) * Math.PI * 2) * SHUTTER_VIB;
 
@@ -96,7 +95,7 @@ public class PlayShutter extends FixedContainer {
     }
 
     protected void updateComboText(){
-        int combo = getPlayScreen().getCurrentCombo();
+        int combo = getPlayScreen().getPlayStatus().getCurrentCombo();
 
         if (combo <= 0){
             comboText.setText("");
@@ -109,10 +108,6 @@ public class PlayShutter extends FixedContainer {
         }
 
         lastCombo = combo;
-    }
-
-    public float getShutterPercent(int combo, int maxCombo){
-        return Math.min(((float) combo) / (maxCombo / 2), 1);
     }
 
     public PlayScreen getPlayScreen() {

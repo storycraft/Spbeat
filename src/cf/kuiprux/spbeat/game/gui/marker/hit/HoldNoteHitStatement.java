@@ -1,23 +1,23 @@
 package cf.kuiprux.spbeat.game.gui.marker.hit;
 
 import cf.kuiprux.spbeat.game.beatmap.HoldNote;
-import cf.kuiprux.spbeat.game.beatmap.INote;
 
 public class HoldNoteHitStatement implements IHitStatement {
 
     private HoldNote note;
 
     private boolean isCaclulated;
-    private boolean isMissed;
 
-    private int score;
+    private long clickStarted;
+
+    private HitState hitState;
 
     public HoldNoteHitStatement(HoldNote note){
         this.note = note;
 
         this.isCaclulated = false;
-        this.isMissed = false;
-        this.score = 0;
+        this.clickStarted = 0;
+        this.hitState = HitState.MISS;
     }
 
     @Override
@@ -28,7 +28,13 @@ public class HoldNoteHitStatement implements IHitStatement {
     @Override
     public void calculateState(long time) {
         this.isCaclulated = true;
-        score = 100;
+
+        float startError = Math.abs(clickStarted - getNote().getStartTime());
+        float endError = time - getNote().getExactTime();
+
+        if (startError < 100 && endError > 0) {
+            hitState = HitState.PERFECT;
+        }
     }
 
     @Override
@@ -37,12 +43,15 @@ public class HoldNoteHitStatement implements IHitStatement {
     }
 
     @Override
-    public boolean isMissed() {
-        return isMissed;
+    public HitState getHitState() {
+        return hitState;
     }
 
-    @Override
-    public int getScore() {
-        return score;
+    public long getClickStarted() {
+        return clickStarted;
+    }
+
+    public void setClickStarted(long clickStarted) {
+        this.clickStarted = clickStarted;
     }
 }

@@ -10,7 +10,5 @@ public interface IHitStatement {
 
     boolean isCalculated();
 
-    boolean isMissed();
-
-    int getScore();
+    HitState getHitState();
 }

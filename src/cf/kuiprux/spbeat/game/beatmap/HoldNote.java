@@ -1,7 +1,5 @@
 package cf.kuiprux.spbeat.game.beatmap;
 
-import cf.kuiprux.spbeat.game.gui.PlayScreen;
-
 public class HoldNote implements INote {
 
     private int startIndex;

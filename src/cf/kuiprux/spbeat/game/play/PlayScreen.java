@@ -1,11 +1,15 @@
-package cf.kuiprux.spbeat.game.gui;
+package cf.kuiprux.spbeat.game.play;
 
 import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.beatmap.*;
+import cf.kuiprux.spbeat.game.gui.BeatmapSelectScreen;
+import cf.kuiprux.spbeat.game.gui.ButtonPanel;
+import cf.kuiprux.spbeat.game.gui.ScreenPreset;
 import cf.kuiprux.spbeat.game.gui.element.PlayShutter;
 import cf.kuiprux.spbeat.game.gui.marker.HoldNoteDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.INoteDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.NoteDrawable;
+import cf.kuiprux.spbeat.game.gui.marker.hit.HitState;
 import cf.kuiprux.spbeat.game.gui.marker.hit.IHitStatement;
 import cf.kuiprux.spbeat.gui.IDrawable;
 import cf.kuiprux.spbeat.gui.element.Square;
@@ -30,8 +34,7 @@ public class PlayScreen extends ScreenPreset {
 
 	private Square firstNoteNoti;
 
-	private int currentCombo;
-	private int currentScore;
+	private PlayStatus playStatus;
 
 	public static final int NOTE_VISIBLE_TIME = 750;
 	public static final int AFTER_VISIBLE_TIME = 250;
@@ -44,7 +47,8 @@ public class PlayScreen extends ScreenPreset {
 
 		this.shutter = new PlayShutter(this);
 		this.firstNoteNoti = new Square(0, 0, ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
-		this.currentCombo = 0;
+
+		this.playStatus = new PlayStatus(getBeatmap());
 	}
 
 	public PlayManager getPlayManager() {
@@ -55,27 +59,15 @@ public class PlayScreen extends ScreenPreset {
 		return beatmap;
 	}
 
-	public int getCurrentCombo() {
-		return currentCombo;
-	}
-
-	public int getCurrentScore() {
-		return currentScore;
-	}
-
-	protected void setCurrentScore(int currentScore) {
-		this.currentScore = currentScore;
-	}
-
-	protected void setCurrentCombo(int currentCombo) {
-		this.currentCombo = currentCombo;
+	public PlayStatus getPlayStatus() {
+		return playStatus;
 	}
 
 	@Override
 	public void onPress(int keyIndex) {
 		for (INote note : addedNoteList){
 			if (note.getNoteIndex() == keyIndex){
-				getNoteDrawable(note).click(getPlayManager().getCurrentTime());
+				getNoteDrawable(note).onkeyDown(getPlayManager().getCurrentTime());
 				break;
 			}
 		}
@@ -83,7 +75,12 @@ public class PlayScreen extends ScreenPreset {
 
 	@Override
 	public void onRelease(int keyIndex) {
-
+		for (INote note : addedNoteList){
+			if (note.getNoteIndex() == keyIndex){
+				getNoteDrawable(note).onkeyUp(getPlayManager().getCurrentTime());
+				break;
+			}
+		}
 	}
 
 	@Override
@@ -133,15 +130,13 @@ public class PlayScreen extends ScreenPreset {
 
 			if (hitStatement.isCalculated()) {
 				if (drawable.isLoaded()){
+					judgeNote(drawable);
 					drawable.expire();
 				}
 
-				judgeNote(drawable);
-
 				continue;
 			}
-
-			if (!drawable.isLoaded()){
+			else if (!drawable.isLoaded()){
 				ButtonPanel.ButtonArea area = getButtonPanel().getButtonAreaAt(note.getNoteIndex());
 				if (area != null)
 					area.addChild(drawable);
@@ -156,12 +151,12 @@ public class PlayScreen extends ScreenPreset {
 			INoteDrawable drawable = getNoteDrawable(note);
 			IHitStatement hitStatement = drawable.getHitStatement();
 
+			if (drawable.isLoaded()){
+				drawable.expire();
+			}
+
 			if (!hitStatement.isCalculated()) {
 				hitStatement.calculateState(time);
-
-				if (drawable.isLoaded()){
-					drawable.expire();
-				}
 
 				judgeNote(drawable);
 			}
@@ -169,6 +164,7 @@ public class PlayScreen extends ScreenPreset {
 	}
 
 	protected void onFinished() {
+		this.getPlayStatus().setPlaying(false);
 		getScreenManager().setCurrentScreen(new BeatmapSelectScreen(getGame().getMapManager()));
 	}
 
@@ -205,19 +201,45 @@ public class PlayScreen extends ScreenPreset {
 	protected void judgeNote(INoteDrawable drawable){
 		IHitStatement hitStatement = drawable.getHitStatement();
 
-		if (hitStatement.isMissed()){
-			setCurrentCombo(0);
+		switch (hitStatement.getHitState()) {
+			case MISS:
+				getPlayStatus().setCurrentCombo(0);
+				getPlayStatus().setMissCount(getPlayStatus().getMissCount() + 1);
+				break;
+
+			case PERFECT:
+				getPlayStatus().setCurrentCombo(getPlayStatus().getCurrentCombo() + 1);
+				getPlayStatus().setPerfectCount(getPlayStatus().getPerfectCount() + 1);
+				break;
+
+			case GREAT:
+				getPlayStatus().setCurrentCombo(getPlayStatus().getCurrentCombo() + 1);
+				getPlayStatus().setGreatCount(getPlayStatus().getGreatCount() + 1);
+				break;
+
+			case GOOD:
+				getPlayStatus().setCurrentCombo(getPlayStatus().getCurrentCombo() + 1);
+				getPlayStatus().setGoodCount(getPlayStatus().getGoodCount() + 1);
+				break;
+
+			case POOR:
+				getPlayStatus().setCurrentCombo(getPlayStatus().getCurrentCombo() + 1);
+				getPlayStatus().setPoorCount(getPlayStatus().getPoorCount() + 1);
+				break;
 		}
-		else{
-			setCurrentCombo(getCurrentCombo() + 1);
-			setCurrentScore(getCurrentScore() + hitStatement.getScore());
-		}
+
+		updateScoreText();
+	}
+
+	protected void updateScoreText() {
+
 	}
 
 	public void play(){
 		if (getPlayManager().isPlaying())
 			return;
 
+		this.getPlayStatus().setPlaying(true);
 		getPlayManager().play(getBeatmap());
 	}
 
@@ -261,5 +283,4 @@ public class PlayScreen extends ScreenPreset {
 		drawableMap.put(note, markerDrawable);
 		return markerDrawable;
 	}
-
 }
