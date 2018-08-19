@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="lwjgl-x86">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/x86/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/x86/lwjgl_util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/x86/lwjgl_util_applet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/x86/natives-linux.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/x86/natives-mac.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/x86/natives-windows.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/jnlp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/jinput.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/jogg-0.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/jorbis-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/ibxm.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

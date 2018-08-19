@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ded3685-93a8-4cca-bca4-bec03a59eb78" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jlayer.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lwjgl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/slick.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jlayer.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lwjgl.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/slick.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/PlayShutter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/PlayShutter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,14 +23,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayShutter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayShutter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/PlayShutter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="58" column="13" lean-forward="true" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+            <state relative-caret-position="296">
+              <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleContainer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/containers/SimpleContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -38,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/5. HighBeat.iml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
-              <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -46,7 +56,7 @@
       <file leaf-file-name="PlayScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/PlayScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
+            <state relative-caret-position="4446">
               <caret line="264" column="1" selection-start-line="264" selection-start-column="1" selection-end-line="264" selection-end-column="1" />
             </state>
           </provider>
@@ -55,7 +65,7 @@
       <file leaf-file-name="ScreenPreset.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/ScreenPreset.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
+            <state relative-caret-position="342">
               <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="e#540#541#0" expanded="true" />
@@ -154,8 +164,8 @@
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/ButtonPanel.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/Beatmap.java" />
-        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/PlayShutter.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/PlayScreen.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/PlayShutter.java" />
       </list>
     </option>
   </component>
@@ -173,7 +183,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -325,7 +335,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,8 +343,8 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/user/Desktop/Story Workspace/HighBeat/src/cf/kuiprux/spbeat/game/gui/element/BeatmapInfoDrawable.java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Spbeat/Spbeat.ipr" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/lib/ibxm.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -565,17 +575,18 @@
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.48187634" weight="0.31624863" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5134037" side_tool="true" visible="true" weight="0.348964" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5138593" side_tool="true" visible="true" weight="0.39476553" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48659626" weight="0.39559165" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48614073" visible="true" weight="0.39476553" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31716418" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32036248" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -585,7 +596,6 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.32995737" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4824094" weight="0.31624863" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -773,13 +783,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/INoteDrawable.java" />
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/IHitStatement.java" />
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/containers/SimpleContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-269">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java" />
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/element/Text.java" />
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/BoundingBoxTest.java">
@@ -854,23 +857,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/5. HighBeat.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/PlayScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
+        <state relative-caret-position="4446">
           <caret line="264" column="1" selection-start-line="264" selection-start-column="1" selection-end-line="264" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/ScreenPreset.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="342">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="e#540#541#0" expanded="true" />
@@ -878,13 +874,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/5. HighBeat.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/PlayShutter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="58" column="13" lean-forward="true" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+        <state relative-caret-position="296">
+          <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/containers/SimpleContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -905,7 +915,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -940,7 +950,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>5. HighBeat</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -963,7 +973,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jlayer</last-edited>
+          <last-edited>lwjgl-arm</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

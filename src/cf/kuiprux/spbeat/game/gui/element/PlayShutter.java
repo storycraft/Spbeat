@@ -105,7 +105,7 @@ public class PlayShutter extends FixedContainer {
             comboText.setText(combo + "");
 
         if (combo > lastCombo){
-            comboText.scaleTo(COMBO_SCALE, COMBO_SCALE, EasingType.EASE_IN_QUAD, 100).scaleTo(1f, 1f, EasingType.EASE_OUT_QUAD, 75);
+            comboText.scaleTo(COMBO_SCALE, COMBO_SCALE, EasingType.EASE_OUT_QUAD, 100).scaleTo(1f, 1f, EasingType.EASE_IN_QUAD, 75);
         }
 
         lastCombo = combo;
