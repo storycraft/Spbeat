@@ -4,7 +4,10 @@ import cf.kuiprux.spbeat.game.beatmap.Note;
 
 public class NoteHitStatement implements IHitStatement {
 
-    public static final int HIT_TIMING = 200;
+    public static final int HIT_TIMING_PERFECT = 41;
+    public static final int HIT_TIMING_GREAT = 82;
+    public static final int HIT_TIMING_GOOD = 123;
+    public static final int HIT_TIMING_POOR = 164;
 
     private Note note;
 
@@ -26,24 +29,25 @@ public class NoteHitStatement implements IHitStatement {
         return note;
     }
 
+    //41 mili
     @Override
     public void calculateState(long time) {
         this.isCaclulated = true;
 
-        float timing = note.getExactTime() - time;
+        float timing = Math.abs(note.getExactTime() - time);
 
-        hitState = HitState.MISS;
-        return;
-
-        /*
-        //TODO: fix timing and score
-        if (Math.abs(timing) < HIT_TIMING){
-            this.score = 100;
+        if (timing <= HIT_TIMING_PERFECT) {
+            hitState = HitState.PERFECT;
         }
-        else{
-            this.isMissed = true;
+        else if (timing <= HIT_TIMING_GREAT) {
+            hitState = HitState.GREAT;
         }
-        */
+        else if (timing <= HIT_TIMING_GOOD) {
+            hitState = HitState.GOOD;
+        }
+        else if (timing <= HIT_TIMING_POOR) {
+            hitState = HitState.POOR;
+        }
     }
 
     @Override

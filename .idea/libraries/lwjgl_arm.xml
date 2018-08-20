@@ -9,10 +9,6 @@
       <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/arm/lwjgl_util.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/arm/lwjgl_util_applet.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl/arm/lzma.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/jinput.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/jnlp.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/jogg-0.0.7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/jorbis-0.0.15.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -74,17 +74,15 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 		if (!this.selected)
 			this.selected = true;
-		else if (getSelectedIndex() == keyIndex){
+		else if (getSelectedIndex() == keyIndex) {
 			onDoublePress(keyIndex);
 			return;
 		}
 
 		this.selectedIndex = keyIndex;
 
-		if (!selectHighlight.isLoaded()) {
-			selectHighlight.setVisible(true);
-			getButtonPanel().addChild(selectHighlight);
-		}
+		selectHighlight.setVisible(true);
+		getButtonPanel().addChild(selectHighlight);
 
 		selectHighlight.moveTo(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosY(y), EasingType.LINEAR, 10);
 
