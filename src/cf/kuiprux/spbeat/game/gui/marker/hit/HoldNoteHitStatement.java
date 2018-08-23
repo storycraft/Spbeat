@@ -32,8 +32,20 @@ public class HoldNoteHitStatement implements IHitStatement {
         float startError = Math.abs(clickStarted - getNote().getStartTime());
         float endError = time - getNote().getExactTime();
 
-        if (startError < 100 && endError > 0) {
+        if (startError < NoteHitStatement.HIT_TIMING_PERFECT && endError > 0) {
             hitState = HitState.PERFECT;
+        }
+        else if (startError < NoteHitStatement.HIT_TIMING_GREAT && endError <= NoteHitStatement.HIT_TIMING_PERFECT) {
+            hitState = HitState.GREAT;
+        }
+        else if (startError < NoteHitStatement.HIT_TIMING_GOOD && endError <= NoteHitStatement.HIT_TIMING_POOR) {
+            hitState = HitState.GOOD;
+        }
+        else if (startError < NoteHitStatement.HIT_TIMING_POOR && endError <= NoteHitStatement.HIT_TIMING_POOR) {
+            hitState = HitState.POOR;
+        }
+        else {
+            hitState = HitState.MISS;
         }
     }
 
