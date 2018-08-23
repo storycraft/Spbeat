@@ -7,8 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ded3685-93a8-4cca-bca4-bec03a59eb78" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/arm.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/arm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/arm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/5. HighBeat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/5. HighBeat.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java" afterDir="false" />
@@ -35,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="542">
-              <caret line="138" column="43" lean-forward="true" selection-start-line="138" selection-start-column="43" selection-end-line="138" selection-end-column="43" />
+              <caret line="138" column="43" selection-start-line="138" selection-start-column="43" selection-end-line="138" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -44,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1100">
-              <caret line="183" column="30" lean-forward="true" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
+              <caret line="183" column="30" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -355,7 +355,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/user/Desktop/Story Workspace/HighBeat/src/cf/kuiprux/spbeat/game/gui/element/BeatmapInfoDrawable.java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.14648438" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -595,7 +595,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -955,7 +954,7 @@
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="542">
-          <caret line="138" column="43" lean-forward="true" selection-start-line="138" selection-start-column="43" selection-end-line="138" selection-end-column="43" />
+          <caret line="138" column="43" selection-start-line="138" selection-start-column="43" selection-end-line="138" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -969,7 +968,7 @@
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1100">
-          <caret line="183" column="30" lean-forward="true" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
+          <caret line="183" column="30" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -979,7 +978,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>arm</last-edited>
+          <last-edited>spbeat</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
