@@ -66,9 +66,9 @@ public class PlayShutter extends FixedContainer {
         this.maxCombo = getPlayScreen().getBeatmap().getNoteCount();
 
         //픽셀 오차값 1 더함
-        shutterTop.setLocation(0, -SHUTTER_VIB + 1);
-        shutterTop.setSize(getWidth(), getHeight() / 2 + SHUTTER_VIB - 1);
-        shutterBottom.setLocation(0, getHeight() / 2 - SHUTTER_VIB * 2);
+        shutterTop.setLocation(0, -SHUTTER_VIB);
+        shutterTop.setSize(getWidth(), getHeight() / 2 + SHUTTER_VIB * 2);
+        shutterBottom.setLocation(0, getHeight() / 2 - SHUTTER_VIB);
         shutterBottom.setSize(getWidth(), getHeight() / 2 + SHUTTER_VIB * 2);
 
         comboText.setLocation(getWidth() / 2, getHeight() / 2);
@@ -90,7 +90,7 @@ public class PlayShutter extends FixedContainer {
         float beatInterval = (60 / getPlayScreen().getBeatmap().getBeatTime()) * 666;
         float shutterBeat = (float) Math.sin((((getPlayScreen().getPlayManager().getCurrentTime()) % beatInterval) / beatInterval) * Math.PI * 2) * SHUTTER_VIB;
 
-        shutterTop.moveToY(-shutterTop.getHeight() * shutterPercent + shutterBeat, EasingType.LINEAR, 10);
+        shutterTop.moveToY(-shutterTop.getHeight() * shutterPercent + shutterBeat - SHUTTER_VIB, EasingType.LINEAR, 10);
         shutterBottom.moveToY(shutterBottom.getHeight() * (1 + shutterPercent) - shutterBeat, EasingType.LINEAR, 10);
     }
 

@@ -42,12 +42,12 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
         setLocation(0, 0);
 
         this.sliderArrow = new Triangle(0, 0, ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
-        this.sliderArrow.setRotation(getSliderRotation());
+        this.sliderArrow.setRotation(getSliderRotation() - 90);
         this.sliderArrow.setOrigin(AlignMode.CENTRE);
         this.sliderEnd = new Square(0, 0, ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
 
         this.sliderLine = new Square( ((sx - ex) * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X) + ButtonPanel.BUTTON_WIDTH) / 2f, ((sy - ey) * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y) + ButtonPanel.BUTTON_HEIGHT) / 2f, getDigonalLength(), LINE_WIDTH);
-        this.sliderLine.setRotation(-getSliderRotation() + 90);
+        this.sliderLine.setRotation(getSliderRotation());
         this.sliderLine.setOrigin(AlignMode.CENTRE);
         this.sliderLine.setAnchor(AlignMode.CENTRE);
 
@@ -137,12 +137,18 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
 
     public float getSliderRotation(){
         int sx = note.getStartIndex() % ButtonPanel.COLUMN;
-        int ex = note.getNoteIndex() % ButtonPanel.COLUMN;
+        int sy = note.getStartIndex() / ButtonPanel.COLUMN;
+
+        int ex = note.getNoteIndex() % ButtonPanel.ROW;
+        int ey = note.getNoteIndex() / ButtonPanel.ROW;
 
         float startX = sx * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
         float endX = ex * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
 
-        return (float) Math.toDegrees(Math.asin((startX - endX) / getDigonalLength())) + 180;
+        float startY = sy * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
+        float endY = ey * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
+
+        return (float) Math.toDegrees(Math.atan2(startY - endY, startX - endX));
     }
 
     @Override
