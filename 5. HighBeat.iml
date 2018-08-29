@@ -22,7 +22,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="depen" level="project" />
+    <orderEntry type="library" name="etc" level="project" />
     <orderEntry type="library" name="lwjgl-x86" level="project" />
   </component>
 </module>

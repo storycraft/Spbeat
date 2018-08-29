@@ -270,10 +270,10 @@ public class PlayScreen extends ScreenPreset {
 
 		INoteDrawable markerDrawable;
 
-		if (note instanceof Note){
-			markerDrawable = new NoteDrawable((Note) note, getPlayManager());
+		if (note.getClass().equals(Note.class)){
+			markerDrawable = new NoteDrawable(note, getPlayManager());
 		}
-		else if (note instanceof HoldNote){
+		else if (note.getClass().equals(HoldNote.class)){
 			markerDrawable = new HoldNoteDrawable((HoldNote) note, getPlayManager());
 		}
 		else{

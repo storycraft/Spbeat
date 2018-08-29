@@ -1,17 +1,15 @@
 <component name="libraryTable">
-  <library name="depen">
+  <library name="etc">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/lib/ibxm.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/jinput.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/jl1.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/jnlp.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/jogg-0.0.7.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/jorbis-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/ibxm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/slick.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/lwjgl_test.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib/lzma.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/slick-examples.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/slick.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib/tinylinepp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/jl1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/jnlp.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

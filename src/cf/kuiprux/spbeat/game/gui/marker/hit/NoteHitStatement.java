@@ -1,6 +1,6 @@
 package cf.kuiprux.spbeat.game.gui.marker.hit;
 
-import cf.kuiprux.spbeat.game.beatmap.Note;
+import cf.kuiprux.spbeat.game.beatmap.INote;
 
 public class NoteHitStatement implements IHitStatement {
 
@@ -9,14 +9,14 @@ public class NoteHitStatement implements IHitStatement {
     public static final int HIT_TIMING_GOOD = 123;
     public static final int HIT_TIMING_POOR = 164;
 
-    private Note note;
+    private INote note;
 
     private boolean isCaclulated;
     private boolean isMissed;
 
     private HitState hitState;
 
-    public NoteHitStatement(Note note){
+    public NoteHitStatement(INote note){
         this.note = note;
 
         this.isCaclulated = false;
@@ -25,7 +25,7 @@ public class NoteHitStatement implements IHitStatement {
     }
 
     @Override
-    public Note getNote() {
+    public INote getNote() {
         return note;
     }
 

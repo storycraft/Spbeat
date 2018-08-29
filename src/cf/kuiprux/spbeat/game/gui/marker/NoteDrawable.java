@@ -2,6 +2,7 @@ package cf.kuiprux.spbeat.game.gui.marker;
 
 import cf.kuiprux.spbeat.game.PlayManager;
 import cf.kuiprux.spbeat.game.ResourceManager;
+import cf.kuiprux.spbeat.game.beatmap.INote;
 import cf.kuiprux.spbeat.game.beatmap.Note;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 import cf.kuiprux.spbeat.game.play.PlayScreen;
@@ -15,7 +16,7 @@ import org.newdawn.slick.*;
 public class NoteDrawable extends FixedContainer implements INoteDrawable {
 
     private IHitStatement hitStatement;
-    private Note note;
+    private INote note;
 
     private Square markerSquare;
     private Square effectSquare;
@@ -28,8 +29,8 @@ public class NoteDrawable extends FixedContainer implements INoteDrawable {
     public int NOTE_SPRITE_ROW = 5;
     public int NOTE_SPRITE_COLUM = 5;
 
-    public NoteDrawable(Note note, PlayManager playManager){
-        super(0, 0, 100, 100);
+    public NoteDrawable(INote note, PlayManager playManager){
+        super(0, 0, ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
         this.note = note;
         this.hitStatement = new NoteHitStatement(note);
         this.playManager = playManager;
@@ -37,8 +38,8 @@ public class NoteDrawable extends FixedContainer implements INoteDrawable {
         this.markerSquare = new Square(0, 0);
         this.effectSquare = new Square(0, 0);
 
-        markerSquare.setSize(100, 100);
-        effectSquare.setSize(100, 100);
+        markerSquare.setSize(ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
+        effectSquare.setSize(ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
 
         markerSquare.setColor(Color.white);
         effectSquare.setColor(Color.white);
@@ -49,7 +50,7 @@ public class NoteDrawable extends FixedContainer implements INoteDrawable {
         addChild(effectSquare);
     }
 
-    public Note getNote() {
+    public INote getNote() {
         return note;
     }
 

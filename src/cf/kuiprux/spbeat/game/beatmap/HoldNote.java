@@ -1,34 +1,23 @@
 package cf.kuiprux.spbeat.game.beatmap;
 
-public class HoldNote implements INote {
+public class HoldNote extends Note {
 
     private int startIndex;
-    private int endIndex;
 
     private float startTime;
-    private float endTime;
 
     public HoldNote(int startIndex, int endIndex, float startTime, float endTime) {
+        super(endIndex, endTime);
         this.startIndex = startIndex;
-        this.endIndex = endIndex;
         this.startTime = startTime;
-        this.endTime = endTime;
     }
 
     public int getStartIndex() {
         return startIndex;
     }
 
-    public int getNoteIndex() {
-        return endIndex;
-    }
-
     public float getStartTime() {
         return startTime;
-    }
-
-    public float getExactTime() {
-        return endTime;
     }
 
     @Override

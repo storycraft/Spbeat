@@ -8,6 +8,7 @@ public class HoldNoteHitStatement implements IHitStatement {
 
     private boolean isCaclulated;
 
+    private boolean clicked;
     private long clickStarted;
 
     private HitState hitState;
@@ -63,7 +64,15 @@ public class HoldNoteHitStatement implements IHitStatement {
         return clickStarted;
     }
 
+    public boolean isClicked() {
+        return clicked;
+    }
+
     public void setClickStarted(long clickStarted) {
         this.clickStarted = clickStarted;
+    }
+
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
     }
 }
