@@ -9,6 +9,7 @@ import cf.kuiprux.spbeat.game.gui.element.BeatmapSelectBox;
 import cf.kuiprux.spbeat.game.play.PlayScreen;
 import cf.kuiprux.spbeat.gui.IDrawable;
 import cf.kuiprux.spbeat.gui.effect.IAnimatable;
+import cf.kuiprux.spbeat.gui.element.Text;
 import org.newdawn.slick.Color;
 
 import cf.kuiprux.spbeat.gui.EasingType;
@@ -38,6 +39,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 	private boolean selected;
 
 	private BeatmapSelectBox selectHighlight;
+	private Text songTitleInfoText;
 
 	private Image defaultJacket;
 
@@ -48,9 +50,11 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 	public BeatmapSelectScreen(MapManager mapManager) {
 		this.mapManager = mapManager;
-		this.selectHighlight = new BeatmapSelectBox(0, 0, 100, 100, mapManager.getGame().getFontManager().getFontByName("나눔바른고딕"));
+		this.songTitleInfoText = new Text(mapManager.getGame().getFontManager().getFontByName("나눔바른고딕"), "");
+		this.songTitleInfoText.setFontSize(32);
+		this.selectHighlight = new BeatmapSelectBox(0, 0, 100, 100);
 		selectHighlight.getFadeBox().setColor(Color.lightGray);
-		selectHighlight.getSongTitleText().setColor(Color.black);
+		songTitleInfoText.setColor(Color.white);
 		selectHighlight.setVisible(false);
 
 		this.settingButton = new Square(0, 0, 100, 100);
@@ -89,11 +93,8 @@ public class BeatmapSelectScreen extends ScreenPreset {
 
 		selectHighlight.moveTo(getButtonPanel().getButtonPosX(x), getButtonPanel().getButtonPosY(y), EasingType.LINEAR, 10);
 
-		if (keyIndex >= MAPS_ON_A_PAGE){
-			if (selectHighlight.getSongTitleText().getText() != "")
-				selectHighlight.getSongTitleText().setText("");
+		if (keyIndex >= MAPS_ON_A_PAGE)
 			return;
-		}
 
 		Beatmap map = getBeatmap(getBeatmapPage(), keyIndex);
 
@@ -101,7 +102,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			return;
 
 		this.selectedMap = map;
-		selectHighlight.getSongTitleText().setText(map.getTitle());
+		songTitleInfoText.setText(map.getTitle());
 
 		if (getGame().getPlayManager().getBeatmap() == null || getSelectedMap().getSongPath() != getGame().getPlayManager().getBeatmap().getSongPath())
 			getGame().getPlayManager().play(getSelectedMap());
@@ -210,6 +211,8 @@ public class BeatmapSelectScreen extends ScreenPreset {
 		getButtonPanel().getButtonAreaAt(LAST_PAGE).addChild(previousButton);
 		getButtonPanel().getButtonAreaAt(NEXT_PAGE).addChild(nextButton);
 		getButtonPanel().getButtonAreaAt(PLAY).addChild(playButton);
+
+		getInfoPanel().addChild(songTitleInfoText);
 	}
 
 	@Override
@@ -266,6 +269,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 		}
 
 		selectHighlight.expire();
+		songTitleInfoText.fadeOut(EasingType.LINEAR, 250).expire();
 
 		getGame().getPlayManager().stop();
 	}

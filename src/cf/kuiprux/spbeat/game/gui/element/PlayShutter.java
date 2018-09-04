@@ -73,7 +73,7 @@ public class PlayShutter extends FixedContainer {
 
         comboText.setLocation(getWidth() / 2, getHeight() / 2);
         comboText.setText("");
-        comboText.setFont(game.getFontManager().getFontByName("나눔바른고딕"));
+        comboText.setFont(game.getFontManager().getFontByName("ingame_combo_font"));
         comboText.setFontSize(128f);
     }
 

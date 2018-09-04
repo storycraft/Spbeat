@@ -4,6 +4,7 @@ import java.util.logging.Level;
 
 import cf.kuiprux.spbeat.game.ResourceManager;
 import cf.kuiprux.spbeat.game.MainThreadExecutor;
+import cf.kuiprux.spbeat.game.gui.InfoPanel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -26,7 +27,8 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	
 	private MapManager mapManager;
 	
-	private ButtonPanel panel;
+	private ButtonPanel buttonPanel;
+	private InfoPanel infoPanel;
 	private ScreenManager screenManager;
 	private PlayManager playManager;
 
@@ -39,7 +41,8 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 	public SpBeAt(String title) {
 		super(title);
 		
-		this.panel = new ButtonPanel();
+		this.buttonPanel = new ButtonPanel();
+		this.infoPanel = new InfoPanel();
 		this.controller = new SpbeatController();
 		this.screenManager = new ScreenManager(this);
 		this.mapManager = new MapManager(this);
@@ -70,17 +73,22 @@ public class SpBeAt extends SimpleGame implements IControllerListener {
 		
 		getController().addListener(this);
 		getController().addListener(getScreenManager());
-		
-		addChild(getPanel());
+
+		addChild(getButtonPanel());
+		addChild(getInfoPanel());
 		
 		//로딩 화면 시작
 		getScreenManager().setCurrentScreen(new LoadingScreen());
 	}
 	
-	public ButtonPanel getPanel() {
-		return panel;
+	public ButtonPanel getButtonPanel() {
+		return buttonPanel;
 	}
-	
+
+	public InfoPanel getInfoPanel() {
+		return infoPanel;
+	}
+
 	public GameController getController() {
 		return controller;
 	}

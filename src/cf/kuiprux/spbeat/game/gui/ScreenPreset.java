@@ -27,7 +27,11 @@ public abstract class ScreenPreset implements IControllerListener {
 	}
 	
 	public ButtonPanel getButtonPanel() {
-		return getGame().getPanel();
+		return getGame().getButtonPanel();
+	}
+
+	public InfoPanel getInfoPanel(){
+		return getGame().getInfoPanel();
 	}
 	
 	public void load(ScreenManager screenManager) {

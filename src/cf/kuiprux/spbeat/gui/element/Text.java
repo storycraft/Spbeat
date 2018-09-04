@@ -10,7 +10,7 @@ import org.newdawn.slick.geom.Shape;
 
 public class Text extends Sprite {
 
-    private UnicodeFont font;
+    private Font font;
     private String text;
 
     private float textWidth;
@@ -18,7 +18,7 @@ public class Text extends Sprite {
 
     private float fontSize;
 
-    public Text(UnicodeFont font, String text){
+    public Text(Font font, String text){
         this.font = font;
         this.text = text;
 
@@ -29,11 +29,11 @@ public class Text extends Sprite {
         this(null, "");
     }
 
-    public UnicodeFont getFont() {
+    public Font getFont() {
         return font;
     }
 
-    public void setFont(UnicodeFont font) {
+    public void setFont(Font font) {
         this.font = font;
     }
 
@@ -89,7 +89,7 @@ public class Text extends Sprite {
     }
 
     public float getOriginalScale(){
-        return getFontSize() / getFont().getFont().getSize();
+        return getFontSize() / getFont().getLineHeight();
     }
 
     @Override

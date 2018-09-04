@@ -13,6 +13,7 @@ import cf.kuiprux.spbeat.game.gui.marker.hit.HitState;
 import cf.kuiprux.spbeat.game.gui.marker.hit.IHitStatement;
 import cf.kuiprux.spbeat.gui.IDrawable;
 import cf.kuiprux.spbeat.gui.element.Square;
+import cf.kuiprux.spbeat.gui.element.Text;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -32,6 +33,7 @@ public class PlayScreen extends ScreenPreset {
 
 	private PlayShutter shutter;
 
+	private Text scoreText;
 	private Square firstNoteNoti;
 
 	private PlayStatus playStatus;
@@ -42,6 +44,11 @@ public class PlayScreen extends ScreenPreset {
 	public PlayScreen(PlayManager playManager, Beatmap beatmap) {
 		this.playManager = playManager;
 		this.beatmap = beatmap;
+
+		this.scoreText = new Text(playManager.getGame().getFontManager().getFontByName("ingame_score_font"), "");
+		scoreText.setFontSize(48);
+		scoreText.setY(75);
+		scoreText.setColor(Color.white);
 
 		this.drawableMap = new HashMap<>();
 
@@ -102,6 +109,7 @@ public class PlayScreen extends ScreenPreset {
 			getButtonPanel().getButtonAreaAt(firstNote.getNoteIndex()).addChild(firstNoteNoti);
 
 		getButtonPanel().getBackground().addChild(shutter);
+		getInfoPanel().addChild(scoreText);
 
 		play();
 	}
@@ -196,6 +204,8 @@ public class PlayScreen extends ScreenPreset {
 			if (drawable.isLoaded())
 				drawable.expire();
 		}
+
+		scoreText.expire();
 	}
 
 	protected void judgeNote(INoteDrawable drawable){
@@ -232,7 +242,7 @@ public class PlayScreen extends ScreenPreset {
 	}
 
 	protected void updateScoreText() {
-
+		this.scoreText.setText(getPlayStatus().getTotalScore() + "");
 	}
 
 	public void play(){

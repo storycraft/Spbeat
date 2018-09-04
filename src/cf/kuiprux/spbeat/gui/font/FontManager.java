@@ -1,5 +1,6 @@
 package cf.kuiprux.spbeat.gui.font;
 
+import org.newdawn.slick.Font;
 import org.newdawn.slick.UnicodeFont;
 
 import java.util.HashMap;
@@ -8,17 +9,15 @@ import java.util.Map;
 public class FontManager {
 
     private String defaultFont;
-    private Map<String, UnicodeFont> fontMap;
+    private Map<String, Font> fontMap;
 
     public FontManager(){
         this.fontMap = new HashMap<>();
     }
 
-    public boolean addFont(UnicodeFont font){
+    public boolean addFont(String name, Font font){
         if (font == null)
             return false;
-
-        String name = font.getFont().getName();
 
         if (contains(name))
             return false;
@@ -28,7 +27,7 @@ public class FontManager {
         return true;
     }
 
-    public UnicodeFont getFontByName(String name){
+    public Font getFontByName(String name){
         return fontMap.get(name);
     }
 
@@ -36,7 +35,7 @@ public class FontManager {
         this.defaultFont = name;
     }
 
-    public UnicodeFont getDefault(){
+    public Font getDefault(){
         return getFontByName(defaultFont);
     }
 
