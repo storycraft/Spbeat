@@ -6,17 +6,20 @@ import cf.kuiprux.spbeat.game.gui.BeatmapSelectScreen;
 import cf.kuiprux.spbeat.game.gui.ButtonPanel;
 import cf.kuiprux.spbeat.game.gui.ScreenPreset;
 import cf.kuiprux.spbeat.game.gui.element.PlayShutter;
+import cf.kuiprux.spbeat.game.gui.marker.HitEffectDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.HoldNoteDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.INoteDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.NoteDrawable;
 import cf.kuiprux.spbeat.game.gui.marker.hit.HitState;
 import cf.kuiprux.spbeat.game.gui.marker.hit.IHitStatement;
+import cf.kuiprux.spbeat.gui.Container;
 import cf.kuiprux.spbeat.gui.IDrawable;
 import cf.kuiprux.spbeat.gui.element.Square;
 import cf.kuiprux.spbeat.gui.element.Text;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,7 +75,7 @@ public class PlayScreen extends ScreenPreset {
 
 	@Override
 	public void onPress(int keyIndex) {
-		for (INote note : addedNoteList){
+		for (INote note : getVisibleNoteList(getPlayManager().getCurrentTime())){
 			if (note.getNoteIndex() == keyIndex){
 				getNoteDrawable(note).onkeyDown(getPlayManager().getCurrentTime());
 				break;
@@ -82,7 +85,7 @@ public class PlayScreen extends ScreenPreset {
 
 	@Override
 	public void onRelease(int keyIndex) {
-		for (INote note : addedNoteList){
+		for (INote note : getVisibleNoteList(getPlayManager().getCurrentTime())){
 			if (note.getNoteIndex() == keyIndex){
 				getNoteDrawable(note).onkeyUp(getPlayManager().getCurrentTime());
 				break;
@@ -141,8 +144,6 @@ public class PlayScreen extends ScreenPreset {
 					judgeNote(drawable);
 					drawable.expire();
 				}
-
-				continue;
 			}
 			else if (!drawable.isLoaded()){
 				ButtonPanel.ButtonArea area = getButtonPanel().getButtonAreaAt(note.getNoteIndex());
@@ -159,14 +160,11 @@ public class PlayScreen extends ScreenPreset {
 			INoteDrawable drawable = getNoteDrawable(note);
 			IHitStatement hitStatement = drawable.getHitStatement();
 
-			if (drawable.isLoaded()){
-				drawable.expire();
-			}
-
-			if (!hitStatement.isCalculated()) {
+			if (!hitStatement.isCalculated() && !note.isOnScreen(time)) {
 				hitStatement.calculateState(time);
 
 				judgeNote(drawable);
+				drawable.expire();
 			}
 		}
 	}
@@ -239,6 +237,38 @@ public class PlayScreen extends ScreenPreset {
 		}
 
 		updateScoreText();
+		playJudgeEffect(drawable);
+	}
+
+	private void playJudgeEffect(INoteDrawable drawable) {
+		IHitStatement statement = drawable.getHitStatement();
+
+		try {
+			Container parent = drawable.getParent();
+			HitEffectDrawable effectDrawable = new HitEffectDrawable(new SpriteSheet(new Image(getGame().getResourceManager().getStream("texture.marker.hit.miss"), "texture.marker.hit.miss", false), 100, 100));;
+
+			switch (statement.getHitState()) {
+				case PERFECT:
+					effectDrawable = new HitEffectDrawable(new SpriteSheet(new Image(getGame().getResourceManager().getStream("texture.marker.hit.perfect"), "texture.marker.hit.perfect", false), 100, 100));;
+					break;
+
+				case GREAT:
+					effectDrawable = new HitEffectDrawable(new SpriteSheet(new Image(getGame().getResourceManager().getStream("texture.marker.hit.perfect"), "texture.marker.hit.great", false), 100, 100));;
+					break;
+
+				case GOOD:
+					effectDrawable = new HitEffectDrawable(new SpriteSheet(new Image(getGame().getResourceManager().getStream("texture.marker.hit.great"), "texture.marker.hit.great", false), 100, 100));;
+					break;
+
+				case POOR:
+					effectDrawable = new HitEffectDrawable(new SpriteSheet(new Image(getGame().getResourceManager().getStream("texture.marker.hit.poor"), "texture.marker.hit.poor", false), 100, 100));;
+					break;
+			}
+
+			parent.addChild(effectDrawable);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void updateScoreText() {
@@ -250,15 +280,17 @@ public class PlayScreen extends ScreenPreset {
 			return;
 
 		this.getPlayStatus().setPlaying(true);
-		getPlayManager().play(getBeatmap());
+		getPlayManager().play(getBeatmap(), this);
 	}
 
 	protected List<INote> getVisibleNoteList(long time){
 		List<INote> list = new ArrayList<>();
 
+		float beatListTime = getBeatmap().getBeatTime() * 16;
+
 		for (BeatList beatList : getBeatmap().getBeatListArray()){
 			float beatTiming = beatList.getBeatTime() - time;
-			if (beatTiming < -AFTER_VISIBLE_TIME)
+			if (beatTiming < -beatListTime + AFTER_VISIBLE_TIME)
 				continue;
 			else if (beatTiming > NOTE_VISIBLE_TIME)
 				break;

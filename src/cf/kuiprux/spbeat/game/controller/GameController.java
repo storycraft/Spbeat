@@ -87,11 +87,12 @@ public abstract class GameController implements IGameController {
 		if (!pressedKeyList.contains(index))
 			return;
 		
-		pressedKeyList.remove(index);
+		pressedKeyList.remove((Integer) index);
 	}
 	
 	protected void callPressEvent(int index) {
 		//concurrent 방지
+		setKeyPressed(index);
 		for (IControllerListener listener : new ArrayList<>(listenerList)) {
 			listener.onPress(index);
 		}
@@ -99,6 +100,7 @@ public abstract class GameController implements IGameController {
 
 	protected void callReleaseEvent(int index) {
 		//concurrent 방지
+		setKeyUnpressed(index);
 		for (IControllerListener listener : new ArrayList<>(listenerList)) {
 			listener.onRelease(index);
 		}

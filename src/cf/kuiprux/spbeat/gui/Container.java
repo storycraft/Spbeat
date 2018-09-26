@@ -95,8 +95,9 @@ public abstract class Container extends Drawable {
 		if (isMasking)
 			graphics.setWorldClip(getDrawX(), getDrawY(), getDrawWidth(), getDrawHeight());
 		
-		for (IDrawable child : getChildren())
+		for (IDrawable child : getChildren()) {
 			drawChild(graphics, child);
+		}
 
 		if (isMasking)
 			graphics.clearWorldClip();

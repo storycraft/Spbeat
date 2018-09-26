@@ -84,7 +84,7 @@ public class LegacyMapParser {
 					noteIndex = 0;
 
 					float beatTime = getBeatTime(optionMap);
-					float time = getSync(optionMap) + beatTime*16 * noteLine;
+					float time = getSync(optionMap) + beatTime * 16 * noteLine;
 
 					beatListArray.add(new BeatList(time, noteList));
 					
@@ -109,7 +109,7 @@ public class LegacyMapParser {
 					}
 					else if (token.getTokenType() == LegacyMapLexer.TokenType.HOLD_SLIDER){
 						float beatTime = getBeatTime(optionMap);
-						float startTime = getSync(optionMap) + beatTime * 16 * noteLine;
+						float startTime = beatTime * 16 * noteLine + getSync(optionMap);
 						//홀드 마커 방향
 						int dx = 0;
 						int dy = 0;

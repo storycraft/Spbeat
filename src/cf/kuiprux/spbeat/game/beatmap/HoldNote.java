@@ -1,5 +1,7 @@
 package cf.kuiprux.spbeat.game.beatmap;
 
+import cf.kuiprux.spbeat.game.play.PlayScreen;
+
 public class HoldNote extends Note {
 
     private int startIndex;
@@ -20,9 +22,13 @@ public class HoldNote extends Note {
         return startTime;
     }
 
+    public float getLength() {
+        return getExactTime() - getStartTime();
+    }
+
     @Override
     public boolean isOnScreen(long time) {
-        return getStartTime() <= time && getExactTime() >= time;
+        return time >= getStartTime() - PlayScreen.NOTE_VISIBLE_TIME && time <= getExactTime() + PlayScreen.AFTER_VISIBLE_TIME;
     }
 
     @Override

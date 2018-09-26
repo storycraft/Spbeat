@@ -12,7 +12,6 @@ public class NoteHitStatement implements IHitStatement {
     private INote note;
 
     private boolean isCaclulated;
-    private boolean isMissed;
 
     private HitState hitState;
 
@@ -20,7 +19,6 @@ public class NoteHitStatement implements IHitStatement {
         this.note = note;
 
         this.isCaclulated = false;
-        this.isMissed = false;
         this.hitState = HitState.MISS;
     }
 
@@ -48,6 +46,11 @@ public class NoteHitStatement implements IHitStatement {
         else if (timing <= HIT_TIMING_POOR) {
             hitState = HitState.POOR;
         }
+        else {
+            hitState = HitState.MISS;
+        }
+
+        System.out.println(hitState);
     }
 
     @Override

@@ -29,10 +29,13 @@ public class FallbackController extends GameController {
 
 	@Override
 	protected void updateLoop() {
-		while (Keyboard.next()) {
-			boolean pressed = Keyboard.getEventKeyState();
-			convertAndCallEvent(Keyboard.getEventKey(), pressed);
-		}
+		Keyboard.poll();
+
+		if (!Keyboard.next())
+		    return;
+
+		boolean pressed = Keyboard.getEventKeyState();
+		convertAndCallEvent(Keyboard.getEventKey(), pressed);
 	}
 
 	private void convertAndCallEvent(int charKey, boolean pressed) {

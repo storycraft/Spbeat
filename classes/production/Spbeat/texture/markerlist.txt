@@ -1,0 +1,44 @@
+// このmarkerlist.txt の書き方については、
+// このフォルダ内の「markerlist.txtの書き方.txt」を参照ください。
+
+
+//オリジナルマーカー その1 (jpg)
+*drawtype:0
+*drawtype_e:0
+*effect(0):effect1.jpg
+*effect(1):effect2.jpg
+*effect(2):effect3.jpg
+*effect(3):effect4.jpg
+marker.jpg
+
+//以下のマーカーは全てpng
+*drawtype:7
+*drawtype_e:7
+
+//オリジナルマーカー その1 (png)
+*effect(0):effect1_snow.png
+*effect(1):effect2_snow.png
+*effect(2):effect3_snow.png
+*effect(3):effect4_snow.png
+marker_snow.png
+
+
+//オリジナルマーカー その2 (png)
+*effect(0):marker_png1_b.png
+*effect(1):marker_png1_gd.png
+*effect(2):marker_png1_gr.png
+*effect(3):marker_png1_p.png
+marker_png1.png
+
+
+//オリジナルマーカー その3 (png)(エフェクト画像はその2のものを流用)
+marker_square.png
+
+
+//ステルスマーカー (『オリジナルマーカー その1 (png)』のdrawtypeを4に変えただけ)
+//*drawtype:4
+//*effect(0):effect1_snow.png
+//*effect(1):effect2_snow.png
+//*effect(2):effect3_snow.png
+//*effect(3):effect4_snow.png
+//marker_snow.png

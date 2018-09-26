@@ -79,7 +79,8 @@ public class NoteDrawable extends FixedContainer implements INoteDrawable {
 
     @Override
     public void onkeyDown(long time) {
-        getHitStatement().calculateState(time);
+        if (!getHitStatement().isCalculated())
+            getHitStatement().calculateState(time);
     }
 
     @Override
@@ -88,7 +89,7 @@ public class NoteDrawable extends FixedContainer implements INoteDrawable {
     }
 
     public int getTextureIndex(long time){
-        int totaltime = PlayScreen.AFTER_VISIBLE_TIME + PlayScreen.NOTE_VISIBLE_TIME;
+        int totalTime = PlayScreen.AFTER_VISIBLE_TIME + PlayScreen.NOTE_VISIBLE_TIME;
         float startTime = getNote().getExactTime() - PlayScreen.NOTE_VISIBLE_TIME;
         float timing = (getNote().getExactTime() + PlayScreen.AFTER_VISIBLE_TIME) - time;
 
@@ -97,7 +98,7 @@ public class NoteDrawable extends FixedContainer implements INoteDrawable {
         if (timing < -PlayScreen.AFTER_VISIBLE_TIME)
             return maxIndex;
 
-        return (int) Math.min(Math.floor((Math.max(time - startTime, 0) / totaltime) * maxIndex), maxIndex);
+        return (int) Math.min(Math.floor((Math.max(time - startTime, 0) / totalTime) * maxIndex), maxIndex);
     }
 
     @Override

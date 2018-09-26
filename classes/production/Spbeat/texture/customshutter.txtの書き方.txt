@@ -1,0 +1,56 @@
+↓【上下1枚ずつ、シャッター画像が開いていくサンプル】
+===========================================
+*direction:1 //下へ開いていく
+customshutter_sample\s_down.png
+*direction:3 //上へ開いていく
+customshutter_sample\s_up.png
+===========================================
+
+↓【上下左右に計4枚のシャッター画像が開いていくサンプル】
+===========================================
+*direction:0 //右へ開いていく
+customshutter_sample\r.png
+*direction:1 //下へ開いていく
+customshutter_sample\d.png
+*direction:2 //左へ開いていく
+customshutter_sample\l.png
+*direction:3 //上へ開いていく
+customshutter_sample\u.png
+===========================================
+
+↓【上下それぞれ4枚ずつ(計8枚)シャッター画像があり、順に拍動開始するサンプル】
+===========================================
+*direction:3 //上に開いていく
+*beatstart:0
+customshutter_sample\u.png
+*beatstart:0.25
+customshutter_sample\u2.png
+*beatstart:0.5
+customshutter_sample\u3.png
+*beatstart:0.75
+customshutter_sample\u4.png
+
+*direction:1 //下に開いていく
+*beatstart:0
+customshutter_sample\d.png
+*beatstart:0.25
+customshutter_sample\d2.png
+*beatstart:0.5
+customshutter_sample\d3.png
+*beatstart:0.75
+customshutter_sample\d4.png
+===========================================
+
+読み込みたいシャッター画像ファイル名を1行に1つずつ列挙していきます。最大8つまで読み込めます。
+ただし、列挙する「前」に、"*"で始まるオプション行を記述します。
+現在、記述可能な設定行は以下の通りです。
+
+*direction:	←シャッター画像の、開いていく方向設定(0=右、1=下、2=左、3=上)(デフォルトは0)。
+*beatstart:	←シャッター画像が拍動を開始するタイミング設定(0以上1未満の小数値で指定(デフォルトは0)。例えば0.5としておくと「シャッター値」が全開の半分に達すると拍動を開始する)
+
+※ コロンの直後に、設定したい値を書きます。余計な空白を挟んではいけません。
+※ いずれも、読み込みたいシャッター画像ファイル名の「前」に、これらの設定行を書きます。「後」ではありません。
+※ シャッター画像ファイルを1枚読み込むごとに、これらの設定がリセットされるわけではなく、継続されます。
+※ 空行は無視されます。また、各行において、"//"の後はコメントと見なされます。
+※ 9つ以上ファイルを書いても、9つ目以降は無視されます。存在しないファイル名を書いた場合も、無視されます。
+※ シャッター画像が画面に描画される順番は、ファイルの記述された順番と同じとなります（重要）。

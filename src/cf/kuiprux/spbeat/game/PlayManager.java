@@ -39,11 +39,16 @@ public class PlayManager {
 	}
 
 	//재생 붙가능일시 false 반환
-	public boolean play(Beatmap map){
+	public boolean play(Beatmap map) {
+		return play(map, null);
+	}
+
+	public boolean play(Beatmap map, PlayScreen playScreen){
 		stop();
 		this.isPlaying = true;
 
 		this.beatmap = map;
+		this.screen = playScreen;
 		try {
 			this.player = new Player(new FileInputStream(MapManager.SONG_PATH.resolve(map.getSongPath()).toFile()));
 		} catch (Exception e) {

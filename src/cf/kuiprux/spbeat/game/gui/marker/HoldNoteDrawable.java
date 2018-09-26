@@ -9,8 +9,10 @@ import cf.kuiprux.spbeat.game.gui.marker.hit.HoldNoteHitStatement;
 import cf.kuiprux.spbeat.game.gui.marker.hit.IHitStatement;
 import cf.kuiprux.spbeat.gui.AlignMode;
 import cf.kuiprux.spbeat.gui.Container;
+import cf.kuiprux.spbeat.gui.DrawMode;
 import cf.kuiprux.spbeat.gui.element.Square;
 import cf.kuiprux.spbeat.gui.element.Triangle;
+import javafx.scene.control.Button;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
@@ -22,7 +24,7 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
 
     private Square sliderArrow;
     private Square sliderLine;
-    private NoteDrawable sliderEnd;
+    private Square sliderEnd;
 
     private PlayManager playManager;
 
@@ -31,47 +33,40 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
         this.hitStatement = new HoldNoteHitStatement(note);
         this.playManager = playManager;
 
-        int sx = note.getStartIndex() % ButtonPanel.COLUMN;
-        int sy = note.getStartIndex() / ButtonPanel.ROW;
-
-        int ex = note.getNoteIndex() % ButtonPanel.COLUMN;
-        int ey = note.getNoteIndex() / ButtonPanel.ROW;
-
         setLocation(0, 0);
 
-        this.sliderArrow = new Square(0, 0, ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
+        this.sliderArrow = new Square(0, 0, 0, ButtonPanel.BUTTON_HEIGHT);
         this.sliderArrow.setRotation(getSliderRotation() - 90);
         this.sliderArrow.setScale(0.9f, 0.9f);
         this.sliderArrow.setOrigin(AlignMode.CENTRE);
-        this.sliderEnd = new NoteDrawable(note, playManager);
 
-        this.sliderLine = new Square( ((sx - ex) * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X) + ButtonPanel.BUTTON_WIDTH) / 2f, ((sy - ey) * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y) + ButtonPanel.BUTTON_HEIGHT) / 2f, getDigonalLength(), ButtonPanel.BUTTON_HEIGHT);
+        this.sliderEnd = new Square(0, 0, ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
+        this.sliderEnd.setOrigin(AlignMode.CENTRE);
+        this.sliderEnd.setRotation(getSliderRotation() - 90);
+
+        this.sliderLine = new Square(0, 0, getSliderWidth(), ButtonPanel.BUTTON_HEIGHT);
         this.sliderLine.setRotation(getSliderRotation());
-        this.sliderLine.setOrigin(AlignMode.CENTRE);
         this.sliderLine.setAnchor(AlignMode.CENTRE);
+        this.sliderLine.setOrigin(AlignMode.CENTRE);
 
         this.sliderArrow.setColor(Color.white);
         this.sliderLine.setColor(Color.white);
+        this.sliderEnd.setColor(Color.white);
 
-        addChild(sliderLine);
+
         addChild(sliderEnd);
         addChild(sliderArrow);
+        addChild(sliderLine);
     }
 
     @Override
     public float getWidth() {
-        int sx = note.getStartIndex() % ButtonPanel.COLUMN;
-        int ex = note.getNoteIndex() % ButtonPanel.COLUMN;
-
-        return Math.abs(sx - ex) * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
+        return Math.abs(getStartX() - getEndY()) * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
     }
 
     @Override
     public float getHeight() {
-        int sy = note.getStartIndex() / ButtonPanel.ROW;
-        int ey = note.getNoteIndex() / ButtonPanel.ROW;
-
-        return Math.abs(sy - ey) * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
+        return Math.abs(getStartY() - getEndY()) * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
     }
 
     @Override
@@ -89,6 +84,7 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
 
             this.sliderArrow.setTexture(new Image(resourceManager.getStream("texture.marker.hold.arrow"), "texture.marker.hold.arrow", false));
             this.sliderLine.setTexture(new Image(resourceManager.getStream("texture.marker.hold.line"), "texture.marker.hold.line", false));
+            //this.sliderEnd.setTexture(new Image(resourceManager.getStream("texture.marker.hold.end"), "texture.marker.hold.end", false));
         } catch (SlickException e) {
             System.out.println("텍스쳐 texture.marker.hold 로딩이 실패했습니다.");
         }
@@ -98,6 +94,8 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
     protected void updateInternal(int delta) {
         long time = playManager.getCurrentTime();
 
+        this.sliderLine.setLocation(getLineCenterX(time) - ButtonPanel.BUTTON_WIDTH / 2, getLineCenterY(time));
+        this.sliderLine.setWidth(getSliderLineWidth(time) - ButtonPanel.BUTTON_WIDTH * 2);
         this.sliderArrow.setLocation(getSliderX(time), getSliderY(time));
     }
 
@@ -108,56 +106,97 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
 
     public float getSliderX(long time){
         float timing = getNote().getExactTime() - time;
-        float length = getNote().getExactTime() - getNote().getStartTime();
-        int sx = note.getStartIndex() % ButtonPanel.COLUMN;
-        int ex = note.getNoteIndex() % ButtonPanel.COLUMN;
-
-        float startX = sx * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
-        float endX = ex * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
+        float length = getNote().getLength();
 
         if (timing < 0)
             return 0;
         else if (timing > length)
-            return endX;
+            return getStartX() - getEndX();
 
-        return (startX - endX) * (timing / length);
+        return (getStartX() - getEndX()) * (timing / length);
     }
 
     public float getSliderY(long time){
         float timing = getNote().getExactTime() - time;
-        float length = getNote().getExactTime() - getNote().getStartTime();
-        int sy = note.getStartIndex() / ButtonPanel.ROW;
-        int ey = note.getNoteIndex() / ButtonPanel.ROW;
-
-        float startY = sy * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
-        float endY = ey * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
+        float length = getNote().getLength();
 
         if (timing < 0)
             return 0;
         else if (timing > length)
-            return endY;
+            return getStartY() - getEndY();
 
-        return (startY - endY) * (timing / length);
+        return (getStartY() - getEndY()) * (timing / length);
     }
 
-    public float getDigonalLength(){
-        return (float) Math.hypot(getWidth(), getHeight());
+    public int getStartTileX() {
+        return note.getStartIndex() % ButtonPanel.COLUMN;
+    }
+
+    public int getStartTileY() {
+        return note.getStartIndex() / ButtonPanel.ROW;
+    }
+
+    public int getEndTileX() {
+        return note.getNoteIndex() % ButtonPanel.COLUMN;
+    }
+
+    public int getEndTileY() {
+        return note.getNoteIndex() / ButtonPanel.ROW;
+    }
+
+    public float getEndX() {
+        return getEndTileX() * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
+    }
+
+    public float getEndY() {
+        return getEndTileY() * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
+    }
+
+    public float getStartX() {
+        return getStartTileX() * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
+    }
+
+    public float getStartY() {
+        return getStartTileY() * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
+    }
+
+    public float getLineCenterX(long time) {
+        float lineX = getLineX(time);
+        return lineX - (getWidth() + lineX - ButtonPanel.BUTTON_WIDTH) / 2;
+    }
+
+    public float getLineCenterY(long time) {
+        float lineY = getLineY(time);
+        return lineY - (getHeight() + lineY - ButtonPanel.BUTTON_HEIGHT) / 2;
+    }
+
+    public float getLineX(long time) {
+        return getSliderX(time);
+    }
+
+    public float getLineY(long time) {
+        return getSliderY(time);
+    }
+
+    protected float getDigonalLength(float width, float height){
+        return (float) Math.hypot(width, height);
+    }
+
+    protected float getSliderWidth(){
+        return getDigonalLength(getWidth(), getHeight());
+    }
+
+    protected float getSliderLineWidth(long time) {
+        if (time <= getNote().getStartTime())
+            return getSliderWidth();
+        else if (time >= getNote().getExactTime())
+            return 0;
+
+        return getDigonalLength(Math.max(getLineX(time) - getWidth(), 0), Math.max(getLineY(time) - getHeight(), 0));
     }
 
     public float getSliderRotation(){
-        int sx = note.getStartIndex() % ButtonPanel.COLUMN;
-        int sy = note.getStartIndex() / ButtonPanel.COLUMN;
-
-        int ex = note.getNoteIndex() % ButtonPanel.ROW;
-        int ey = note.getNoteIndex() / ButtonPanel.ROW;
-
-        float startX = sx * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
-        float endX = ex * (ButtonPanel.BUTTON_WIDTH + ButtonPanel.BUTTON_GAP_X);
-
-        float startY = sy * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
-        float endY = ey * (ButtonPanel.BUTTON_HEIGHT + ButtonPanel.BUTTON_GAP_Y);
-
-        return (float) Math.toDegrees(Math.atan2(startY - endY, startX - endX));
+        return (float) Math.toDegrees(Math.atan2(getStartY() - getEndY(), getStartX() - getEndX()));
     }
 
     @Override
@@ -181,11 +220,14 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
         if (!hitStatement.isClicked()) {
             hitStatement.setClicked(true);
             hitStatement.setClickStarted(time);
+            playManager.getPlayScreen().getPlayStatus().setCurrentCombo(playManager.getPlayScreen().getPlayStatus().getCurrentCombo() + 1);
         }
     }
 
     @Override
     public void onkeyUp(long time) {
-        getHitStatement().calculateState(time);
+        HoldNoteHitStatement hitStatement = (HoldNoteHitStatement) getHitStatement();
+        if (hitStatement.isClicked())
+            getHitStatement().calculateState(time);
     }
 }

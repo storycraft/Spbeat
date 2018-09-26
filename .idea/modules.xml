@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/5. HighBeat.iml" filepath="$PROJECT_DIR$/5. HighBeat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Spbeat.iml" filepath="$PROJECT_DIR$/.idea/Spbeat.iml" />
     </modules>
   </component>
 </project>
