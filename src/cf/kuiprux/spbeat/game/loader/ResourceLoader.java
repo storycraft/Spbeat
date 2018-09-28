@@ -29,7 +29,7 @@ public class ResourceLoader implements Loader {
                 manager.add("texture.marker.default", texturePath.resolve("marker_square.png"));
                 manager.add("texture.marker.hold.arrow", texturePath.resolve("hold_note").resolve("holdarrow.png"));
                 manager.add("texture.marker.hold.line", texturePath.resolve("hold_note").resolve("line.png"));
-                manager.add("texture.marker.hold.end", texturePath.resolve("hold_note").resolve("holdarrow.png"));
+                manager.add("texture.marker.hold.end", texturePath.resolve("hold_note").resolve("hold_end.png"));
                 manager.add("texture.marker.start", texturePath.resolve("kokokara.png"));
                 manager.add("texture.marker.effect.default", texturePath.resolve("marker3.jpg"));
                 manager.add("texture.marker.hit.perfect", texturePath.resolve("effect4.jpg"));
@@ -37,6 +37,7 @@ public class ResourceLoader implements Loader {
                 manager.add("texture.marker.hit.poor", texturePath.resolve("effect2.jpg"));
                 manager.add("texture.marker.hit.miss", texturePath.resolve("effect1.jpg"));
                 manager.add("texture.jacket.default", texturePath.resolve("defaultjacket.jpg"));
+                manager.add("texture.jacket.hold_notify", texturePath.resolve("hold_notify.png"));
                 manager.add("texture.shutter.top", texturePath.resolve("bg_shutter_top.jpg"));
                 manager.add("texture.shutter.bottom", texturePath.resolve("bg_shutter_bottom.jpg"));
 

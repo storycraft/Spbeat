@@ -2,31 +2,49 @@ package cf.kuiprux.spbeat.game.gui.element;
 
 import cf.kuiprux.spbeat.game.MapManager;
 import cf.kuiprux.spbeat.game.MainThreadExecutor;
+import cf.kuiprux.spbeat.game.ResourceManager;
 import cf.kuiprux.spbeat.game.beatmap.Beatmap;
+import cf.kuiprux.spbeat.game.gui.ButtonPanel;
+import cf.kuiprux.spbeat.gui.AlignMode;
+import cf.kuiprux.spbeat.gui.containers.FixedContainer;
 import cf.kuiprux.spbeat.gui.element.Square;
 import cf.kuiprux.spbeat.util.AsyncTask;
 import cf.kuiprux.spbeat.util.IOUtil;
+import org.lwjgl.Sys;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import java.io.*;
 import java.nio.file.Path;
-import java.util.function.BiConsumer;
 
-public class BeatmapInfoDrawable extends Square {
+public class BeatmapInfoDrawable extends FixedContainer {
+
+    private Beatmap map;
+    private ResourceManager resourceManager;
 
     private Image defaultJacket;
 
-    public BeatmapInfoDrawable(Beatmap map, Image defaultJacket){
+    private Square beatmapJacket;
+    private Square holdNoteNotify;
+
+    public BeatmapInfoDrawable(Beatmap map, ResourceManager resourceManager, Image defaultJacket){
+        this.map = map;
+        this.resourceManager = resourceManager;
         this.defaultJacket = defaultJacket;
+        this.beatmapJacket = new Square(0, 0, ButtonPanel.BUTTON_WIDTH + 1, ButtonPanel.BUTTON_HEIGHT + 1);
+        this.holdNoteNotify = new Square(ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT, 10, 10);
+        this.holdNoteNotify.setColor(Color.white);
+        this.holdNoteNotify.setAnchor(AlignMode.RIGHT_BOTTOM);
+
+        setDefault();
 
         setLocation(0, 0);
-        setSize(101, 101);
-
-        setColor(Color.white);
+        setSize(ButtonPanel.BUTTON_WIDTH + 1, ButtonPanel.BUTTON_HEIGHT + 1);
 
         Path path = MapManager.SONG_PATH.resolve(map.getJacketPath());
+
+        addChild(beatmapJacket);
 
         new AsyncTask<>(new AsyncTask.AsyncCallable<Void>() {
             @Override
@@ -42,7 +60,7 @@ public class BeatmapInfoDrawable extends Square {
                     ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
                     MainThreadExecutor.addTask(() -> {
                         try {
-                            setTexture(new Image(stream, map.getJacketPath(), false));
+                            beatmapJacket.setTexture(new Image(stream, map.getJacketPath(), false));
                         } catch (SlickException e) {
                             System.out.println(map.getJacketPath() + " 자켓 로드 오류 " + e.getLocalizedMessage());
                             setDefault();
@@ -60,8 +78,20 @@ public class BeatmapInfoDrawable extends Square {
 
     private void setDefault(){
         if (defaultJacket != null)
-            setTexture(defaultJacket);
+            beatmapJacket.setTexture(defaultJacket);
         else
-            setColor(Color.magenta);
+            beatmapJacket.setColor(Color.magenta);
+    }
+
+    @Override
+    public void onLoaded(){
+        try {
+            if (map.hasHoldMarker()) {
+                holdNoteNotify.setTexture(new Image(resourceManager.getStream("texture.jacket.hold_notify"), "texture.jacket.hold_notify", false));
+                addChild(holdNoteNotify);
+            }
+        } catch (SlickException e) {
+            System.out.println("texture.jacket.hold_notify 택스쳐 로드 실패 " + e.getLocalizedMessage());
+        }
     }
 }

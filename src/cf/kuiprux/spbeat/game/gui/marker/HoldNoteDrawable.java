@@ -83,7 +83,7 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
 
             this.sliderArrow.setTexture(new Image(resourceManager.getStream("texture.marker.hold.arrow"), "texture.marker.hold.arrow", false));
             this.sliderLine.setTexture(new Image(resourceManager.getStream("texture.marker.hold.line"), "texture.marker.hold.line", false));
-            //this.sliderEnd.setTexture(new Image(resourceManager.getStream("texture.marker.hold.end"), "texture.marker.hold.end", false));
+            this.sliderEnd.setTexture(new Image(resourceManager.getStream("texture.marker.hold.end"), "texture.marker.hold.end", false));
         } catch (SlickException e) {
             System.out.println("텍스쳐 texture.marker 로딩이 실패했습니다.");
         }

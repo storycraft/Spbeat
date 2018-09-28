@@ -246,7 +246,7 @@ public class BeatmapSelectScreen extends ScreenPreset {
 			if (map == null)
 				continue;
 
-			BeatmapInfoDrawable infoDrawable = new BeatmapInfoDrawable(map, defaultJacket);
+			BeatmapInfoDrawable infoDrawable = new BeatmapInfoDrawable(map, getScreenManager().getGame().getResourceManager(), defaultJacket);
 			infoDrawable.setOpacity(0);
 			infoDrawable.fadeIn(EasingType.LINEAR, 500);
 			selectHighlight.setVisible(false);
