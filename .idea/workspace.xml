@@ -7,25 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ded3685-93a8-4cca-bca4-bec03a59eb78" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Spbeat.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/spbeat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/spbeat.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/ResultScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/5. HighBeat.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/FallbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/FallbackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/NoteDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/NoteDrawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/HoldNoteHitStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/HoldNoteHitStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/ResourceLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/ResourceLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/Container.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Spbeat$Main.ic" NAME="Main Coverage Results" MODIFIED="1537927162323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Spbeat$Main.ic" NAME="Main Coverage Results" MODIFIED="1538046515530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>cf.kuiprux.spbeat.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/5__HighBeat$Main.ic" NAME="Main Coverage Results" MODIFIED="1536987809746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -48,8 +32,8 @@
       <file leaf-file-name="PlayScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="265" column="13" lean-forward="true" selection-start-line="265" selection-start-column="13" selection-end-line="265" selection-end-column="13" />
+            <state relative-caret-position="4902">
+              <caret line="292" column="64" selection-start-line="292" selection-start-column="64" selection-end-line="292" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -57,16 +41,26 @@
       <file leaf-file-name="HoldNoteDrawable.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="96" column="87" selection-start-line="96" selection-start-column="87" selection-end-line="96" selection-end-column="87" />
-              <folding>
-                <element signature="e#5766#5767#0" expanded="true" />
-                <element signature="e#5804#5805#0" expanded="true" />
-                <element signature="e#5864#5865#0" expanded="true" />
-                <element signature="e#5902#5903#0" expanded="true" />
-                <element signature="e#5830#5831#0" expanded="true" />
-                <element signature="e#5886#5887#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="377">
+              <caret line="58" column="5" lean-forward="true" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Spbeat.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Spbeat.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultScreen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/ResultScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -75,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="133">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
               <folding>
                 <element signature="e#548#549#0" expanded="true" />
                 <element signature="e#602#603#0" expanded="true" />
@@ -119,7 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/LegacyMapParserTest.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/INote.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/EasingType.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/test/ControllerTest.java" />
@@ -165,10 +158,11 @@
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HitEffectDrawable.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/element/Shape.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/Container.java" />
-        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/HoldNoteHitStatement.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/ResultScreen.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java" />
       </list>
     </option>
@@ -193,6 +187,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -330,7 +325,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -580,6 +574,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -587,15 +582,14 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5207889" side_tool="true" visible="true" weight="0.41984734" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.521855" side_tool="true" visible="true" weight="0.41984734" />
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4792111" weight="0.41984734" />
-      <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.32995737" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.478145" visible="true" weight="0.41984734" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.35980812" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3672708" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -603,6 +597,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.3991276" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.32995737" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -619,13 +614,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/util/AsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/IDrawable.java" />
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/DrawMode.java" />
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/AlignMode.java">
@@ -841,14 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
           <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
-          <folding>
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-            <element signature="e#1419#1420#0" expanded="true" />
-            <element signature="e#1470#1471#0" expanded="true" />
-            <element signature="e#1501#1502#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,13 +857,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8">
           <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spbeat.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -935,13 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="86" column="79" selection-start-line="86" selection-start-column="79" selection-end-line="86" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/HoldNoteHitStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -952,7 +918,7 @@
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="e#548#549#0" expanded="true" />
             <element signature="e#602#603#0" expanded="true" />
@@ -967,25 +933,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/ResultScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="86" column="33" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="265" column="13" lean-forward="true" selection-start-line="265" selection-start-column="13" selection-end-line="265" selection-end-column="13" />
+        <state relative-caret-position="4902">
+          <caret line="292" column="64" selection-start-line="292" selection-start-column="64" selection-end-line="292" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spbeat.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="96" column="87" selection-start-line="96" selection-start-column="87" selection-end-line="96" selection-end-column="87" />
-          <folding>
-            <element signature="e#5766#5767#0" expanded="true" />
-            <element signature="e#5804#5805#0" expanded="true" />
-            <element signature="e#5864#5865#0" expanded="true" />
-            <element signature="e#5902#5903#0" expanded="true" />
-            <element signature="e#5830#5831#0" expanded="true" />
-            <element signature="e#5886#5887#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="377">
+          <caret line="58" column="5" lean-forward="true" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
         </state>
       </provider>
     </entry>
