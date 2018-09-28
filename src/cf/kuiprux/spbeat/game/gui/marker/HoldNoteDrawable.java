@@ -95,7 +95,7 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
 
         this.sliderArrow.setLocation(getSliderX(time), getSliderY(time));
         this.sliderLine.setLocation(getLineCenterX(time), getLineCenterY(time));
-        this.sliderLine.setWidth(Math.max(getSliderLineWidth(time), 0));
+        this.sliderLine.setWidth(getSliderLineWidth(time));
     }
 
     @Override
