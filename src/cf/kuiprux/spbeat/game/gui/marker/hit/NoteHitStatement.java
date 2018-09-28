@@ -49,8 +49,6 @@ public class NoteHitStatement implements IHitStatement {
         else {
             hitState = HitState.MISS;
         }
-
-        System.out.println(hitState);
     }
 
     @Override

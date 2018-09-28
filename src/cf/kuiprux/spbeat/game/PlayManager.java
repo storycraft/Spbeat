@@ -53,6 +53,7 @@ public class PlayManager {
 			this.player = new Player(new FileInputStream(MapManager.SONG_PATH.resolve(map.getSongPath()).toFile()));
 		} catch (Exception e) {
 			System.out.println("재생 중 " + getCurrentTime() + " 위치에서 오류가 발생했습니다. " + e.getLocalizedMessage());
+			stop();
 			return false;
 		}
 
@@ -63,6 +64,7 @@ public class PlayManager {
 					player.play();
 				} catch (JavaLayerException e) {
 					System.out.println("재생 중 " + getCurrentTime() + " 위치에서 오류가 발생했습니다. " + e.getLocalizedMessage());
+					stop();
 				}
 				return null;
 			}

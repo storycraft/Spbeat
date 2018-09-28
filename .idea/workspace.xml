@@ -9,9 +9,11 @@
     <list default="true" id="7ded3685-93a8-4cca-bca4-bec03a59eb78" name="Default" comment="">
       <change afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/ResultScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/BeatmapInfoDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/BeatmapInfoDrawable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/ResourceLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/ResourceLoader.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -35,17 +37,38 @@
       <file leaf-file-name="PlayScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4902">
-              <caret line="292" column="64" selection-start-line="292" selection-start-column="64" selection-end-line="292" selection-end-column="64" />
+            <state relative-caret-position="-180">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HoldNoteDrawable.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HoldNoteDrawable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
+            <state relative-caret-position="470">
               <caret line="93" column="22" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NoteHitStatement.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeatmapInfoDrawable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/BeatmapInfoDrawable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,8 +76,21 @@
       <file leaf-file-name="BeatmapSelectScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="248" column="125" selection-start-line="248" selection-start-column="125" selection-end-line="248" selection-end-column="125" />
+            <state relative-caret-position="160">
+              <caret line="107" column="41" lean-forward="true" selection-start-line="107" selection-start-column="41" selection-end-line="107" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+              <folding>
+                <element signature="e#817#818#0" expanded="true" />
+                <element signature="e#846#847#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/ResourceLoader.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="406">
-              <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="55" />
+              <caret line="39" column="94" selection-start-line="39" selection-start-column="94" selection-end-line="39" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -117,6 +153,7 @@
       <find>shutter</find>
       <find>load</find>
       <find>rotation</find>
+      <find>System</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,9 +198,7 @@
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/FontLoader.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/controller/FallbackController.java" />
-        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/NoteDrawable.java" />
-        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HitEffectDrawable.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/element/Shape.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/gui/Container.java" />
@@ -173,9 +208,11 @@
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/ResultScreen.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/parsing/legacy/LegacyMapParser.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java" />
-        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/ResourceLoader.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/ResourceLoader.java" />
         <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/BeatmapInfoDrawable.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java" />
+        <option value="$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java" />
       </list>
     </option>
   </component>
@@ -597,11 +634,11 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.521855" side_tool="true" visible="true" weight="0.41984734" />
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.478145" visible="true" weight="0.41984734" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.478145" visible="true" weight="0.41984734" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3672708" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3672708" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -793,17 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
-          <folding>
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#842#843#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/FontLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -819,13 +845,6 @@
             <element signature="e#3134#3135#0" expanded="true" />
             <element signature="e#3168#3169#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -877,13 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/HoldNoteHitStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/beatmap/HoldNote.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -913,13 +925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="86" column="33" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4902">
-          <caret line="292" column="64" selection-start-line="292" selection-start-column="64" selection-end-line="292" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -958,34 +963,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="248" column="125" selection-start-line="248" selection-start-column="125" selection-end-line="248" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/loader/ResourceLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
-          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="55" />
+          <caret line="39" column="94" selection-start-line="39" selection-start-column="94" selection-end-line="39" selection-end-column="94" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/element/BeatmapInfoDrawable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-558">
-          <caret line="46" column="32" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+        <state relative-caret-position="290">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/BeatmapSelectScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="107" column="41" lean-forward="true" selection-start-line="107" selection-start-column="41" selection-end-line="107" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/PlayManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+          <folding>
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#846#847#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/play/PlayScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/HoldNoteHitStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/HoldNoteDrawable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
+        <state relative-caret-position="470">
           <caret line="93" column="22" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cf/kuiprux/spbeat/game/gui/marker/hit/NoteHitStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
         </state>
       </provider>
     </entry>

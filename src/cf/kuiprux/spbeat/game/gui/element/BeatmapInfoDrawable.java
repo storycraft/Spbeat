@@ -33,9 +33,13 @@ public class BeatmapInfoDrawable extends FixedContainer {
         this.resourceManager = resourceManager;
         this.defaultJacket = defaultJacket;
         this.beatmapJacket = new Square(0, 0, ButtonPanel.BUTTON_WIDTH + 1, ButtonPanel.BUTTON_HEIGHT + 1);
-        this.holdNoteNotify = new Square(ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT, 10, 10);
-        this.holdNoteNotify.setColor(Color.white);
-        this.holdNoteNotify.setAnchor(AlignMode.RIGHT_BOTTOM);
+        this.holdNoteNotify = new Square(ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT, 15, 15);
+
+        beatmapJacket.setColor(Color.white);
+
+        holdNoteNotify.setCornerRadius(2);
+        holdNoteNotify.setColor(Color.white);
+        holdNoteNotify.setAnchor(AlignMode.RIGHT_BOTTOM);
 
         setDefault();
 

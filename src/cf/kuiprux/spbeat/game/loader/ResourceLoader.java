@@ -37,7 +37,7 @@ public class ResourceLoader implements Loader {
                 manager.add("texture.marker.hit.poor", texturePath.resolve("effect2.jpg"));
                 manager.add("texture.marker.hit.miss", texturePath.resolve("effect1.jpg"));
                 manager.add("texture.jacket.default", texturePath.resolve("defaultjacket.jpg"));
-                manager.add("texture.jacket.hold_notify", texturePath.resolve("hold_notify.png"));
+                manager.add("texture.jacket.hold_notify", texturePath.resolve("hold_notify.bmp"));
                 manager.add("texture.shutter.top", texturePath.resolve("bg_shutter_top.jpg"));
                 manager.add("texture.shutter.bottom", texturePath.resolve("bg_shutter_bottom.jpg"));
 
