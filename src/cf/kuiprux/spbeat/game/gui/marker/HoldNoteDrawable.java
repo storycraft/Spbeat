@@ -37,12 +37,13 @@ public class HoldNoteDrawable extends Container implements INoteDrawable {
 
         this.sliderArrow = new Square(getSliderX(0), getSliderY(0), ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
         this.sliderArrow.setRotation(getSliderRotation() - 90);
-        this.sliderArrow.setScale(0.9f, 0.9f);
         this.sliderArrow.setOrigin(AlignMode.CENTRE);
 
-        this.sliderEnd = new Square(0, 0, ButtonPanel.BUTTON_WIDTH, ButtonPanel.BUTTON_HEIGHT);
+        this.sliderEnd = new Square(ButtonPanel.BUTTON_WIDTH / 2, ButtonPanel.BUTTON_HEIGHT / 2, ButtonPanel.BUTTON_WIDTH - 1, ButtonPanel.BUTTON_HEIGHT - 1);
+        this.sliderEnd.setAnchor(AlignMode.CENTRE);
         this.sliderEnd.setOrigin(AlignMode.CENTRE);
         this.sliderEnd.setRotation(getSliderRotation() - 90);
+        this.sliderEnd.setDrawMode(DrawMode.ADD);
 
         this.sliderLine = new Square(getLineCenterX(0), getLineCenterY(0), getSliderWidth(), ButtonPanel.BUTTON_HEIGHT);
         this.sliderLine.setRotation(getSliderRotation());

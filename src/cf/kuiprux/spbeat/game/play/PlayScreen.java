@@ -185,8 +185,10 @@ public class PlayScreen extends ScreenPreset {
 		while ((lastBeatList = beatListList.get(beatListList.size() - i++)).getNoteList().size() <= 0);
 
 		List<INote> noteList = lastBeatList.getNoteList();
-		if (time > noteList.get(noteList.size() - 1).getExactTime() + AFTER_VISIBLE_TIME + 2000)
-			return true;
+		for (INote note : noteList) {
+			if (time > note.getExactTime() + AFTER_VISIBLE_TIME + 2000)
+				return true;
+		}
 
 		return false;
 	}
@@ -290,7 +292,7 @@ public class PlayScreen extends ScreenPreset {
 
 		for (BeatList beatList : getBeatmap().getBeatListArray()){
 			float beatTiming = beatList.getBeatTime() - time;
-			if (beatTiming < -beatListTime + AFTER_VISIBLE_TIME)
+			if (beatTiming < -beatListTime * 2 + AFTER_VISIBLE_TIME)
 				continue;
 			else if (beatTiming > NOTE_VISIBLE_TIME)
 				break;
